@@ -36,6 +36,9 @@
 #define GPIO_DIR               (GPIO_BASE_ADDR + 0x00)  // Direction register (bidirectional pins)
 #define GPIO_OUT               (GPIO_BASE_ADDR + 0x04)  // Output data register
 #define GPIO_IN                (GPIO_BASE_ADDR + 0x08)  // Input data register (read-only)
+#define GPIO_INT_EN            (GPIO_BASE_ADDR + 0x0C)  // Interrupt enable (rising edge)
+#define GPIO_INT_PEND          (GPIO_BASE_ADDR + 0x14)  // Interrupt pending (read-only)
+#define GPIO_INT_CLR           (GPIO_BASE_ADDR + 0x18)  // Interrupt clear (write 1 to clear)
 
 // Timer register offsets
 #define TIMER_MTIME_LO         (TIMER_BASE_ADDR + 0x00)

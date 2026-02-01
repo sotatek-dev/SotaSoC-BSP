@@ -14,30 +14,12 @@ Discarded input sections
  .text          0x00000000        0x0 build/objs/a/b/c/irq.o
  .data          0x00000000        0x0 build/objs/a/b/c/irq.o
  .bss           0x00000000        0x0 build/objs/a/b/c/irq.o
- .text.irq_init
-                0x00000000       0x56 build/objs/a/b/c/irq.o
- .text.irq_register
-                0x00000000       0x1c build/objs/a/b/c/irq.o
- .text.irq_enable_mtie
-                0x00000000       0x14 build/objs/a/b/c/irq.o
  .text.irq_enable_meie
                 0x00000000       0x22 build/objs/a/b/c/irq.o
- .text.irq_global_enable
-                0x00000000       0x14 build/objs/a/b/c/irq.o
- .text.irq_trap_dispatch
-                0x00000000       0x2a build/objs/a/b/c/irq.o
- .bss.s_handlers
-                0x00000000       0x40 build/objs/a/b/c/irq.o
- .comment       0x00000000       0x1c build/objs/a/b/c/irq.o
  .note.GNU-stack
                 0x00000000        0x0 build/objs/a/b/c/irq.o
- .riscv.attributes
-                0x00000000       0x35 build/objs/a/b/c/irq.o
- .text          0x00000000       0x50 build/objs/a/b/c/trap_handler.o
  .data          0x00000000        0x0 build/objs/a/b/c/trap_handler.o
  .bss           0x00000000        0x0 build/objs/a/b/c/trap_handler.o
- .riscv.attributes
-                0x00000000       0x33 build/objs/a/b/c/trap_handler.o
 
 Memory Configuration
 
@@ -52,21 +34,40 @@ LOAD build/objs/a/b/c/main.o
 LOAD build/objs/a/b/c/startup.o
 LOAD build/objs/a/b/c/irq.o
 LOAD build/objs/a/b/c/trap_handler.o
-LOAD /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a
 
-.text           0x00000000       0x86
+.text           0x00000000      0x1ea
  *(.text.start)
  .text.start    0x00000000       0x5e build/objs/a/b/c/startup.o
                 0x00000000                _start
  *(.text)
+ *fill*         0x0000005e        0x2 
+ .text          0x00000060       0x48 build/objs/a/b/c/trap_handler.o
+                0x00000060                trap_entry
  *(.text.*)
+ .text.timer_irq_handler
+                0x000000a8       0x2e build/objs/a/b/c/main.o
  .text.startup.main
-                0x0000005e       0x28 build/objs/a/b/c/main.o
-                0x0000005e                main
+                0x000000d6       0x54 build/objs/a/b/c/main.o
+                0x000000d6                main
+ .text.irq_init
+                0x0000012a       0x52 build/objs/a/b/c/irq.o
+                0x0000012a                irq_init
+ .text.irq_register
+                0x0000017c       0x1c build/objs/a/b/c/irq.o
+                0x0000017c                irq_register
+ .text.irq_enable_mtie
+                0x00000198       0x14 build/objs/a/b/c/irq.o
+                0x00000198                irq_enable_mtie
+ .text.irq_global_enable
+                0x000001ac       0x14 build/objs/a/b/c/irq.o
+                0x000001ac                irq_global_enable
+ .text.irq_trap_dispatch
+                0x000001c0       0x2a build/objs/a/b/c/irq.o
+                0x000001c0                irq_trap_dispatch
 
-.rela.dyn       0x00000088        0x0
+.rela.dyn       0x000001ec        0x0
  .rela.text.start
-                0x00000088        0x0 build/objs/a/b/c/main.o
+                0x000001ec        0x0 build/objs/a/b/c/main.o
 
 .rodata
  *(.rodata)
@@ -84,42 +85,50 @@ LOAD /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a
  *(.fini_array.*)
                 0x01000800                        __global_pointer$ = (ORIGIN (RAM) + 0x800)
 
-.data           0x01000000        0x0 load address 0x00000088
+.data           0x01000000        0x0 load address 0x000001ec
                 0x01000000                        __data_start = .
  *(.data)
  *(.data.*)
  *(.sdata)
  *(.sdata.*)
                 0x01000000                        __data_end = .
-                0x00000088                        __data_load_start = LOADADDR (.data)
+                0x000001ec                        __data_load_start = LOADADDR (.data)
 
-.bss            0x01000000        0x0 load address 0x00000088
+.bss            0x01000000       0x40 load address 0x000001ec
                 0x01000000                        __bss_start = .
  *(.bss)
  *(.bss.*)
+ .bss.s_handlers
+                0x01000000       0x40 build/objs/a/b/c/irq.o
  *(COMMON)
  *(.sbss)
  *(.sbss.*)
-                0x01000000                        __bss_end = .
+                0x01000040                        __bss_end = .
                 0x02000000                        __stack_top = (ORIGIN (RAM) + LENGTH (RAM))
                 0x01fff000                        __heap_limit = (__stack_top - 0x1000)
-                0x01000000                        _end = .
+                0x01000040                        _end = .
 
 /DISCARD/
  *(.note.GNU-stack)
  *(.gnu_debuglink)
  *(.gnu.lto_*)
-OUTPUT(build/blink.elf elf32-littleriscv)
+OUTPUT(build/blink-int.elf elf32-littleriscv)
 
 .comment        0x00000000       0x1b
  .comment       0x00000000       0x1b build/objs/a/b/c/main.o
                                  0x1c (size before relaxing)
  .comment       0x0000001b        0x0 build/objs/a/b/c/startup.o
                                  0x1c (size before relaxing)
+ .comment       0x0000001b        0x0 build/objs/a/b/c/irq.o
+                                 0x1c (size before relaxing)
 
 .riscv.attributes
                 0x00000000       0x35
  .riscv.attributes
-                0x00000000       0x31 build/objs/a/b/c/main.o
+                0x00000000       0x35 build/objs/a/b/c/main.o
  .riscv.attributes
-                0x00000031       0x31 build/objs/a/b/c/startup.o
+                0x00000035       0x31 build/objs/a/b/c/startup.o
+ .riscv.attributes
+                0x00000066       0x35 build/objs/a/b/c/irq.o
+ .riscv.attributes
+                0x0000009b       0x33 build/objs/a/b/c/trap_handler.o

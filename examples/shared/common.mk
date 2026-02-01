@@ -21,7 +21,7 @@ OBJ_DIR = $(BUILD_DIR)/objs/a/b/c
 # Compiler flags
 CFLAGS += -Wall -Werror -std=c11 -O3 -ffreestanding \
           -ffunction-sections -fdata-sections \
-          -march=rv32ec -mabi=ilp32e
+          -march=rv32ec_zicsr -mabi=ilp32e
 
 # Source files must be defined before including this file
 ifndef SRCS
@@ -31,6 +31,7 @@ endif
 # Use libc (newlib) by default. Set USE_STDLIB=0 for bare-metal (nostdlib + startup.c)
 ifeq ($(USE_STDLIB),0)
 CFLAGS += -nostdlib
+LDFLAGS += -lgcc
 SRCS += startup.c
 else
 SRCS += syscalls.c
@@ -48,7 +49,7 @@ LDFLAGS += \
 	-Wl,--print-memory-usage \
 	-Wl,-Map=$(BUILD_DIR)/$(PROJECT).map \
 	-Wl,-T,$(LINKER_SCRIPT) \
-	-march=rv32ec \
+	-march=rv32ec_zicsr \
 	-mabi=ilp32e
 
 # Include paths (can be overridden in individual Makefiles)
@@ -59,11 +60,16 @@ CFLAGS += $(foreach i,$(INCLUDES),-I$(i))
 DEFINES ?=
 CFLAGS += $(foreach d,$(DEFINES),-D$(d))
 
+# BSP shared (trap_handler.S) and drivers (irq.c)
+BSP_SHARED ?= ../../shared
 # Driver directory (optional, for projects using drivers)
 DRIVER_DIR ?= ../../shared/drivers
 ifdef DRIVERS
 VPATH += $(DRIVER_DIR)
 endif
+
+# IRQ subsystem
+SRCS += irq.c
 
 # Shared directory (for startup code)
 SHARED_DIR ?= ../shared
@@ -71,6 +77,7 @@ VPATH += $(SHARED_DIR)
 
 # Object files
 OBJS = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRCS))
+OBJS += $(OBJ_DIR)/trap_handler.o
 ifneq ($(USE_STDLIB),0)
 OBJS := $(BOOT_OBJ) $(OBJS)
 endif
@@ -97,6 +104,11 @@ $(OBJ_DIR)/%.o: %.c $(OBJ_DIR)
 	$(NO_ECHO)$(MKDIR) -p $(dir $@)
 	$(NO_ECHO)$(CC) -c -o $@ $< $(CFLAGS)
 
+$(OBJ_DIR)/irq.o: $(DRIVER_DIR)/irq.c | $(OBJ_DIR)
+	@echo "Compiling $<"
+	$(NO_ECHO)$(MKDIR) -p $(dir $@)
+	$(NO_ECHO)$(CC) -c -o $@ $< $(CFLAGS)
+
 # Generate listing file
 $(BUILD_DIR)/$(PROJECT).lst: $(BUILD_DIR)/$(PROJECT).elf $(BUILD_DIR)
 	$(ODUMP) -D $< > $@
@@ -105,6 +117,11 @@ $(BUILD_DIR)/$(PROJECT).lst: $(BUILD_DIR)/$(PROJECT).elf $(BUILD_DIR)
 $(BUILD_DIR)/$(PROJECT).bin: $(BUILD_DIR)/$(PROJECT).elf $(BUILD_DIR)/$(PROJECT).lst
 	$(OCPY) $< $@ -O binary
 	$(SZ) $<
+
+# Trap handler (single entry for all exceptions/interrupts)
+$(OBJ_DIR)/trap_handler.o: $(BSP_SHARED)/trap_handler.S | $(OBJ_DIR)
+	@echo "Assembling $<"
+	$(NO_ECHO)$(CC) $(CFLAGS) -c -o $@ $<
 
 # Link object files
 $(BUILD_DIR)/$(PROJECT).elf: $(OBJS)

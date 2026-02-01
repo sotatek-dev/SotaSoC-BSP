@@ -65,12 +65,12 @@ Disassembly of section .comment:
 Disassembly of section .riscv.attributes:
 
 00000000 <.riscv.attributes>:
-   0:	2741                	jal	780 <__data_load_start+0x6f8>
+   0:	3441                	jal	fffffa80 <__stack_top+0xfdfffa80>
    2:	0000                	unimp
    4:	7200                	.insn	2, 0x7200
    6:	7369                	lui	t1,0xffffa
    8:	01007663          	bgeu	zero,a6,14 <_start+0x14>
-   c:	001d                	c.nop	7
+   c:	002a                	c.slli	zero,0xa
    e:	0000                	unimp
   10:	0404                	addi	s1,sp,512
   12:	7205                	lui	tp,0xfffe1
@@ -79,5 +79,12 @@ Disassembly of section .riscv.attributes:
   18:	7032                	.insn	2, 0x7032
   1a:	5f30                	lw	a2,120(a4)
   1c:	30703263          	.insn	4, 0x30703263
-  20:	7a5f 6163 7031      	.insn	6, 0x703161637a5f
-  26:	0030                	addi	a2,sp,8
+  20:	7a5f 6369 7273      	.insn	6, 0x727363697a5f
+  26:	7032                	.insn	2, 0x7032
+  28:	5f30                	lw	a2,120(a4)
+  2a:	637a                	.insn	2, 0x637a
+  2c:	3161                	jal	fffffcb4 <__stack_top+0xfdfffcb4>
+  2e:	3070                	.insn	2, 0x3070
+  30:	0800                	addi	s0,sp,16
+  32:	0a01                	addi	s4,s4,0
+  34:	0b                	.byte	0x0b

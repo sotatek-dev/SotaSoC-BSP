@@ -11,8 +11,8 @@
 #define GPIO_OK 0
 #define GPIO_ERROR -1
 
-// Maximum pin number (0-based, 32 pins total)
-#define GPIO_PIN_MAX 31
+// Maximum pin number (0-based)
+#define GPIO_PIN_MAX 6
 
 /**
  * @brief Set direction of a single pin
@@ -75,5 +75,34 @@ int gpio_read_pin(unsigned int pin);
  * @return Bitmask of input states
  */
 unsigned int gpio_read(void);
+
+/* GPIO interrupt (rising edge per pin) */
+
+/**
+ * @brief Enable rising-edge interrupt for a pin
+ * @param pin Pin number (0..GPIO_PIN_MAX)
+ * @return GPIO_OK on success, GPIO_ERROR if pin out of range
+ */
+int gpio_int_enable(unsigned int pin);
+
+/**
+ * @brief Disable interrupt for a pin
+ * @param pin Pin number (0..GPIO_PIN_MAX)
+ * @return GPIO_OK on success, GPIO_ERROR if pin out of range
+ */
+int gpio_int_disable(unsigned int pin);
+
+/**
+ * @brief Read interrupt pending mask (bit N = 1 if pin N has pending interrupt)
+ * @return Pending mask
+ */
+unsigned int gpio_int_get_pending(void);
+
+/**
+ * @brief Clear pending interrupt for a pin (write 1 to clear)
+ * @param pin Pin number (0..GPIO_PIN_MAX)
+ * @return GPIO_OK on success, GPIO_ERROR if pin out of range
+ */
+int gpio_int_clear(unsigned int pin);
 
 #endif  // GPIO_DRIVER_H
