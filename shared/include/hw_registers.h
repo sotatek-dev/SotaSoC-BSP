@@ -57,6 +57,9 @@
 #define PWM_CH1_DUTY           (PWM_BASE_ADDR + 0x18)
 #define PWM_CH1_COUNTER        (PWM_BASE_ADDR + 0x1C)
 
+// PWM Control register bits (per channel)
+#define PWM_CTRL_ENABLE 0x01u  // bit 0: Channel enable
+
 // I2C base address and register offsets
 #define I2C_CTRL               (I2C_BASE_ADDR + 0x00)
 #define I2C_STATUS             (I2C_BASE_ADDR + 0x04)
