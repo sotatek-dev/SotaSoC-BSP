@@ -1,5 +1,6 @@
 #include "spi_driver.h"
 
+#define SPI_EN_REG      (*(volatile unsigned int *)SPI_EN)
 #define SPI_CTRL_REG    (*(volatile unsigned int *)SPI_CTRL)
 #define SPI_STATUS_REG  (*(volatile unsigned int *)SPI_STATUS)
 #define SPI_TX_DATA_REG (*(volatile unsigned int *)SPI_TX_DATA)
@@ -22,16 +23,22 @@ unsigned char spi_transfer_byte_internal(unsigned char tx_byte) {
 }
 
 int spi_init(int clock_divider) {
-  SPI_CONFIG_REG = clock_divider & SPI_CONFIG_DIV_MASK;
-
-  __asm__ volatile("nop");
-  __asm__ volatile("nop");
+  SPI_EN_REG = SPI_EN_ENABLE;
+  SPI_CONFIG_REG =
+      ((clock_divider & SPI_CONFIG_DIV_MASK) | SPI_MODE0); /* MODE0 default */
 
   return SPI_OK;
 }
 
 int spi_set_clock_divider(int clock_divider) {
-  SPI_CONFIG_REG = clock_divider & SPI_CONFIG_DIV_MASK;
+  unsigned int config = SPI_CONFIG_REG & ~SPI_CONFIG_DIV_MASK;
+  SPI_CONFIG_REG = config | (clock_divider & SPI_CONFIG_DIV_MASK);
+  return SPI_OK;
+}
+
+int spi_set_mode(int mode) {
+  unsigned int config = SPI_CONFIG_REG & SPI_CONFIG_DIV_MASK;
+  SPI_CONFIG_REG = config | (mode & (SPI_CONFIG_CPOL | SPI_CONFIG_CPHA));
   return SPI_OK;
 }
 

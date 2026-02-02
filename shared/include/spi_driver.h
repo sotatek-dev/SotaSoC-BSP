@@ -27,6 +27,13 @@ int spi_init(int clock_divider);
 int spi_set_clock_divider(int clock_divider);
 
 /**
+ * @brief Set SPI mode (CPOL, CPHA). Preserves clock divider.
+ * @param mode 0=SPI_MODE0, 1=SPI_MODE1, 2=SPI_MODE2, 3=SPI_MODE3
+ * @return SPI_OK
+ */
+int spi_set_mode(int mode);
+
+/**
  * @brief Transfer a single byte (full duplex)
  * @param tx_byte Byte to send
  * @return Byte received from slave

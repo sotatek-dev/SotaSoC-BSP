@@ -85,11 +85,15 @@
 #define I2C_PRESCALE_400KHZ    39   // 64MHz / (4 * 40) = 400kHz
 
 // SPI base address and register offsets
-#define SPI_CTRL               (SPI_BASE_ADDR + 0x00)
-#define SPI_STATUS             (SPI_BASE_ADDR + 0x04)
-#define SPI_TX_DATA            (SPI_BASE_ADDR + 0x08)
-#define SPI_RX_DATA            (SPI_BASE_ADDR + 0x0C)
-#define SPI_CONFIG             (SPI_BASE_ADDR + 0x10)
+#define SPI_EN                 (SPI_BASE_ADDR + 0x00)
+#define SPI_CTRL               (SPI_BASE_ADDR + 0x04)
+#define SPI_STATUS             (SPI_BASE_ADDR + 0x08)
+#define SPI_TX_DATA            (SPI_BASE_ADDR + 0x0C)
+#define SPI_RX_DATA            (SPI_BASE_ADDR + 0x10)
+#define SPI_CONFIG             (SPI_BASE_ADDR + 0x14)
+
+// SPI Enable register bits
+#define SPI_EN_ENABLE          0x01  // bit 0: SPI enable
 
 // SPI Control register bits
 #define SPI_CTRL_START         0x01  // bit 0: Start transfer
@@ -100,6 +104,8 @@
 
 // SPI Config register bits
 #define SPI_CONFIG_DIV_MASK    0xFF  // bits [7:0]: Clock divider
+#define SPI_CONFIG_CPHA        (1 << 8)  // bit 8: Clock phase
+#define SPI_CONFIG_CPOL        (1 << 9)  // bit 9: Clock polarity
 
 // SPI Clock divider values for common frequencies @ 64MHz
 #define SPI_DIV_1MHZ           31   // 64MHz / (2 * 32) = 1MHz
@@ -107,7 +113,10 @@
 #define SPI_DIV_4MHZ           7    // 64MHz / (2 * 8) = 4MHz
 #define SPI_DIV_8MHZ           3    // 64MHz / (2 * 4) = 8MHz
 
-// SPI Mode 0 (only mode supported)
-#define SPI_MODE0              0x000  // CPOL=0, CPHA=0
+// SPI modes (CPOL, CPHA)
+#define SPI_MODE0 0x000                                // CPOL=0, CPHA=0
+#define SPI_MODE1 SPI_CONFIG_CPHA                      // CPOL=0, CPHA=1
+#define SPI_MODE2 SPI_CONFIG_CPOL                      // CPOL=1, CPHA=0
+#define SPI_MODE3 (SPI_CONFIG_CPOL | SPI_CONFIG_CPHA)  // CPOL=1, CPHA=1
 
 #endif // HW_REGISTERS_H
