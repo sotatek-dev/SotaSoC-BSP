@@ -49,4 +49,48 @@ unsigned char spi_transfer_byte(unsigned char tx_byte);
  */
 int spi_transfer(const unsigned char *tx_buf, unsigned char *rx_buf, int len);
 
+/**
+ * @brief Transfer a single halfword (2 bytes in one transfer)
+ * @param tx_hword Halfword to send
+ * @return Halfword received from slave
+ */
+unsigned short spi_transfer_hword(unsigned short tx_hword);
+
+/**
+ * @brief Transfer multiple halfwords (2 bytes per transfer)
+ * @param tx_buf Data to send (may be NULL to send 0xFFFF for each halfword)
+ * @param rx_buf Buffer for received data (may be NULL to discard)
+ * @param len Number of halfwords to transfer
+ * @return SPI_OK on success, SPI_ERROR if len <= 0
+ */
+int spi_transfer_hwords(const unsigned short *tx_buf, unsigned short *rx_buf,
+                        int len);
+
+/**
+ * @brief Transfer a single word (4 bytes in one transfer, RISC-V word size)
+ * @param tx_word Word to send
+ * @return Word received from slave
+ */
+unsigned int spi_transfer_word(unsigned int tx_word);
+
+/**
+ * @brief Transfer multiple words (4 bytes per transfer)
+ * @param tx_buf Data to send (may be NULL to send 0xFFFFFFFF for each word)
+ * @param rx_buf Buffer for received data (may be NULL to discard)
+ * @param len Number of words to transfer
+ * @return SPI_OK on success, SPI_ERROR if len <= 0
+ */
+int spi_transfer_words(const unsigned int *tx_buf, unsigned int *rx_buf,
+                       int len);
+
+/**
+ * @brief Fast burst transmit (halfwords or words, no per-transfer wait).
+ * TX-only. Clock must be 8MHz or 16MHz. 8MHz: transfer by halfword, len must be
+ *       divisible by 2. 16MHz: transfer by word, len must be divisible by 4.
+ * @param tx_buf Data to send (must not be NULL)
+ * @param len Number of bytes to transmit
+ * @return SPI_OK on success, SPI_ERROR if invalid clock/len or tx_buf == NULL
+ */
+int spi_transmit_fast(const unsigned char *tx_buf, int len);
+
 #endif  // SPI_DRIVER_H

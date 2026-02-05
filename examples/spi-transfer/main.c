@@ -40,6 +40,62 @@ static void spi_transfer_multiple_bytes(int mode) {
   gpio_set_pin(CS_N_PIN);
 }
 
+static void test_spi_transfer_fast_hword(int mode) {
+  const int BUF_SIZE = 256;
+  spi_init(SPI_DIV_8MHZ);
+  spi_set_mode(mode);
+
+  // Configure GPIO[CS_N_PIN] as output for CS_N (active low)
+  gpio_set_direction(CS_N_PIN, GPIO_OUTPUT);
+  gpio_set_pin(CS_N_PIN);  // CS_N high (deasserted)
+
+  unsigned short tx_buf[BUF_SIZE / 2];
+  unsigned short rx_buf[BUF_SIZE / 2];
+
+  unsigned char* tx_buf_bytes = (unsigned char*)tx_buf;
+  unsigned char* rx_buf_bytes = (unsigned char*)rx_buf;
+
+  for (int i = 0; i < BUF_SIZE; i++) {
+    tx_buf_bytes[i] = i;
+  }
+
+  gpio_clear_pin(CS_N_PIN);  // Assert CS_N
+  spi_transmit_fast(tx_buf_bytes, BUF_SIZE);
+  gpio_set_pin(CS_N_PIN);
+
+  gpio_clear_pin(CS_N_PIN);  // Assert CS_N
+  spi_transmit_fast(rx_buf_bytes, BUF_SIZE);
+  gpio_set_pin(CS_N_PIN);
+}
+
+static void test_spi_transfer_fast_word(int mode) {
+  const int BUF_SIZE = 256;
+  spi_init(SPI_DIV_16MHZ);
+  spi_set_mode(mode);
+
+  // Configure GPIO[CS_N_PIN] as output for CS_N (active low)
+  gpio_set_direction(CS_N_PIN, GPIO_OUTPUT);
+  gpio_set_pin(CS_N_PIN);  // CS_N high (deasserted)
+
+  unsigned int tx_buf[BUF_SIZE / 4];
+  unsigned int rx_buf[BUF_SIZE / 4];
+
+  unsigned char* tx_buf_bytes = (unsigned char*)tx_buf;
+  unsigned char* rx_buf_bytes = (unsigned char*)rx_buf;
+
+  for (int i = 0; i < BUF_SIZE * 4; i++) {
+    tx_buf_bytes[i] = i;
+  }
+
+  gpio_clear_pin(CS_N_PIN);  // Assert CS_N
+  spi_transmit_fast(tx_buf_bytes, BUF_SIZE);
+  gpio_set_pin(CS_N_PIN);
+
+  gpio_clear_pin(CS_N_PIN);  // Assert CS_N
+  spi_transmit_fast(rx_buf_bytes, BUF_SIZE);
+  gpio_set_pin(CS_N_PIN);
+}
+
 static void spi_transfer_single_byte(int mode) {
   const int BUF_SIZE = 32;
   spi_init(SPI_DIV_8MHZ);
@@ -62,6 +118,72 @@ static void spi_transfer_single_byte(int mode) {
   for (int i = 0; i < BUF_SIZE; i++) {
     gpio_clear_pin(CS_N_PIN);
     spi_transfer_byte(rx_buf[i]);
+    gpio_set_pin(CS_N_PIN);
+  }
+}
+
+static void spi_transfer_single_hword(int mode) {
+  const int BUF_SIZE = 16;
+  spi_init(SPI_DIV_8MHZ);
+  spi_set_mode(mode);
+
+  // Configure GPIO[CS_N_PIN] as output for CS_N (active low)
+  gpio_set_direction(CS_N_PIN, GPIO_OUTPUT);
+  gpio_set_pin(CS_N_PIN);  // CS_N high (deasserted)
+
+  unsigned short tx_buf[BUF_SIZE];
+  unsigned short rx_buf[BUF_SIZE];
+
+  unsigned char* tx_buf_bytes = (unsigned char*)tx_buf;
+
+  for (int i = 0; i < BUF_SIZE * 2; i++) {
+    tx_buf_bytes[i] = i;
+  }
+
+  // Read 32 bytes from SPI slave
+  for (int i = 0; i < BUF_SIZE; i++) {
+    gpio_clear_pin(CS_N_PIN);  // Assert CS_N
+    rx_buf[i] = spi_transfer_hword(tx_buf[i]);
+    gpio_set_pin(CS_N_PIN);  // Deassert CS_N
+  }
+
+  // Send the received data back
+  for (int i = 0; i < BUF_SIZE; i++) {
+    gpio_clear_pin(CS_N_PIN);
+    spi_transfer_hword(rx_buf[i]);
+    gpio_set_pin(CS_N_PIN);
+  }
+}
+
+static void spi_transfer_single_word(int mode) {
+  const int BUF_SIZE = 8;
+  spi_init(SPI_DIV_8MHZ);
+  spi_set_mode(mode);
+
+  // Configure GPIO[CS_N_PIN] as output for CS_N (active low)
+  gpio_set_direction(CS_N_PIN, GPIO_OUTPUT);
+  gpio_set_pin(CS_N_PIN);  // CS_N high (deasserted)
+
+  unsigned int tx_buf[BUF_SIZE];
+  unsigned int rx_buf[BUF_SIZE];
+
+  unsigned char* tx_buf_bytes = (unsigned char*)tx_buf;
+
+  for (int i = 0; i < BUF_SIZE * 4; i++) {
+    tx_buf_bytes[i] = i;
+  }
+
+  // Read 32 bytes from SPI slave
+  for (int i = 0; i < BUF_SIZE; i++) {
+    gpio_clear_pin(CS_N_PIN);  // Assert CS_N
+    rx_buf[i] = spi_transfer_word(tx_buf[i]);
+    gpio_set_pin(CS_N_PIN);  // Deassert CS_N
+  }
+
+  // Send the received data back
+  for (int i = 0; i < BUF_SIZE; i++) {
+    gpio_clear_pin(CS_N_PIN);
+    spi_transfer_word(rx_buf[i]);
     gpio_set_pin(CS_N_PIN);
   }
 }
@@ -93,12 +215,42 @@ int main(void) {
     case 7:
       spi_transfer_single_byte(SPI_MODE3);
       break;
+    case 8:
+      spi_transfer_single_hword(SPI_MODE0);
+      break;
+    case 9:
+      spi_transfer_single_hword(SPI_MODE1);
+      break;
+    case 10:
+      spi_transfer_single_hword(SPI_MODE2);
+      break;
+    case 11:
+      spi_transfer_single_hword(SPI_MODE3);
+      break;
+    case 12:
+      spi_transfer_single_word(SPI_MODE0);
+      break;
+    case 13:
+      spi_transfer_single_word(SPI_MODE1);
+      break;
+    case 14:
+      spi_transfer_single_word(SPI_MODE2);
+      break;
+    case 15:
+      spi_transfer_single_word(SPI_MODE3);
+      break;
+    case 16:
+      test_spi_transfer_fast_hword(SPI_MODE0);
+      break;
+    case 17:
+      test_spi_transfer_fast_word(SPI_MODE0);
+      break;
     default:
       spi_transfer_multiple_bytes(SPI_MODE0);
       break;
   }
 
-  if (test_id <= 7) {
+  if (test_id <= 17) {
     // Use ecall to notify cocotb that the test is done
     __asm__ volatile("ecall");
   }

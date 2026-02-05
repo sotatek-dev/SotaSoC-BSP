@@ -97,6 +97,11 @@
 
 // SPI Control register bits
 #define SPI_CTRL_START         0x01  // bit 0: Start transfer
+// LEN[1:0] at bits 2:1: 00=1 byte, 01=2 bytes, 10/11=4 bytes
+#define SPI_CTRL_LEN_MASK      0x06  // bits [2:1]: transfer length
+#define SPI_CTRL_LEN_1B        0x00  // 1 byte
+#define SPI_CTRL_LEN_2B        0x02  // 2 bytes
+#define SPI_CTRL_LEN_4B        0x04  // 4 bytes
 
 // SPI Status register bits
 #define SPI_STATUS_BUSY        0x01  // bit 0: Transfer in progress
@@ -112,6 +117,7 @@
 #define SPI_DIV_2MHZ           15   // 64MHz / (2 * 16) = 2MHz
 #define SPI_DIV_4MHZ           7    // 64MHz / (2 * 8) = 4MHz
 #define SPI_DIV_8MHZ           3    // 64MHz / (2 * 4) = 8MHz
+#define SPI_DIV_16MHZ          1    // 64MHz / (2 * 2) = 16MHz
 
 // SPI modes (CPOL, CPHA)
 #define SPI_MODE0 0x000                                // CPOL=0, CPHA=0
