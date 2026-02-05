@@ -3,7 +3,7 @@ ENTRY(_start)
 MEMORY
 {
     ROM (rx)  : ORIGIN = 0x00000000, LENGTH = 0x01000000
-    RAM (rw)  : ORIGIN = 0x01000000, LENGTH = 0x01000000
+    RAM (rw)  : ORIGIN = 0x01000000, LENGTH = 0x00800000
 }
 
 /* Explicit LOAD segments: RX for code, RW for data*/

@@ -3,9 +3,8 @@ ENTRY( _start )
 
 MEMORY
 {
-	/* Fake ROM area */
 	rom (rx) : ORIGIN = 0x00000000, LENGTH = 0x01000000
-	ram (rw) : ORIGIN = 0x01000000, LENGTH = 0x01000000
+	ram (rw) : ORIGIN = 0x01000000, LENGTH = 0x00800000
 }
 
 SECTIONS
@@ -131,5 +130,6 @@ SECTIONS
 		. = ALIGN(16);
 		. += __stack_size;
 		_stack_top = .;
+		__heap_limit = . - 0x1000;
 	} >ram AT>ram
 }

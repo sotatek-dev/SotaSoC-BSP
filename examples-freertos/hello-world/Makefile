@@ -1,6 +1,6 @@
-# FreeRTOS HelloWorld — paths relative to build/gcc/
-OUTPUT_DIR := build
-IMAGE := hello-world.elf
+# FreeRTOS HelloWorld
+
+PROJECT := hello-world
 
 # Project sets kernel and shared paths (required by freertos-rv32.mk)
 KERNEL_DIR = ../../FreeRTOS-Kernel

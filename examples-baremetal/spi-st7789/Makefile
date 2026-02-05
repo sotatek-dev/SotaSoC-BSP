@@ -4,7 +4,7 @@
 PROJECT := spi-st7789
 
 # Include paths: shared BSP + ST7789 (interface, src, example)
-INCLUDES := ../../shared/include st7789/interface st7789/src st7789/example
+INCLUDES := ../../shared/include src src/st7789/interface src/st7789/src src/st7789/example
 
 # Source files: app + ST7789 driver + shared drivers
 SRCS = \
@@ -22,7 +22,7 @@ SRCS = \
 DRIVERS = spi_driver.c gpio_driver.c
 
 # VPATH for ST7789 .c in subdirs; BSP shared (util.c)
-VPATH += st7789/src st7789/example
+VPATH += src src/st7789/src src/st7789/example
 VPATH += ../../shared
 
 # Include common Makefile

@@ -25,7 +25,7 @@ Memory Configuration
 
 Name             Origin             Length             Attributes
 ROM              0x00000000         0x01000000         xr
-RAM              0x01000000         0x01000000         rw
+RAM              0x01000000         0x00800000         rw
 *default*        0x00000000         0xffffffff
 
 Linker script and memory map
@@ -34,6 +34,7 @@ LOAD build/objs/a/b/c/main.o
 LOAD build/objs/a/b/c/startup.o
 LOAD build/objs/a/b/c/irq.o
 LOAD build/objs/a/b/c/trap_handler.o
+LOAD /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a
 
 .text           0x00000000      0x1ea
  *(.text.start)
@@ -104,8 +105,8 @@ LOAD build/objs/a/b/c/trap_handler.o
  *(.sbss)
  *(.sbss.*)
                 0x01000040                        __bss_end = .
-                0x02000000                        __stack_top = (ORIGIN (RAM) + LENGTH (RAM))
-                0x01fff000                        __heap_limit = (__stack_top - 0x1000)
+                0x01800000                        __stack_top = (ORIGIN (RAM) + LENGTH (RAM))
+                0x017ff000                        __heap_limit = (__stack_top - 0x1000)
                 0x01000040                        _end = .
 
 /DISCARD/

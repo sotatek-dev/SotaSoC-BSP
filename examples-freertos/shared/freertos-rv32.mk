@@ -1,9 +1,13 @@
 # Common Makefile fragment for FreeRTOS RV32E projects
-# Before including: set KERNEL_DIR, FREERTOS_SHARED_DIR, OUTPUT_DIR, IMAGE,
+# Before including: set KERNEL_DIR, FREERTOS_SHARED_DIR, PROJECT
 # then VPATH, INCLUDE_DIRS, SOURCE_FILES for the app (must implement vApplicationStart()).
 
 # Linker script in shared; override in project if needed
 LINKER_SCRIPT ?= $(FREERTOS_SHARED_DIR)/linker.ld
+
+# BSP shared (hw_registers.h, drivers); needed by freertos_syscalls.c and app drivers
+BSP_SHARED_DIR ?= ../../shared
+INCLUDE_DIRS += -I$(BSP_SHARED_DIR)/include
 
 # --- Toolchain (add toolchain bin to PATH; override: make CROSS_COMPILE=...) ---
 CROSS_COMPILE ?= riscv32-unknown-elf-
@@ -13,6 +17,8 @@ LD = $(CROSS_COMPILE)gcc
 SIZE = $(CROSS_COMPILE)size
 OBJCOPY = $(CROSS_COMPILE)objcopy
 OBJDUMP = $(CROSS_COMPILE)objdump
+
+OUTPUT_DIR := build
 
 # Object files in separate folder (like bare-metal)
 OBJ_DIR = $(OUTPUT_DIR)/objs
@@ -41,10 +47,10 @@ else
 endif
 
 # Linker flags (LINKER_SCRIPT and MAP set by project or default)
-MAP_FILE ?= $(OUTPUT_DIR)/$(IMAGE:.elf=.map)
+MAP_FILE ?= $(OUTPUT_DIR)/$(PROJECT).map
 LDFLAGS += -nostartfiles -Xlinker --gc-sections -Wl,-Map,$(MAP_FILE) \
            -T$(LINKER_SCRIPT) -march=$(MARCH) -mabi=$(MABI) -mcmodel=$(MCMODEL) -Xlinker \
-           --defsym=__stack_size=352 -Wl,--start-group -Wl,--end-group
+           --defsym=__stack_size=2048 -Wl,--start-group -Wl,--end-group
 
 ifeq ($(PICOLIBC),1)
   LDFLAGS += --specs=picolibc.specs --oslib=semihost --crt0=minimal -DPICOLIBC_INTEGER_PRINTF_SCANF
@@ -73,6 +79,8 @@ SOURCE_FILES += $(FREERTOS_SHARED_DIR)/printf-stdarg.c
 endif
 # Common entry + hooks (calls vApplicationStart(); project must implement it)
 SOURCE_FILES += $(FREERTOS_SHARED_DIR)/freertos_main.c
+# Syscall stubs for newlib (__wrap_*); needed when app/driver uses libc (memset, vprintf, float)
+SOURCE_FILES += $(FREERTOS_SHARED_DIR)/freertos_syscalls.c
 
 # App: project adds VPATH, INCLUDE_DIRS, SOURCE_FILES for vApplicationStart() and app code
 
@@ -85,9 +93,9 @@ DEP_FILES_NO_PATH = $(OBJS_NO_PATH:%.o=%.d)
 DEP_OUTPUT = $(DEP_FILES_NO_PATH:%.d=$(OBJ_DIR)/%.d)
 
 # Outputs: .elf, .bin, .lst (like bare-metal)
-ELF_FILE = $(OUTPUT_DIR)/$(IMAGE)
-BIN_FILE = $(OUTPUT_DIR)/$(IMAGE:.elf=.bin)
-LST_FILE = $(OUTPUT_DIR)/$(IMAGE:.elf=.lst)
+ELF_FILE = $(OUTPUT_DIR)/$(PROJECT).elf
+BIN_FILE = $(OUTPUT_DIR)/$(PROJECT).bin
+LST_FILE = $(OUTPUT_DIR)/$(PROJECT).lst
 
 # Targets
 all: $(ELF_FILE) $(BIN_FILE) $(LST_FILE)
@@ -125,7 +133,7 @@ $(BIN_FILE): $(ELF_FILE) $(LST_FILE)
 
 clean:
 	rm -rf $(OBJ_DIR)
-	rm -f $(ELF_FILE) $(BIN_FILE) $(LST_FILE) $(OUTPUT_DIR)/$(IMAGE:.elf=.map)
+	rm -f $(ELF_FILE) $(BIN_FILE) $(LST_FILE) $(OUTPUT_DIR)/$(PROJECT).map
 	rm -f $(OUTPUT_DIR)/*.o $(OUTPUT_DIR)/*.d
 
 print-%  : ; @echo $* = $($*)

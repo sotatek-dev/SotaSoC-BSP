@@ -5,7 +5,7 @@ build/pwm.elf:     file format elf32-littleriscv
 Disassembly of section .text:
 
 00000000 <_start_boot>:
-   0:	02000117          	auipc	sp,0x2000
+   0:	01800117          	auipc	sp,0x1800
    4:	00010113          	mv	sp,sp
    8:	4e800293          	li	t0,1256
    c:	01000317          	auipc	t1,0x1000
@@ -49,7 +49,7 @@ Disassembly of section .text:
   7c:	ac89                	j	2ce <exit>
 
 0000007e <__do_global_dtors_aux>:
-  7e:	1161                	addi	sp,sp,-8 # 1fffff8 <__heap_limit+0xff8>
+  7e:	1161                	addi	sp,sp,-8 # 17ffff8 <__heap_limit+0xff8>
   80:	c022                	sw	s0,0(sp)
   82:	01000437          	lui	s0,0x1000
   86:	00044783          	lbu	a5,0(s0) # 1000000 <completed.1>
@@ -211,16 +211,16 @@ Disassembly of section .text:
  230:	4785                	li	a5,1
  232:	02a7e963          	bltu	a5,a0,264 <pwm_init+0x34>
  236:	040007b7          	lui	a5,0x4000
- 23a:	30078793          	addi	a5,a5,768 # 4000300 <__stack_top+0x2000300>
+ 23a:	30078793          	addi	a5,a5,768 # 4000300 <__stack_top+0x2800300>
  23e:	97aa                	add	a5,a5,a0
  240:	0792                	slli	a5,a5,0x4
  242:	40003737          	lui	a4,0x40003
  246:	0007a023          	sw	zero,0(a5)
  24a:	0512                	slli	a0,a0,0x4
- 24c:	0711                	addi	a4,a4,4 # 40003004 <__stack_top+0x3e003004>
+ 24c:	0711                	addi	a4,a4,4 # 40003004 <__stack_top+0x3e803004>
  24e:	400037b7          	lui	a5,0x40003
  252:	972a                	add	a4,a4,a0
- 254:	07a1                	addi	a5,a5,8 # 40003008 <__stack_top+0x3e003008>
+ 254:	07a1                	addi	a5,a5,8 # 40003008 <__stack_top+0x3e803008>
  256:	953e                	add	a0,a0,a5
  258:	00072023          	sw	zero,0(a4)
  25c:	00052023          	sw	zero,0(a0)
@@ -235,7 +235,7 @@ Disassembly of section .text:
  26e:	00253793          	sltiu	a5,a0,2
  272:	cb89                	beqz	a5,284 <pwm_set_period+0x1c>
  274:	400037b7          	lui	a5,0x40003
- 278:	0791                	addi	a5,a5,4 # 40003004 <__stack_top+0x3e003004>
+ 278:	0791                	addi	a5,a5,4 # 40003004 <__stack_top+0x3e803004>
  27a:	0512                	slli	a0,a0,0x4
  27c:	953e                	add	a0,a0,a5
  27e:	c10c                	sw	a1,0(a0)
@@ -250,7 +250,7 @@ Disassembly of section .text:
  28e:	00253793          	sltiu	a5,a0,2
  292:	cb89                	beqz	a5,2a4 <pwm_set_duty+0x1c>
  294:	400037b7          	lui	a5,0x40003
- 298:	07a1                	addi	a5,a5,8 # 40003008 <__stack_top+0x3e003008>
+ 298:	07a1                	addi	a5,a5,8 # 40003008 <__stack_top+0x3e803008>
  29a:	0512                	slli	a0,a0,0x4
  29c:	953e                	add	a0,a0,a5
  29e:	c10c                	sw	a1,0(a0)
@@ -263,7 +263,7 @@ Disassembly of section .text:
  2a8:	4785                	li	a5,1
  2aa:	00a7ef63          	bltu	a5,a0,2c8 <pwm_enable+0x20>
  2ae:	040007b7          	lui	a5,0x4000
- 2b2:	30078793          	addi	a5,a5,768 # 4000300 <__stack_top+0x2000300>
+ 2b2:	30078793          	addi	a5,a5,768 # 4000300 <__stack_top+0x2800300>
  2b6:	953e                	add	a0,a0,a5
  2b8:	00451793          	slli	a5,a0,0x4
  2bc:	4398                	lw	a4,0(a5)
@@ -511,7 +511,7 @@ Disassembly of section .fini_array:
 Disassembly of section .riscv.attributes:
 
 00000000 <.riscv.attributes>:
-   0:	3441                	jal	fffffa80 <__stack_top+0xfdfffa80>
+   0:	3441                	jal	fffffa80 <__stack_top+0xfe7ffa80>
    2:	0000                	unimp
    4:	7200                	.insn	2, 0x7200
    6:	7369                	lui	t1,0xffffa
@@ -529,7 +529,7 @@ Disassembly of section .riscv.attributes:
   26:	7032                	.insn	2, 0x7032
   28:	5f30                	lw	a2,120(a4)
   2a:	637a                	.insn	2, 0x637a
-  2c:	3161                	jal	fffffcb4 <__stack_top+0xfdfffcb4>
+  2c:	3161                	jal	fffffcb4 <__stack_top+0xfe7ffcb4>
   2e:	3070                	.insn	2, 0x3070
   30:	0800                	addi	s0,sp,16
   32:	0a01                	addi	s4,s4,0
@@ -544,7 +544,7 @@ Disassembly of section .comment:
    a:	6335                	lui	t1,0xd
    c:	34346537          	lui	a0,0x34346
   10:	20296637          	lui	a2,0x20296
-  14:	3531                	jal	fffffe20 <__stack_top+0xfdfffe20>
+  14:	3531                	jal	fffffe20 <__stack_top+0xfe7ffe20>
   16:	322e                	.insn	2, 0x322e
   18:	302e                	.insn	2, 0x302e
   1a:	4700                	lw	s0,8(a4)
@@ -552,7 +552,7 @@ Disassembly of section .comment:
   20:	4728                	lw	a0,72(a4)
   22:	554e                	lw	a0,240(sp)
   24:	2029                	jal	2e <_start_boot+0x2e>
-  26:	3531                	jal	fffffe32 <__stack_top+0xfdfffe32>
+  26:	3531                	jal	fffffe32 <__stack_top+0xfe7ffe32>
   28:	322e                	.insn	2, 0x322e
   2a:	302e                	.insn	2, 0x302e
 	...

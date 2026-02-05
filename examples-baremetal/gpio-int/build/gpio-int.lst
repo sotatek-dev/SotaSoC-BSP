@@ -5,7 +5,7 @@ build/gpio-int.elf:     file format elf32-littleriscv
 Disassembly of section .text:
 
 00000000 <_start>:
-   0:	02000117          	auipc	sp,0x2000
+   0:	01800117          	auipc	sp,0x1800
    4:	00010113          	mv	sp,sp
    8:	01000197          	auipc	gp,0x1000
    c:	7f818193          	addi	gp,gp,2040 # 1000800 <__global_pointer$>
@@ -71,7 +71,7 @@ Disassembly of section .text:
   a6:	0001                	nop
 
 000000a8 <__udivdi3>:
-  a8:	fd410113          	addi	sp,sp,-44 # 1ffffd4 <__heap_limit+0xfd4>
+  a8:	fd410113          	addi	sp,sp,-44 # 17fffd4 <__heap_limit+0xfd4>
   ac:	d406                	sw	ra,40(sp)
   ae:	d222                	sw	s0,36(sp)
   b0:	d026                	sw	s1,32(sp)
@@ -690,7 +690,7 @@ Disassembly of section .text:
  67a:	1171                	addi	sp,sp,-4
  67c:	400027b7          	lui	a5,0x40002
  680:	c006                	sw	ra,0(sp)
- 682:	0791                	addi	a5,a5,4 # 40002004 <__stack_top+0x3e002004>
+ 682:	0791                	addi	a5,a5,4 # 40002004 <__stack_top+0x3e802004>
  684:	400026b7          	lui	a3,0x40002
  688:	438c                	lw	a1,0(a5)
  68a:	4288                	lw	a0,0(a3)
@@ -749,7 +749,7 @@ Disassembly of section .text:
  71e:	30479073          	csrw	mie,a5
  722:	8082                	ret
  724:	777d                	lui	a4,0xfffff
- 726:	7ff70713          	addi	a4,a4,2047 # fffff7ff <__stack_top+0xfdfff7ff>
+ 726:	7ff70713          	addi	a4,a4,2047 # fffff7ff <__stack_top+0xfe7ff7ff>
  72a:	8ff9                	and	a5,a5,a4
  72c:	30479073          	csrw	mie,a5
  730:	8082                	ret
@@ -764,7 +764,7 @@ Disassembly of section .text:
 
 00000746 <irq_trap_dispatch>:
  746:	800007b7          	lui	a5,0x80000
- 74a:	7f078793          	addi	a5,a5,2032 # 800007f0 <__stack_top+0x7e0007f0>
+ 74a:	7f078793          	addi	a5,a5,2032 # 800007f0 <__stack_top+0x7e8007f0>
  74e:	8fe9                	and	a5,a5,a0
  750:	80000737          	lui	a4,0x80000
  754:	00e78363          	beq	a5,a4,75a <irq_trap_dispatch+0x14>
@@ -902,7 +902,7 @@ Disassembly of section .comment:
    a:	6335                	lui	t1,0xd
    c:	34346537          	lui	a0,0x34346
   10:	20296637          	lui	a2,0x20296
-  14:	3531                	jal	fffffe20 <__stack_top+0xfdfffe20>
+  14:	3531                	jal	fffffe20 <__stack_top+0xfe7ffe20>
   16:	322e                	.insn	2, 0x322e
   18:	302e                	.insn	2, 0x302e
 	...
@@ -910,7 +910,7 @@ Disassembly of section .comment:
 Disassembly of section .riscv.attributes:
 
 00000000 <.riscv.attributes>:
-   0:	3441                	jal	fffffa80 <__stack_top+0xfdfffa80>
+   0:	3441                	jal	fffffa80 <__stack_top+0xfe7ffa80>
    2:	0000                	unimp
    4:	7200                	.insn	2, 0x7200
    6:	7369                	lui	t1,0xffffa
@@ -928,7 +928,7 @@ Disassembly of section .riscv.attributes:
   26:	7032                	.insn	2, 0x7032
   28:	5f30                	lw	a2,120(a4)
   2a:	637a                	.insn	2, 0x637a
-  2c:	3161                	jal	fffffcb4 <__stack_top+0xfdfffcb4>
+  2c:	3161                	jal	fffffcb4 <__stack_top+0xfe7ffcb4>
   2e:	3070                	.insn	2, 0x3070
   30:	0800                	addi	s0,sp,16
   32:	0a01                	addi	s4,s4,0
@@ -945,7 +945,7 @@ Disassembly of section .debug_info:
    c:	8b14                	.insn	2, 0x8b14
    e:	0000                	unimp
   10:	1d00                	addi	s0,sp,688
-  12:	03164703          	lbu	a4,49(a2) # 20296031 <__stack_top+0x1e296031>
+  12:	03164703          	lbu	a4,49(a2) # 20296031 <__stack_top+0x1ea96031>
   16:	0000                	unimp
   18:	0000                	unimp
   1a:	2b00                	.insn	2, 0x2b00
@@ -980,7 +980,7 @@ Disassembly of section .debug_info:
   56:	0801                	addi	a6,a6,0
   58:	0165                	addi	sp,sp,25
   5a:	0000                	unimp
-  5c:	0205                	addi	tp,tp,1 # fffe1001 <__stack_top+0xfdfe1001>
+  5c:	0205                	addi	tp,tp,1 # fffe1001 <__stack_top+0xfe7e1001>
   5e:	2a05                	jal	18e <__udivdi3+0xe6>
   60:	0000                	unimp
   62:	0500                	addi	s0,sp,640
@@ -1164,7 +1164,7 @@ Disassembly of section .debug_info:
  1f0:	ae0a                	.insn	2, 0xae0a
  1f2:	0006                	c.slli	zero,0x1
  1f4:	0100                	addi	s0,sp,128
- 1f6:	06b9                	addi	a3,a3,14 # 4000200e <__stack_top+0x3e00200e>
+ 1f6:	06b9                	addi	a3,a3,14 # 4000200e <__stack_top+0x3e80200e>
  1f8:	0000                	unimp
  1fa:	02e4                	addi	s1,sp,332
  1fc:	0000                	unimp
@@ -1173,7 +1173,7 @@ Disassembly of section .debug_info:
  202:	c401                	beqz	s0,20a <__udivdi3+0x162>
  204:	0006                	c.slli	zero,0x1
  206:	e800                	.insn	2, 0xe800
- 208:	b3000003          	lb	zero,-1232(zero) # fffffb30 <__stack_top+0xfdfffb30>
+ 208:	b3000003          	lb	zero,-1232(zero) # fffffb30 <__stack_top+0xfe7ffb30>
  20c:	01000003          	lb	zero,16(zero) # 10 <_start+0x10>
  210:	000006cf          	.insn	4, 0x06cf
  214:	0482                	c.slli64	s1
@@ -1326,7 +1326,7 @@ Disassembly of section .debug_info:
  366:	fd00                	.insn	2, 0xfd00
  368:	01000003          	lb	zero,16(zero) # 10 <_start+0x10>
  36c:	0000081b          	.insn	4, 0x081b
- 370:	091d                	addi	s2,s2,7 # fffe0007 <__stack_top+0xfdfe0007>
+ 370:	091d                	addi	s2,s2,7 # fffe0007 <__stack_top+0xfe7e0007>
  372:	0000                	unimp
  374:	0911                	addi	s2,s2,4
  376:	0000                	unimp
@@ -1501,7 +1501,7 @@ Disassembly of section .debug_info:
  4ee:	0000                	unimp
  4f0:	0586                	slli	a1,a1,0x1
  4f2:	0000                	unimp
- 4f4:	bc01                	j	ffffff04 <__stack_top+0xfdffff04>
+ 4f4:	bc01                	j	ffffff04 <__stack_top+0xfe7fff04>
  4f6:	0008                	.insn	2, 0x0008
  4f8:	bd00                	.insn	2, 0xbd00
  4fa:	000d                	c.nop	3
@@ -1592,7 +1592,7 @@ Disassembly of section .debug_info:
  5b0:	0000                	unimp
  5b2:	102a                	c.slli	zero,0x2a
  5b4:	0000                	unimp
- 5b6:	3a01                	jal	fffffec6 <__stack_top+0xfdfffec6>
+ 5b6:	3a01                	jal	fffffec6 <__stack_top+0xfe7ffec6>
  5b8:	0009                	c.nop	2
  5ba:	3a00                	.insn	2, 0x3a00
  5bc:	0010                	.insn	2, 0x0010
@@ -2167,7 +2167,7 @@ Disassembly of section .debug_info:
  ac2:	0005                	c.nop	1
  ac4:	0401                	addi	s0,s0,0
  ac6:	0000022b          	.insn	4, 0x022b
- aca:	00030403          	lb	s0,0(t1) # ffffa000 <__stack_top+0xfdffa000>
+ aca:	00030403          	lb	s0,0(t1) # ffffa000 <__stack_top+0xfe7fa000>
  ace:	1d00                	addi	s0,sp,688
  ad0:	03164703          	lbu	a4,49(a2)
  ad4:	0000                	unimp
@@ -2269,7 +2269,7 @@ Disassembly of section .debug_info:
 Disassembly of section .debug_abbrev:
 
 00000000 <.debug_abbrev>:
-   0:	3401                	jal	fffffa00 <__stack_top+0xfdfffa00>
+   0:	3401                	jal	fffffa00 <__stack_top+0xfe7ffa00>
    2:	3100                	.insn	2, 0x3100
    4:	b7170213          	addi	tp,a4,-1167 # b1f3 <__data_load_start+0xa983>
    8:	1742                	slli	a4,a4,0x30
@@ -2302,7 +2302,7 @@ Disassembly of section .debug_abbrev:
   4c:	1802                	slli	a6,a6,0x20
   4e:	0000                	unimp
   50:	0b08                	addi	a0,sp,400
-  52:	3101                	jal	fffffc52 <__stack_top+0xfdfffc52>
+  52:	3101                	jal	fffffc52 <__stack_top+0xfe7ffc52>
   54:	01175513          	srli	a0,a4,0x11
   58:	09000013          	li	zero,144
   5c:	0016                	c.slli	zero,0x5
@@ -2322,13 +2322,13 @@ Disassembly of section .debug_abbrev:
   84:	0d00                	addi	s0,sp,656
   86:	0005                	c.nop	1
   88:	213a0803          	lb	a6,531(s4)
-  8c:	3b01                	jal	fffffd9c <__stack_top+0xfdfffd9c>
+  8c:	3b01                	jal	fffffd9c <__stack_top+0xfe7ffd9c>
   8e:	e321                	bnez	a4,ce <__udivdi3+0x26>
   90:	490b3907          	.insn	4, 0x490b3907
   94:	0e000013          	li	zero,224
   98:	0000010b          	.insn	4, 0x010b
   9c:	3f002e0f          	.insn	4, 0x3f002e0f
-  a0:	3c19                	jal	fffffab6 <__stack_top+0xfdfffab6>
+  a0:	3c19                	jal	fffffab6 <__stack_top+0xfe7ffab6>
   a2:	6e19                	lui	t3,0x6
   a4:	030e                	slli	t1,t1,0x3
   a6:	000e                	c.slli	zero,0x3
@@ -2336,19 +2336,19 @@ Disassembly of section .debug_abbrev:
   aa:	000d                	c.nop	3
   ac:	213a0803          	lb	a6,531(s4)
   b0:	3b02                	.insn	2, 0x3b02
-  b2:	3905                	jal	fffffce2 <__stack_top+0xfdfffce2>
+  b2:	3905                	jal	fffffce2 <__stack_top+0xfe7ffce2>
   b4:	0013490b          	.insn	4, 0x0013490b
   b8:	1100                	addi	s0,sp,160
   ba:	0005                	c.nop	1
   bc:	213a0803          	lb	a6,531(s4)
-  c0:	3b01                	jal	fffffdd0 <__stack_top+0xfdfffdd0>
+  c0:	3b01                	jal	fffffdd0 <__stack_top+0xfe7ffdd0>
   c2:	9221                	srli	a2,a2,0x28
   c4:	390a                	.insn	2, 0x390a
   c6:	0213490b          	.insn	4, 0x0213490b
   ca:	1742b717          	auipc	a4,0x1742b
   ce:	0000                	unimp
   d0:	0b12                	slli	s6,s6,0x4
-  d2:	3101                	jal	fffffcd2 <__stack_top+0xfdfffcd2>
+  d2:	3101                	jal	fffffcd2 <__stack_top+0xfe7ffcd2>
   d4:	00175513          	srli	a0,a4,0x1
   d8:	1300                	addi	s0,sp,416
   da:	1331010b          	.insn	4, 0x1331010b
@@ -2372,7 +2372,7 @@ Disassembly of section .debug_abbrev:
  10c:	0301                	addi	t1,t1,0
  10e:	0b0e                	slli	s6,s6,0x3
  110:	3b0b3a0b          	.insn	4, 0x3b0b3a0b
- 114:	3905                	jal	fffffd44 <__stack_top+0xfdfffd44>
+ 114:	3905                	jal	fffffd44 <__stack_top+0xfe7ffd44>
  116:	0013010b          	.insn	4, 0x0013010b
  11a:	1700                	addi	s0,sp,928
  11c:	000d                	c.nop	3
@@ -2398,7 +2398,7 @@ Disassembly of section .debug_abbrev:
  152:	39053b0b          	.insn	4, 0x39053b0b
  156:	0013490b          	.insn	4, 0x0013490b
  15a:	1b00                	addi	s0,sp,432
- 15c:	0101                	addi	sp,sp,0 # b0b013e <__stack_top+0x90b013e>
+ 15c:	0101                	addi	sp,sp,0 # b0b013e <__stack_top+0x98b013e>
  15e:	1349                	addi	t1,t1,-14
  160:	1301                	addi	t1,t1,-32
  162:	0000                	unimp
@@ -2455,7 +2455,7 @@ Disassembly of section .debug_abbrev:
  1f2:	3f0e                	.insn	2, 0x3f0e
  1f4:	4919                	li	s2,6
  1f6:	1115                	addi	sp,sp,-27
- 1f8:	1201                	addi	tp,tp,-32 # ffffffe0 <__stack_top+0xfdffffe0>
+ 1f8:	1201                	addi	tp,tp,-32 # ffffffe0 <__stack_top+0xfe7fffe0>
  1fa:	0300000f          	fence	rw,unknown
  1fe:	0000003b          	.insn	4, 0x003b
  202:	0100                	addi	s0,sp,128
@@ -2471,7 +2471,7 @@ Disassembly of section .debug_abbrev:
  21a:	3f0e                	.insn	2, 0x3f0e
  21c:	4919                	li	s2,6
  21e:	1115                	addi	sp,sp,-27
- 220:	1201                	addi	tp,tp,-32 # ffffffe0 <__stack_top+0xfdffffe0>
+ 220:	1201                	addi	tp,tp,-32 # ffffffe0 <__stack_top+0xfe7fffe0>
  222:	0300000f          	fence	rw,unknown
  226:	0000003b          	.insn	4, 0x003b
  22a:	0100                	addi	s0,sp,128
@@ -2510,7 +2510,7 @@ Disassembly of section .debug_abbrev:
  282:	3a0e                	.insn	2, 0x3a0e
  284:	39053b0b          	.insn	4, 0x39053b0b
  288:	3f13490b          	.insn	4, 0x3f13490b
- 28c:	3c19                	jal	fffffca2 <__stack_top+0xfdfffca2>
+ 28c:	3c19                	jal	fffffca2 <__stack_top+0xfe7ffca2>
  28e:	0019                	c.nop	6
  290:	0900                	addi	s0,sp,144
  292:	0034                	addi	a3,sp,8
@@ -2534,10 +2534,10 @@ Disassembly of section .debug_loclists:
       12:	6b62                	.insn	2, 0x6b62
       14:	af75756b          	.insn	4, 0xaf75756b
       18:	af01                	j	728 <irq_enable_meie+0x18>
-      1a:	b101                	j	fffffc1a <__stack_top+0xfdfffc1a>
-      1c:	b101                	j	fffffc1c <__stack_top+0xfdfffc1c>
-      1e:	fc01                	bnez	s0,ffffff36 <__stack_top+0xfdffff36>
-      20:	fc01                	bnez	s0,ffffff38 <__stack_top+0xfdffff38>
+      1a:	b101                	j	fffffc1a <__stack_top+0xfe7ffc1a>
+      1c:	b101                	j	fffffc1c <__stack_top+0xfe7ffc1c>
+      1e:	fc01                	bnez	s0,ffffff36 <__stack_top+0xfe7fff36>
+      20:	fc01                	bnez	s0,ffffff38 <__stack_top+0xfe7fff38>
       22:	8601                	c.srai64	a2
       24:	8602                	jr	a2
       26:	9302                	jalr	t1
@@ -2604,10 +2604,10 @@ Disassembly of section .debug_loclists:
       d4:	6b65                	lui	s6,0x19
       d6:	af7e7e6b          	.insn	4, 0xaf7e7e6b
       da:	af01                	j	7ea <__clz_tab+0x7a>
-      dc:	ba01                	j	fffff9ec <__stack_top+0xfdfff9ec>
-      de:	ba01                	j	fffff9ee <__stack_top+0xfdfff9ee>
-      e0:	fc01                	bnez	s0,fffffff8 <__stack_top+0xfdfffff8>
-      e2:	fc01                	bnez	s0,fffffffa <__stack_top+0xfdfffffa>
+      dc:	ba01                	j	fffff9ec <__stack_top+0xfe7ff9ec>
+      de:	ba01                	j	fffff9ee <__stack_top+0xfe7ff9ee>
+      e0:	fc01                	bnez	s0,fffffff8 <__stack_top+0xfe7ffff8>
+      e2:	fc01                	bnez	s0,fffffffa <__stack_top+0xfe7ffffa>
       e4:	9201                	srli	a2,a2,0x20
       e6:	9202                	jalr	tp
       e8:	9302                	jalr	t1
@@ -2786,8 +2786,8 @@ Disassembly of section .debug_loclists:
      2b4:	aa01                	j	3c4 <__udivdi3+0x31c>
      2b6:	af01                	j	9c6 <__data_load_start+0x156>
      2b8:	af01                	j	9c8 <__data_load_start+0x158>
-     2ba:	b401                	j	fffffcba <__stack_top+0xfdfffcba>
-     2bc:	b801                	j	fffffacc <__stack_top+0xfdfffacc>
+     2ba:	b401                	j	fffffcba <__stack_top+0xfe7ffcba>
+     2bc:	b801                	j	fffffacc <__stack_top+0xfe7ffacc>
      2be:	cb01                	beqz	a4,2ce <__udivdi3+0x226>
      2c0:	cb01                	beqz	a4,2d0 <__udivdi3+0x228>
      2c2:	d701                	beqz	a4,1ca <__udivdi3+0x122>
@@ -3060,7 +3060,7 @@ Disassembly of section .debug_loclists:
      514:	6c04                	.insn	2, 0x6c04
      516:	0171                	addi	sp,sp,28
      518:	045a                	slli	s0,s0,0x16
-     51a:	b871                	j	fffffdb6 <__stack_top+0xfdfffdb6>
+     51a:	b871                	j	fffffdb6 <__stack_top+0xfe7ffdb6>
      51c:	0101                	addi	sp,sp,0
      51e:	0459                	addi	s0,s0,22
      520:	01f8                	addi	a4,sp,204
@@ -3308,7 +3308,7 @@ Disassembly of section .debug_loclists:
      75c:	9f25                	.insn	2, 0x9f25
      75e:	de04                	sw	s1,56(a2)
      760:	e401                	bnez	s0,768 <irq_trap_dispatch+0x22>
-     762:	0701                	addi	a4,a4,0 # 1742b0ca <__stack_top+0x1542b0ca>
+     762:	0701                	addi	a4,a4,0 # 1742b0ca <__stack_top+0x15c2b0ca>
      764:	007e                	c.slli	zero,0x1f
      766:	2440                	.insn	2, 0x2440
      768:	2540                	.insn	2, 0x2540
@@ -3494,7 +3494,7 @@ Disassembly of section .debug_loclists:
      916:	af01                	j	1026 <__data_load_start+0x7b6>
      918:	f601                	bnez	a2,820 <__clz_tab+0xb0>
      91a:	fc01                	bnez	s0,832 <__clz_tab+0xc2>
-     91c:	0401                	addi	s0,s0,0 # ffffc000 <__stack_top+0xfdffc000>
+     91c:	0401                	addi	s0,s0,0 # ffffc000 <__stack_top+0xfe7fc000>
      91e:	02d0                	addi	a2,sp,324
      920:	02d5                	addi	t0,t0,21
      922:	5b01                	li	s6,-32
@@ -3581,7 +3581,7 @@ Disassembly of section .debug_loclists:
      9d8:	0386                	slli	t2,t2,0x1
      9da:	9106                	add	sp,sp,ra
      9dc:	0660                	addi	s0,sp,780
-     9de:	1c31                	addi	s8,s8,-20 # fffe1fec <__stack_top+0xfdfe1fec>
+     9de:	1c31                	addi	s8,s8,-20 # fffe1fec <__stack_top+0xfe7e1fec>
      9e0:	049f 0394 0395      	.insn	6, 0x03950394049f
      9e6:	5d01                	li	s10,-32
      9e8:	9504                	.insn	2, 0x9504
@@ -3646,7 +3646,7 @@ Disassembly of section .debug_loclists:
      a76:	9f1d                	.insn	2, 0x9f1d
      a78:	f004                	.insn	2, 0xf004
      a7a:	8602                	jr	a2
-     a7c:	045f0103          	lb	sp,69(t5) # ffffe045 <__stack_top+0xfdffe045>
+     a7c:	045f0103          	lb	sp,69(t5) # ffffe045 <__stack_top+0xfe7fe045>
      a80:	0394                	addi	a3,sp,448
      a82:	0395                	addi	t2,t2,5
      a84:	5a01                	li	s4,-32
@@ -3746,7 +3746,7 @@ Disassembly of section .debug_loclists:
      b62:	01cb01cb          	.insn	4, 0x01cb01cb
      b66:	01e2                	slli	gp,gp,0x18
      b68:	01e2                	slli	gp,gp,0x18
-     b6a:	01e701e7          	jalr	gp,30(a4) # 3c3c301e <__stack_top+0x3a3c301e>
+     b6a:	01e701e7          	jalr	gp,30(a4) # 3c3c301e <__stack_top+0x3abc301e>
      b6e:	01f0                	addi	a2,sp,204
      b70:	01f0                	addi	a2,sp,204
      b72:	01f301f3          	.insn	4, 0x01f301f3
@@ -4237,7 +4237,7 @@ Disassembly of section .debug_loclists:
      fee:	bc04                	.insn	2, 0xbc04
      ff0:	0107f607          	.insn	4, 0x0107f607
      ff4:	0059                	c.nop	22
-     ff6:	02f5                	addi	t0,t0,29 # 2b8001d <__stack_top+0xb8001d>
+     ff6:	02f5                	addi	t0,t0,29 # 2b8001d <__stack_top+0x138001d>
      ff8:	02fa                	slli	t0,t0,0x1e
      ffa:	02fa                	slli	t0,t0,0x1e
      ffc:	0385                	addi	t2,t2,1
@@ -4486,7 +4486,7 @@ Disassembly of section .debug_line:
    6:	0004                	.insn	2, 0x0004
    8:	00000033          	add	zero,zero,zero
    c:	0101                	addi	sp,sp,0
-   e:	f601                	bnez	a2,ffffff16 <__stack_top+0xfdffff16>
+   e:	f601                	bnez	a2,ffffff16 <__stack_top+0xfe7fff16>
   10:	0df2                	slli	s11,s11,0x1c
   12:	0100                	addi	s0,sp,128
   14:	0101                	addi	sp,sp,0
@@ -4557,7 +4557,7 @@ Disassembly of section .debug_line:
   c0:	0519                	addi	a0,a0,6
   c2:	00040907          	.insn	4, 0x00040907
   c6:	0106                	slli	sp,sp,0x1
-  c8:	0a05                	addi	s4,s4,1 # fffe9001 <__stack_top+0xfdfe9001>
+  c8:	0a05                	addi	s4,s4,1 # fffe9001 <__stack_top+0xfe7e9001>
   ca:	0409                	addi	s0,s0,2
   cc:	0000                	unimp
   ce:	0402                	c.slli64	s0
@@ -6126,7 +6126,7 @@ Disassembly of section .debug_line:
  d66:	0100                	addi	s0,sp,128
  d68:	0000                	unimp
  d6a:	0101                	addi	sp,sp,0
- d6c:	1f01                	addi	t5,t5,-32 # fffe0fe0 <__stack_top+0xfdfe0fe0>
+ d6c:	1f01                	addi	t5,t5,-32 # fffe0fe0 <__stack_top+0xfe7e0fe0>
  d6e:	2b02                	.insn	2, 0x2b02
  d70:	0000                	unimp
  d72:	a400                	.insn	2, 0xa400
@@ -6398,7 +6398,7 @@ Disassembly of section .debug_str:
   b6:	6f6c                	.insn	2, 0x6f6c
   b8:	6d2d2077          	.insn	4, 0x6d2d2077
   bc:	6261                	lui	tp,0x18
-  be:	3d69                	jal	ffffff58 <__stack_top+0xfdffff58>
+  be:	3d69                	jal	ffffff58 <__stack_top+0xfe7fff58>
   c0:	6c69                	lui	s8,0x1a
   c2:	3370                	.insn	2, 0x3370
   c4:	6532                	.insn	2, 0x6532
@@ -6407,9 +6407,9 @@ Disassembly of section .debug_str:
   ca:	732d6173          	csrrsi	sp,mhpmevent18h,26
   ce:	6570                	.insn	2, 0x6570
   d0:	30323d63          	.insn	4, 0x30323d63
-  d4:	3931                	jal	fffffcf0 <__stack_top+0xfdfffcf0>
-  d6:	3231                	jal	fffff9e2 <__stack_top+0xfdfff9e2>
-  d8:	3331                	jal	fffffde4 <__stack_top+0xfdfffde4>
+  d4:	3931                	jal	fffffcf0 <__stack_top+0xfe7ffcf0>
+  d6:	3231                	jal	fffff9e2 <__stack_top+0xfe7ff9e2>
+  d8:	3331                	jal	fffffde4 <__stack_top+0xfe7ffde4>
   da:	2d20                	.insn	2, 0x2d20
   dc:	616d                	addi	sp,sp,240
   de:	6372                	.insn	2, 0x6372
@@ -6460,7 +6460,7 @@ Disassembly of section .debug_str:
  158:	656c                	.insn	2, 0x656c
  15a:	2078                	.insn	2, 0x2078
  15c:	465f 6f6c 7461      	.insn	6, 0x74616f6c465f
- 162:	3631                	jal	fffffc6e <__stack_top+0xfdfffc6e>
+ 162:	3631                	jal	fffffc6e <__stack_top+0xfe7ffc6e>
  164:	7500                	.insn	2, 0x7500
  166:	736e                	.insn	2, 0x736e
  168:	6769                	lui	a4,0x1a
@@ -6513,7 +6513,7 @@ Disassembly of section .debug_str:
  1e4:	7669                	lui	a2,0xffffa
  1e6:	6f6d                	lui	t5,0x1b
  1e8:	6464                	.insn	2, 0x6464
- 1ea:	3469                	jal	fffffc74 <__stack_top+0xfdfffc74>
+ 1ea:	3469                	jal	fffffc74 <__stack_top+0xfe7ffc74>
  1ec:	6300                	.insn	2, 0x6300
  1ee:	6c706d6f          	jal	s10,70b4 <__data_load_start+0x6844>
  1f2:	7865                	lui	a6,0xffff9
@@ -6542,7 +6542,7 @@ Disassembly of section .debug_str:
  23a:	2f766373          	csrrsi	t1,0x2f7,12
  23e:	756d                	lui	a0,0xffffb
  240:	646c                	.insn	2, 0x646c
- 242:	3369                	jal	ffffffcc <__stack_top+0xfdffffcc>
+ 242:	3369                	jal	ffffffcc <__stack_top+0xfe7fffcc>
  244:	532e                	lw	t1,232(sp)
  246:	2f00                	.insn	2, 0x2f00
  248:	6f68                	.insn	2, 0x6f68
@@ -6642,9 +6642,9 @@ Disassembly of section .debug_str:
  342:	7369                	lui	t1,0xffffa
  344:	2d61                	jal	9dc <__data_load_start+0x16c>
  346:	63657073          	csrci	0x636,10
- 34a:	323d                	jal	fffffc78 <__stack_top+0xfdfffc78>
+ 34a:	323d                	jal	fffffc78 <__stack_top+0xfe7ffc78>
  34c:	3130                	.insn	2, 0x3130
- 34e:	3139                	jal	ffffff5c <__stack_top+0xfdffff5c>
+ 34e:	3139                	jal	ffffff5c <__stack_top+0xfe7fff5c>
  350:	3132                	.insn	2, 0x3132
  352:	6d2d2033          	.insn	4, 0x6d2d2033
  356:	7261                	lui	tp,0xffff8
@@ -6759,7 +6759,7 @@ Disassembly of section .debug_line_str:
   c4:	00766373          	csrrsi	t1,0x7,12
   c8:	756d                	lui	a0,0xffffb
   ca:	646c                	.insn	2, 0x646c
-  cc:	3369                	jal	fffffe56 <__stack_top+0xfdfffe56>
+  cc:	3369                	jal	fffffe56 <__stack_top+0xfe7ffe56>
   ce:	532e                	lw	t1,232(sp)
   d0:	6400                	.insn	2, 0x6400
   d2:	7669                	lui	a2,0xffffa

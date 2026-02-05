@@ -56,7 +56,7 @@ cd examples-baremetal/gpio
 make clean && make
 ```
 
-or for FreeRTOS:
+or for FreeRTOS (e.g. hello-world, blink, spi-st7789):
 
 ```bash
 cd examples-freertos/hello-world
@@ -72,7 +72,7 @@ make clean && make
 | `shared/` | Shared BSP code: trap handler, drivers (GPIO, I2C, PWM, SPI), `hw_registers.h`, util. |
 | `examples-baremetal/` | Bare-metal examples (blink, gpio, printf, i2c, spi, pwm, …). Each subdirectory has a Makefile that includes `shared/common.mk`. |
 | `examples-baremetal/shared/` | Startup, linker script, syscalls, `common.mk`. |
-| `examples-freertos/` | FreeRTOS examples (e.g. hello-world). Use `shared/freertos-rv32.mk` and the kernel in `FreeRTOS-Kernel/`. |
+| `examples-freertos/` | FreeRTOS examples (hello-world, blink, spi-st7789). Use `shared/freertos-rv32.mk` and the kernel in `FreeRTOS-Kernel/`. |
 | `examples-freertos/shared/` | FreeRTOS shared: startup, linker script, `freertos-rv32.mk`. |
 
 ## Examples
@@ -90,7 +90,9 @@ make clean && make
 | [spi-flash](examples-baremetal/spi-flash) | Bare metal | Reads data from SPI NOR Flash. |
 | [spi-st7789](examples-baremetal/spi-st7789) | Bare metal | Drive ST7789 color TFT over SPI at 16MHz. |
 | [pwm](examples-baremetal/pwm) | Bare metal | PWM demo (breathing LED effect). |
-| [hello-world](examples-freertos/hello-world) | FreeRTOS | FreeRTOS demo. |
+| [hello-world](examples-freertos/hello-world) | FreeRTOS | FreeRTOS demo (tasks, queues). |
+| [blink](examples-freertos/blink) | FreeRTOS | LED blink with FreeRTOS tasks. |
+| [spi-st7789](examples-freertos/spi-st7789) | FreeRTOS | Drive ST7789 color TFT over SPI with FreeRTOS. |
 
 ## Build options
 

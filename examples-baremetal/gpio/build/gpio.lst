@@ -5,7 +5,7 @@ build/gpio.elf:     file format elf32-littleriscv
 Disassembly of section .text:
 
 00000000 <_start_boot>:
-   0:	02000117          	auipc	sp,0x2000
+   0:	01800117          	auipc	sp,0x1800
    4:	00010113          	mv	sp,sp
    8:	3e800293          	li	t0,1000
    c:	01000317          	auipc	t1,0x1000
@@ -49,7 +49,7 @@ Disassembly of section .text:
   7c:	aa91                	j	1d0 <exit>
 
 0000007e <__do_global_dtors_aux>:
-  7e:	1161                	addi	sp,sp,-8 # 1fffff8 <__heap_limit+0xff8>
+  7e:	1161                	addi	sp,sp,-8 # 17ffff8 <__heap_limit+0xff8>
   80:	c022                	sw	s0,0(sp)
   82:	01000437          	lui	s0,0x1000
   86:	00044783          	lbu	a5,0(s0) # 1000000 <completed.1>
@@ -161,7 +161,7 @@ Disassembly of section .text:
  1a6:	8082                	ret
 
 000001a8 <gpio_toggle_pin>:
- 1a8:	47fd                	li	a5,31
+ 1a8:	4799                	li	a5,6
  1aa:	00a7ec63          	bltu	a5,a0,1c2 <gpio_toggle_pin+0x1a>
  1ae:	40001737          	lui	a4,0x40001
  1b2:	4354                	lw	a3,4(a4)
@@ -251,7 +251,7 @@ Disassembly of section .text:
  266:	ca22                	sw	s0,20(sp)
  268:	842e                	mv	s0,a1
  26a:	40d8                	lw	a4,4(s1)
- 26c:	fff70793          	addi	a5,a4,-1 # 40000fff <__stack_top+0x3e000fff>
+ 26c:	fff70793          	addi	a5,a4,-1 # 40000fff <__stack_top+0x3e800fff>
  270:	0407cb63          	bltz	a5,2c6 <__call_exitprocs+0x6e>
  274:	070a                	slli	a4,a4,0x2
  276:	9726                	add	a4,a4,s1
@@ -279,7 +279,7 @@ Disassembly of section .text:
  2b0:	9b01a603          	lw	a2,-1616(gp) # 10001b0 <__atexit>
  2b4:	04759163          	bne	a1,t2,2f6 <__call_exitprocs+0x9e>
  2b8:	02961f63          	bne	a2,s1,2f6 <__call_exitprocs+0x9e>
- 2bc:	17fd                	addi	a5,a5,-1 # 40000fff <__stack_top+0x3e000fff>
+ 2bc:	17fd                	addi	a5,a5,-1 # 40000fff <__stack_top+0x3e800fff>
  2be:	567d                	li	a2,-1
  2c0:	1771                	addi	a4,a4,-4
  2c2:	fac79be3          	bne	a5,a2,278 <__call_exitprocs+0x20>
@@ -416,7 +416,7 @@ Disassembly of section .fini_array:
 Disassembly of section .riscv.attributes:
 
 00000000 <.riscv.attributes>:
-   0:	3441                	jal	fffffa80 <__stack_top+0xfdfffa80>
+   0:	3441                	jal	fffffa80 <__stack_top+0xfe7ffa80>
    2:	0000                	unimp
    4:	7200                	.insn	2, 0x7200
    6:	7369                	lui	t1,0xffffa
@@ -434,7 +434,7 @@ Disassembly of section .riscv.attributes:
   26:	7032                	.insn	2, 0x7032
   28:	5f30                	lw	a2,120(a4)
   2a:	637a                	.insn	2, 0x637a
-  2c:	3161                	jal	fffffcb4 <__stack_top+0xfdfffcb4>
+  2c:	3161                	jal	fffffcb4 <__stack_top+0xfe7ffcb4>
   2e:	3070                	.insn	2, 0x3070
   30:	0800                	addi	s0,sp,16
   32:	0a01                	addi	s4,s4,0
@@ -449,7 +449,7 @@ Disassembly of section .comment:
    a:	6335                	lui	t1,0xd
    c:	34346537          	lui	a0,0x34346
   10:	20296637          	lui	a2,0x20296
-  14:	3531                	jal	fffffe20 <__stack_top+0xfdfffe20>
+  14:	3531                	jal	fffffe20 <__stack_top+0xfe7ffe20>
   16:	322e                	.insn	2, 0x322e
   18:	302e                	.insn	2, 0x302e
   1a:	4700                	lw	s0,8(a4)
@@ -457,7 +457,7 @@ Disassembly of section .comment:
   20:	4728                	lw	a0,72(a4)
   22:	554e                	lw	a0,240(sp)
   24:	2029                	jal	2e <_start_boot+0x2e>
-  26:	3531                	jal	fffffe32 <__stack_top+0xfdfffe32>
+  26:	3531                	jal	fffffe32 <__stack_top+0xfe7ffe32>
   28:	322e                	.insn	2, 0x322e
   2a:	302e                	.insn	2, 0x302e
 	...

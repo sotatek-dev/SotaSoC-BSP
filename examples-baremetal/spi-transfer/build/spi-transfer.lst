@@ -5,7 +5,7 @@ build/spi-transfer.elf:     file format elf32-littleriscv
 Disassembly of section .text:
 
 00000000 <_start>:
-   0:	02000117          	auipc	sp,0x2000
+   0:	01800117          	auipc	sp,0x1800
    4:	00010113          	mv	sp,sp
    8:	01000197          	auipc	gp,0x1000
    c:	7f818193          	addi	gp,gp,2040 # 1000800 <__global_pointer$>
@@ -34,7 +34,7 @@ Disassembly of section .text:
   5c:	a001                	j	5c <_start+0x5c>
 
 0000005e <spi_transfer_single_byte>:
-  5e:	fd410113          	addi	sp,sp,-44 # 1ffffd4 <__heap_limit+0xfd4>
+  5e:	fd410113          	addi	sp,sp,-44 # 17fffd4 <__heap_limit+0xfd4>
   62:	d222                	sw	s0,36(sp)
   64:	842a                	mv	s0,a0
   66:	450d                	li	a0,3
@@ -420,7 +420,7 @@ Disassembly of section .text:
  418:	c7c8                	sw	a0,12(a5)
  41a:	4685                	li	a3,1
  41c:	c3d4                	sw	a3,4(a5)
- 41e:	00878713          	addi	a4,a5,8 # 40005008 <__stack_top+0x3e005008>
+ 41e:	00878713          	addi	a4,a5,8 # 40005008 <__stack_top+0x3e805008>
  422:	431c                	lw	a5,0(a4)
  424:	8b89                	andi	a5,a5,2
  426:	dff5                	beqz	a5,422 <spi_transfer_byte+0xe>
@@ -435,7 +435,7 @@ Disassembly of section .text:
  43a:	c7c8                	sw	a0,12(a5)
  43c:	468d                	li	a3,3
  43e:	c3d4                	sw	a3,4(a5)
- 440:	00878713          	addi	a4,a5,8 # 40005008 <__stack_top+0x3e005008>
+ 440:	00878713          	addi	a4,a5,8 # 40005008 <__stack_top+0x3e805008>
  444:	431c                	lw	a5,0(a4)
  446:	8b89                	andi	a5,a5,2
  448:	dff5                	beqz	a5,444 <spi_transfer_hword+0xe>
@@ -451,7 +451,7 @@ Disassembly of section .text:
  45c:	c7c8                	sw	a0,12(a5)
  45e:	4695                	li	a3,5
  460:	c3d4                	sw	a3,4(a5)
- 462:	00878713          	addi	a4,a5,8 # 40005008 <__stack_top+0x3e005008>
+ 462:	00878713          	addi	a4,a5,8 # 40005008 <__stack_top+0x3e805008>
  466:	431c                	lw	a5,0(a4)
  468:	8b89                	andi	a5,a5,2
  46a:	dff5                	beqz	a5,466 <spi_transfer_word+0xe>
@@ -476,8 +476,8 @@ Disassembly of section .text:
  49c:	40005637          	lui	a2,0x40005
  4a0:	400056b7          	lui	a3,0x40005
  4a4:	97aa                	add	a5,a5,a0
- 4a6:	0631                	addi	a2,a2,12 # 4000500c <__stack_top+0x3e00500c>
- 4a8:	0691                	addi	a3,a3,4 # 40005004 <__stack_top+0x3e005004>
+ 4a6:	0631                	addi	a2,a2,12 # 4000500c <__stack_top+0x3e80500c>
+ 4a8:	0691                	addi	a3,a3,4 # 40005004 <__stack_top+0x3e805004>
  4aa:	4595                	li	a1,5
  4ac:	4118                	lw	a4,0(a0)
  4ae:	0511                	addi	a0,a0,4
@@ -492,8 +492,8 @@ Disassembly of section .text:
  4c4:	400056b7          	lui	a3,0x40005
  4c8:	40005737          	lui	a4,0x40005
  4cc:	95aa                	add	a1,a1,a0
- 4ce:	06b1                	addi	a3,a3,12 # 4000500c <__stack_top+0x3e00500c>
- 4d0:	0711                	addi	a4,a4,4 # 40005004 <__stack_top+0x3e005004>
+ 4ce:	06b1                	addi	a3,a3,12 # 4000500c <__stack_top+0x3e80500c>
+ 4d0:	0711                	addi	a4,a4,4 # 40005004 <__stack_top+0x3e805004>
  4d2:	00055783          	lhu	a5,0(a0)
  4d6:	0509                	addi	a0,a0,2
  4d8:	c29c                	sw	a5,0(a3)
@@ -604,7 +604,7 @@ Disassembly of section .comment:
    a:	6335                	lui	t1,0xd
    c:	34346537          	lui	a0,0x34346
   10:	20296637          	lui	a2,0x20296
-  14:	3531                	jal	fffffe20 <__stack_top+0xfdfffe20>
+  14:	3531                	jal	fffffe20 <__stack_top+0xfe7ffe20>
   16:	322e                	.insn	2, 0x322e
   18:	302e                	.insn	2, 0x302e
 	...
@@ -612,7 +612,7 @@ Disassembly of section .comment:
 Disassembly of section .riscv.attributes:
 
 00000000 <.riscv.attributes>:
-   0:	3441                	jal	fffffa80 <__stack_top+0xfdfffa80>
+   0:	3441                	jal	fffffa80 <__stack_top+0xfe7ffa80>
    2:	0000                	unimp
    4:	7200                	.insn	2, 0x7200
    6:	7369                	lui	t1,0xffffa
@@ -630,7 +630,7 @@ Disassembly of section .riscv.attributes:
   26:	7032                	.insn	2, 0x7032
   28:	5f30                	lw	a2,120(a4)
   2a:	637a                	.insn	2, 0x637a
-  2c:	3161                	jal	fffffcb4 <__stack_top+0xfdfffcb4>
+  2c:	3161                	jal	fffffcb4 <__stack_top+0xfe7ffcb4>
   2e:	3070                	.insn	2, 0x3070
   30:	0800                	addi	s0,sp,16
   32:	0a01                	addi	s4,s4,0

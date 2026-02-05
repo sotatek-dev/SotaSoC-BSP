@@ -26,12 +26,39 @@ Discarded input sections
  .bss           0x00000000        0x0 build/objs/a/b/c/startup.o
  .note.GNU-stack
                 0x00000000        0x0 build/objs/a/b/c/startup.o
+ .text          0x00000000        0x0 build/objs/a/b/c/irq.o
+ .data          0x00000000        0x0 build/objs/a/b/c/irq.o
+ .bss           0x00000000        0x0 build/objs/a/b/c/irq.o
+ .text.irq_init
+                0x00000000       0x56 build/objs/a/b/c/irq.o
+ .text.irq_register
+                0x00000000       0x1c build/objs/a/b/c/irq.o
+ .text.irq_enable_mtie
+                0x00000000       0x14 build/objs/a/b/c/irq.o
+ .text.irq_enable_meie
+                0x00000000       0x22 build/objs/a/b/c/irq.o
+ .text.irq_global_enable
+                0x00000000       0x14 build/objs/a/b/c/irq.o
+ .text.irq_trap_dispatch
+                0x00000000       0x2a build/objs/a/b/c/irq.o
+ .bss.s_handlers
+                0x00000000       0x40 build/objs/a/b/c/irq.o
+ .comment       0x00000000       0x1c build/objs/a/b/c/irq.o
+ .note.GNU-stack
+                0x00000000        0x0 build/objs/a/b/c/irq.o
+ .riscv.attributes
+                0x00000000       0x35 build/objs/a/b/c/irq.o
+ .text          0x00000000       0x50 build/objs/a/b/c/trap_handler.o
+ .data          0x00000000        0x0 build/objs/a/b/c/trap_handler.o
+ .bss           0x00000000        0x0 build/objs/a/b/c/trap_handler.o
+ .riscv.attributes
+                0x00000000       0x33 build/objs/a/b/c/trap_handler.o
 
 Memory Configuration
 
 Name             Origin             Length             Attributes
 ROM              0x00000000         0x01000000         xr
-RAM              0x01000000         0x01000000         rw
+RAM              0x01000000         0x00800000         rw
 *default*        0x00000000         0xffffffff
 
 Linker script and memory map
@@ -39,6 +66,9 @@ Linker script and memory map
 LOAD build/objs/a/b/c/main.o
 LOAD build/objs/a/b/c/i2c_driver.o
 LOAD build/objs/a/b/c/startup.o
+LOAD build/objs/a/b/c/irq.o
+LOAD build/objs/a/b/c/trap_handler.o
+LOAD /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a
 
 .text           0x00000000      0x298
  *(.text.start)
@@ -99,8 +129,8 @@ LOAD build/objs/a/b/c/startup.o
  *(.sbss)
  *(.sbss.*)
                 0x01000000                        __bss_end = .
-                0x02000000                        __stack_top = (ORIGIN (RAM) + LENGTH (RAM))
-                0x01fff000                        __heap_limit = (__stack_top - 0x1000)
+                0x01800000                        __stack_top = (ORIGIN (RAM) + LENGTH (RAM))
+                0x017ff000                        __heap_limit = (__stack_top - 0x1000)
                 0x01000000                        _end = .
 
 /DISCARD/
@@ -118,10 +148,10 @@ OUTPUT(build/i2c-transfer.elf elf32-littleriscv)
                                  0x1c (size before relaxing)
 
 .riscv.attributes
-                0x00000000       0x28
+                0x00000000       0x35
  .riscv.attributes
-                0x00000000       0x28 build/objs/a/b/c/main.o
+                0x00000000       0x31 build/objs/a/b/c/main.o
  .riscv.attributes
-                0x00000028       0x28 build/objs/a/b/c/i2c_driver.o
+                0x00000031       0x31 build/objs/a/b/c/i2c_driver.o
  .riscv.attributes
-                0x00000050       0x28 build/objs/a/b/c/startup.o
+                0x00000062       0x31 build/objs/a/b/c/startup.o

@@ -120,6 +120,33 @@ Discarded input sections
                 0x00000000        0x4 build/objs/a/b/c/syscalls.o
  .note.GNU-stack
                 0x00000000        0x0 build/objs/a/b/c/syscalls.o
+ .text          0x00000000        0x0 build/objs/a/b/c/irq.o
+ .data          0x00000000        0x0 build/objs/a/b/c/irq.o
+ .bss           0x00000000        0x0 build/objs/a/b/c/irq.o
+ .text.irq_init
+                0x00000000       0x56 build/objs/a/b/c/irq.o
+ .text.irq_register
+                0x00000000       0x1c build/objs/a/b/c/irq.o
+ .text.irq_enable_mtie
+                0x00000000       0x14 build/objs/a/b/c/irq.o
+ .text.irq_enable_meie
+                0x00000000       0x22 build/objs/a/b/c/irq.o
+ .text.irq_global_enable
+                0x00000000       0x14 build/objs/a/b/c/irq.o
+ .text.irq_trap_dispatch
+                0x00000000       0x2a build/objs/a/b/c/irq.o
+ .bss.s_handlers
+                0x00000000       0x40 build/objs/a/b/c/irq.o
+ .comment       0x00000000       0x1c build/objs/a/b/c/irq.o
+ .note.GNU-stack
+                0x00000000        0x0 build/objs/a/b/c/irq.o
+ .riscv.attributes
+                0x00000000       0x35 build/objs/a/b/c/irq.o
+ .text          0x00000000       0x50 build/objs/a/b/c/trap_handler.o
+ .data          0x00000000        0x0 build/objs/a/b/c/trap_handler.o
+ .bss           0x00000000        0x0 build/objs/a/b/c/trap_handler.o
+ .riscv.attributes
+                0x00000000       0x33 build/objs/a/b/c/trap_handler.o
  .text          0x00000000      0x4ca /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_udivdi3.o)
  .data          0x00000000        0x0 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_udivdi3.o)
  .bss           0x00000000        0x0 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_udivdi3.o)
@@ -434,7 +461,7 @@ Memory Configuration
 
 Name             Origin             Length             Attributes
 ROM              0x00000000         0x01000000         xr
-RAM              0x01000000         0x01000000         rw
+RAM              0x01000000         0x00800000         rw
 *default*        0x00000000         0xffffffff
 
 Linker script and memory map
@@ -447,6 +474,8 @@ LOAD build/objs/a/b/c/lcd1602_i2c.o
 LOAD build/objs/a/b/c/util.o
 LOAD build/objs/a/b/c/i2c_driver.o
 LOAD build/objs/a/b/c/syscalls.o
+LOAD build/objs/a/b/c/irq.o
+LOAD build/objs/a/b/c/trap_handler.o
 
 .text           0x00000000      0xd2a
  *(.text.start)
@@ -574,8 +603,8 @@ LOAD build/objs/a/b/c/syscalls.o
                 0x010001b4        0x4 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/../../../../riscv32-unknown-elf/lib/libc.a(libc_a-__call_atexit.o)
                 0x010001b4                __atexit
                 0x010001b8                        __bss_end = .
-                0x02000000                        __stack_top = (ORIGIN (RAM) + LENGTH (RAM))
-                0x01fff000                        __heap_limit = (__stack_top - 0x1000)
+                0x01800000                        __stack_top = (ORIGIN (RAM) + LENGTH (RAM))
+                0x017ff000                        __heap_limit = (__stack_top - 0x1000)
                 0x010001b8                        _end = .
 
 /DISCARD/
@@ -592,39 +621,39 @@ LOAD /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/crtend.o
 OUTPUT(build/i2c-lcd1602.elf elf32-littleriscv)
 
 .riscv.attributes
-                0x00000000       0x2c
+                0x00000000       0x35
  .riscv.attributes
                 0x00000000       0x2a /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/../../../../riscv32-unknown-elf/lib/crt0.o
  .riscv.attributes
                 0x0000002a       0x28 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/crtbegin.o
  .riscv.attributes
-                0x00000052       0x26 build/objs/a/b/c/crt0_boot.o
+                0x00000052       0x2f build/objs/a/b/c/crt0_boot.o
  .riscv.attributes
-                0x00000078       0x28 build/objs/a/b/c/main.o
+                0x00000081       0x31 build/objs/a/b/c/main.o
  .riscv.attributes
-                0x000000a0       0x28 build/objs/a/b/c/lcd1602_i2c.o
+                0x000000b2       0x31 build/objs/a/b/c/lcd1602_i2c.o
  .riscv.attributes
-                0x000000c8       0x28 build/objs/a/b/c/util.o
+                0x000000e3       0x31 build/objs/a/b/c/util.o
  .riscv.attributes
-                0x000000f0       0x28 build/objs/a/b/c/i2c_driver.o
+                0x00000114       0x31 build/objs/a/b/c/i2c_driver.o
  .riscv.attributes
-                0x00000118       0x28 build/objs/a/b/c/syscalls.o
+                0x00000145       0x31 build/objs/a/b/c/syscalls.o
  .riscv.attributes
-                0x00000140       0x28 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/../../../../riscv32-unknown-elf/lib/libc.a(libc_a-exit.o)
+                0x00000176       0x28 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/../../../../riscv32-unknown-elf/lib/libc.a(libc_a-exit.o)
  .riscv.attributes
-                0x00000168       0x28 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/../../../../riscv32-unknown-elf/lib/libc.a(libc_a-findfp.o)
+                0x0000019e       0x28 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/../../../../riscv32-unknown-elf/lib/libc.a(libc_a-findfp.o)
  .riscv.attributes
-                0x00000190       0x28 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/../../../../riscv32-unknown-elf/lib/libc.a(libc_a-init.o)
+                0x000001c6       0x28 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/../../../../riscv32-unknown-elf/lib/libc.a(libc_a-init.o)
  .riscv.attributes
-                0x000001b8       0x26 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/../../../../riscv32-unknown-elf/lib/libc.a(libc_a-memset.o)
+                0x000001ee       0x26 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/../../../../riscv32-unknown-elf/lib/libc.a(libc_a-memset.o)
  .riscv.attributes
-                0x000001de       0x28 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/../../../../riscv32-unknown-elf/lib/libc.a(libc_a-__call_atexit.o)
+                0x00000214       0x28 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/../../../../riscv32-unknown-elf/lib/libc.a(libc_a-__call_atexit.o)
  .riscv.attributes
-                0x00000206       0x28 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/../../../../riscv32-unknown-elf/lib/libc.a(libc_a-atexit.o)
+                0x0000023c       0x28 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/../../../../riscv32-unknown-elf/lib/libc.a(libc_a-atexit.o)
  .riscv.attributes
-                0x0000022e       0x28 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/../../../../riscv32-unknown-elf/lib/libc.a(libc_a-fini.o)
+                0x00000264       0x28 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/../../../../riscv32-unknown-elf/lib/libc.a(libc_a-fini.o)
  .riscv.attributes
-                0x00000256       0x28 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/../../../../riscv32-unknown-elf/lib/libc.a(libc_a-__atexit.o)
+                0x0000028c       0x28 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/../../../../riscv32-unknown-elf/lib/libc.a(libc_a-__atexit.o)
 
 .comment        0x00000000       0x2d
  .comment       0x00000000       0x2d /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/crtbegin.o

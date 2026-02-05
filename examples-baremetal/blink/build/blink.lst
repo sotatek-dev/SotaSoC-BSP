@@ -5,7 +5,7 @@ build/blink.elf:     file format elf32-littleriscv
 Disassembly of section .text:
 
 00000000 <_start>:
-   0:	02000117          	auipc	sp,0x2000
+   0:	01800117          	auipc	sp,0x1800
    4:	00010113          	mv	sp,sp
    8:	01000197          	auipc	gp,0x1000
    c:	7f818193          	addi	gp,gp,2040 # 1000800 <__global_pointer$>
@@ -37,7 +37,7 @@ Disassembly of section .text:
   5e:	400017b7          	lui	a5,0x40001
   62:	0ff00693          	li	a3,255
   66:	c394                	sw	a3,0(a5)
-  68:	00478713          	addi	a4,a5,4 # 40001004 <__stack_top+0x3e001004>
+  68:	00478713          	addi	a4,a5,4 # 40001004 <__stack_top+0x3e801004>
   6c:	00072023          	sw	zero,0(a4) # 1000000 <__bss_end>
   70:	000f47b7          	lui	a5,0xf4
   74:	24078793          	addi	a5,a5,576 # f4240 <__data_load_start+0xf41b8>
@@ -57,7 +57,7 @@ Disassembly of section .comment:
    a:	6335                	lui	t1,0xd
    c:	34346537          	lui	a0,0x34346
   10:	20296637          	lui	a2,0x20296
-  14:	3531                	jal	fffffe20 <__stack_top+0xfdfffe20>
+  14:	3531                	jal	fffffe20 <__stack_top+0xfe7ffe20>
   16:	322e                	.insn	2, 0x322e
   18:	302e                	.insn	2, 0x302e
 	...
@@ -65,7 +65,7 @@ Disassembly of section .comment:
 Disassembly of section .riscv.attributes:
 
 00000000 <.riscv.attributes>:
-   0:	3441                	jal	fffffa80 <__stack_top+0xfdfffa80>
+   0:	3441                	jal	fffffa80 <__stack_top+0xfe7ffa80>
    2:	0000                	unimp
    4:	7200                	.insn	2, 0x7200
    6:	7369                	lui	t1,0xffffa
@@ -83,7 +83,7 @@ Disassembly of section .riscv.attributes:
   26:	7032                	.insn	2, 0x7032
   28:	5f30                	lw	a2,120(a4)
   2a:	637a                	.insn	2, 0x637a
-  2c:	3161                	jal	fffffcb4 <__stack_top+0xfdfffcb4>
+  2c:	3161                	jal	fffffcb4 <__stack_top+0xfe7ffcb4>
   2e:	3070                	.insn	2, 0x3070
   30:	0800                	addi	s0,sp,16
   32:	0a01                	addi	s4,s4,0

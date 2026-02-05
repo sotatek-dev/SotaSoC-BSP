@@ -60,8 +60,8 @@
 #define configMINIMAL_STACK_SIZE		( ( unsigned short ) 240 )
 #define configTOTAL_HEAP_SIZE			( ( size_t ) ( 220 * 1024 ) )
 #else
-#define configMINIMAL_STACK_SIZE		( ( unsigned short ) 120 )
-#define configTOTAL_HEAP_SIZE			( ( size_t ) ( 80 * 1024 ) )
+#define configMINIMAL_STACK_SIZE		( ( unsigned short ) 256 )
+#define configTOTAL_HEAP_SIZE			( ( size_t ) ( 2 * 1024 * 1024 ) )
 #endif
 #define configMAX_TASK_NAME_LEN			( 12 )
 #define configUSE_TRACE_FACILITY		1

@@ -5,7 +5,7 @@ build/i2c-lcd1602.elf:     file format elf32-littleriscv
 Disassembly of section .text:
 
 00000000 <_start_boot>:
-   0:	02000117          	auipc	sp,0x2000
+   0:	01800117          	auipc	sp,0x1800
    4:	00010113          	mv	sp,sp
    8:	00001297          	auipc	t0,0x1
    c:	d4c28293          	addi	t0,t0,-692 # d54 <__data_load_start>
@@ -50,7 +50,7 @@ Disassembly of section .text:
   84:	2990006f          	j	b1c <exit>
 
 00000088 <__do_global_dtors_aux>:
-  88:	1161                	addi	sp,sp,-8 # 1fffff8 <__heap_limit+0xff8>
+  88:	1161                	addi	sp,sp,-8 # 17ffff8 <__heap_limit+0xff8>
   8a:	c022                	sw	s0,0(sp)
   8c:	01000437          	lui	s0,0x1000
   90:	00044783          	lbu	a5,0(s0) # 1000000 <completed.1>
@@ -763,7 +763,7 @@ Disassembly of section .text:
 0000091e <delay_ms>:
  91e:	08a05263          	blez	a0,9a2 <delay_ms+0x84>
  922:	400026b7          	lui	a3,0x40002
- 926:	0691                	addi	a3,a3,4 # 40002004 <__stack_top+0x3e002004>
+ 926:	0691                	addi	a3,a3,4 # 40002004 <__stack_top+0x3e802004>
  928:	400025b7          	lui	a1,0x40002
  92c:	4298                	lw	a4,0(a3)
  92e:	419c                	lw	a5,0(a1)
@@ -795,7 +795,7 @@ Disassembly of section .text:
  97a:	00f337b3          	sltu	a5,t1,a5
  97e:	00e78533          	add	a0,a5,a4
  982:	40002737          	lui	a4,0x40002
- 986:	0711                	addi	a4,a4,4 # 40002004 <__stack_top+0x3e002004>
+ 986:	0711                	addi	a4,a4,4 # 40002004 <__stack_top+0x3e802004>
  988:	40002637          	lui	a2,0x40002
  98c:	431c                	lw	a5,0(a4)
  98e:	420c                	lw	a1,0(a2)
@@ -809,7 +809,7 @@ Disassembly of section .text:
 000009a4 <delay_us>:
  9a4:	04a05a63          	blez	a0,9f8 <delay_us+0x54>
  9a8:	400026b7          	lui	a3,0x40002
- 9ac:	0691                	addi	a3,a3,4 # 40002004 <__stack_top+0x3e002004>
+ 9ac:	0691                	addi	a3,a3,4 # 40002004 <__stack_top+0x3e802004>
  9ae:	400025b7          	lui	a1,0x40002
  9b2:	4298                	lw	a4,0(a3)
  9b4:	419c                	lw	a5,0(a1)
@@ -825,7 +825,7 @@ Disassembly of section .text:
  9d0:	00f337b3          	sltu	a5,t1,a5
  9d4:	00e78533          	add	a0,a5,a4
  9d8:	40002737          	lui	a4,0x40002
- 9dc:	0711                	addi	a4,a4,4 # 40002004 <__stack_top+0x3e002004>
+ 9dc:	0711                	addi	a4,a4,4 # 40002004 <__stack_top+0x3e802004>
  9de:	40002637          	lui	a2,0x40002
  9e2:	431c                	lw	a5,0(a4)
  9e4:	420c                	lw	a1,0(a2)
@@ -846,7 +846,7 @@ Disassembly of section .text:
 
 00000a08 <i2c_write_byte>:
  a08:	40004737          	lui	a4,0x40004
- a0c:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e004004>
+ a0c:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e804004>
  a0e:	400046b7          	lui	a3,0x40004
  a12:	431c                	lw	a5,0(a4)
  a14:	8b85                	andi	a5,a5,1
@@ -858,7 +858,7 @@ Disassembly of section .text:
  a26:	4785                	li	a5,1
  a28:	40004737          	lui	a4,0x40004
  a2c:	c29c                	sw	a5,0(a3)
- a2e:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e004004>
+ a2e:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e804004>
  a30:	400046b7          	lui	a3,0x40004
  a34:	a039                	j	a42 <i2c_write_byte+0x3a>
  a36:	431c                	lw	a5,0(a4)
@@ -878,7 +878,7 @@ Disassembly of section .text:
  a54:	40004737          	lui	a4,0x40004
  a58:	4785                	li	a5,1
  a5a:	c29c                	sw	a5,0(a3)
- a5c:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e004004>
+ a5c:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e804004>
  a5e:	400046b7          	lui	a3,0x40004
  a62:	a039                	j	a70 <i2c_write_byte+0x68>
  a64:	431c                	lw	a5,0(a4)
@@ -896,7 +896,7 @@ Disassembly of section .text:
  a7c:	4789                	li	a5,2
  a7e:	40004737          	lui	a4,0x40004
  a82:	c29c                	sw	a5,0(a3)
- a84:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e004004>
+ a84:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e804004>
  a86:	a039                	j	a94 <i2c_write_byte+0x8c>
  a88:	431c                	lw	a5,0(a4)
  a8a:	8bc1                	andi	a5,a5,16
@@ -908,7 +908,7 @@ Disassembly of section .text:
  a96:	8ba1                	andi	a5,a5,8
  a98:	dbe5                	beqz	a5,a88 <i2c_write_byte+0x80>
  a9a:	40004737          	lui	a4,0x40004
- a9e:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e004004>
+ a9e:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e804004>
  aa0:	431c                	lw	a5,0(a4)
  aa2:	8b85                	andi	a5,a5,1
  aa4:	fff5                	bnez	a5,aa0 <i2c_write_byte+0x98>
@@ -918,7 +918,7 @@ Disassembly of section .text:
  aac:	400047b7          	lui	a5,0x40004
  ab0:	4689                	li	a3,2
  ab2:	c394                	sw	a3,0(a5)
- ab4:	00478713          	addi	a4,a5,4 # 40004004 <__stack_top+0x3e004004>
+ ab4:	00478713          	addi	a4,a5,4 # 40004004 <__stack_top+0x3e804004>
  ab8:	a039                	j	ac6 <i2c_write_byte+0xbe>
  aba:	431c                	lw	a5,0(a4)
  abc:	8bc1                	andi	a5,a5,16
@@ -930,7 +930,7 @@ Disassembly of section .text:
  ac8:	8ba1                	andi	a5,a5,8
  aca:	dbe5                	beqz	a5,aba <i2c_write_byte+0xb2>
  acc:	40004737          	lui	a4,0x40004
- ad0:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e004004>
+ ad0:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e804004>
  ad2:	431c                	lw	a5,0(a4)
  ad4:	8b85                	andi	a5,a5,1
  ad6:	fff5                	bnez	a5,ad2 <i2c_write_byte+0xca>
@@ -941,7 +941,7 @@ Disassembly of section .text:
  ae0:	400047b7          	lui	a5,0x40004
  ae4:	4689                	li	a3,2
  ae6:	c394                	sw	a3,0(a5)
- ae8:	00478713          	addi	a4,a5,4 # 40004004 <__stack_top+0x3e004004>
+ ae8:	00478713          	addi	a4,a5,4 # 40004004 <__stack_top+0x3e804004>
  aec:	a039                	j	afa <i2c_write_byte+0xf2>
  aee:	431c                	lw	a5,0(a4)
  af0:	8bc1                	andi	a5,a5,16
@@ -953,7 +953,7 @@ Disassembly of section .text:
  afc:	8ba1                	andi	a5,a5,8
  afe:	dbe5                	beqz	a5,aee <i2c_write_byte+0xe6>
  b00:	40004737          	lui	a4,0x40004
- b04:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e004004>
+ b04:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e804004>
  b06:	431c                	lw	a5,0(a4)
  b08:	8b85                	andi	a5,a5,1
  b0a:	fff5                	bnez	a5,b06 <i2c_write_byte+0xfe>
@@ -1045,7 +1045,7 @@ Disassembly of section .text:
  bc6:	e441                	bnez	s0,c4e <__call_exitprocs+0xa8>
  bc8:	40d0                	lw	a2,4(s1)
  bca:	00472303          	lw	t1,4(a4)
- bce:	167d                	addi	a2,a2,-1 # 40001fff <__stack_top+0x3e001fff>
+ bce:	167d                	addi	a2,a2,-1 # 40001fff <__stack_top+0x3e801fff>
  bd0:	06f60d63          	beq	a2,a5,c4a <__call_exitprocs+0xa4>
  bd4:	00072223          	sw	zero,4(a4)
  bd8:	02030963          	beqz	t1,c0a <__call_exitprocs+0x64>
@@ -1217,12 +1217,12 @@ Disassembly of section .fini_array:
 Disassembly of section .riscv.attributes:
 
 00000000 <.riscv.attributes>:
-   0:	2b41                	jal	590 <lcd1602_init+0x3cc>
+   0:	3441                	jal	fffffa80 <__stack_top+0xfe7ffa80>
    2:	0000                	unimp
    4:	7200                	.insn	2, 0x7200
    6:	7369                	lui	t1,0xffffa
    8:	01007663          	bgeu	zero,a6,14 <_start_boot+0x14>
-   c:	0021                	c.nop	8
+   c:	002a                	c.slli	zero,0xa
    e:	0000                	unimp
   10:	0404                	addi	s1,sp,512
   12:	7205                	lui	tp,0xfffe1
@@ -1231,10 +1231,15 @@ Disassembly of section .riscv.attributes:
   18:	7032                	.insn	2, 0x7032
   1a:	5f30                	lw	a2,120(a4)
   1c:	30703263          	.insn	4, 0x30703263
-  20:	7a5f 6163 7031      	.insn	6, 0x703161637a5f
-  26:	0030                	addi	a2,sp,8
-  28:	0108                	addi	a0,sp,128
-  2a:	0b0a                	slli	s6,s6,0x2
+  20:	7a5f 6369 7273      	.insn	6, 0x727363697a5f
+  26:	7032                	.insn	2, 0x7032
+  28:	5f30                	lw	a2,120(a4)
+  2a:	637a                	.insn	2, 0x637a
+  2c:	3161                	jal	fffffcb4 <__stack_top+0xfe7ffcb4>
+  2e:	3070                	.insn	2, 0x3070
+  30:	0800                	addi	s0,sp,16
+  32:	0a01                	addi	s4,s4,0
+  34:	0b                	.byte	0x0b
 
 Disassembly of section .comment:
 
@@ -1245,7 +1250,7 @@ Disassembly of section .comment:
    a:	6335                	lui	t1,0xd
    c:	34346537          	lui	a0,0x34346
   10:	20296637          	lui	a2,0x20296
-  14:	3531                	jal	fffffe20 <__stack_top+0xfdfffe20>
+  14:	3531                	jal	fffffe20 <__stack_top+0xfe7ffe20>
   16:	322e                	.insn	2, 0x322e
   18:	302e                	.insn	2, 0x302e
   1a:	4700                	lw	s0,8(a4)
@@ -1253,7 +1258,7 @@ Disassembly of section .comment:
   20:	4728                	lw	a0,72(a4)
   22:	554e                	lw	a0,240(sp)
   24:	2029                	jal	2e <_start_boot+0x2e>
-  26:	3531                	jal	fffffe32 <__stack_top+0xfdfffe32>
+  26:	3531                	jal	fffffe32 <__stack_top+0xfe7ffe32>
   28:	322e                	.insn	2, 0x322e
   2a:	302e                	.insn	2, 0x302e
 	...
