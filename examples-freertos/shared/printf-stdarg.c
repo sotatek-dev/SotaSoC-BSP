@@ -18,35 +18,25 @@
 */
 
 /*
-	putchar is the only external dependency for this file,
-	if you have a working putchar, leave it commented out.
-	If not, uncomment the define below and
-	replace outbyte(c) by your own function call.
-
+	putchar is the only external dependency. This file provides a weak
+	default (QEMU virt UART at 0x40000000). Override putchar in your
+	project to use another output.
 */
 
 #include <stdarg.h>
-// #include "ns16550.h"
-// #include "riscv-virt.h"
 
-// #define putchar(c)      vOutNS16550( &dev, c )
-#define putchar(c) uart_put_char(c)
-
-static int uart_put_char(char c)
+__attribute__((weak)) int putchar(int c)
 {
-    volatile unsigned int *uart_data = (volatile unsigned int *)0x40000000;
-    volatile unsigned int *uart_ctl = (volatile unsigned int *)0x40000004;
-    *uart_data = c;
-    *uart_ctl = 0x2;
-    while (*uart_ctl & 0x1)
-    {
-    }
-    return 1;
+	volatile unsigned int *uart_data = (volatile unsigned int *)0x40000000;
+	volatile unsigned int *uart_ctl = (volatile unsigned int *)0x40000004;
+	*uart_data = (unsigned char)c;
+	*uart_ctl = 0x2;
+	while (*uart_ctl & 0x1)
+		;
+	return (unsigned char)c;
 }
 
 static int tiny_print( char **out, const char *format, va_list args, unsigned int buflen );
-
-// static struct device dev = { NS16550_ADDR };
 
 static void printchar(char **str, int c, char *buflimit)
 {
@@ -180,6 +170,9 @@ static int tiny_print( char **out, const char *format, va_list args, unsigned in
 				width *= 10;
 				width += *format - '0';
 			}
+			/* Consume 'l' (long) modifier so %lu, %ld, %lx are handled */
+			if (*format == 'l')
+				++format;
 			if( *format == 's' ) {
 				register char *s = (char *)va_arg( args, long );
 				pc += prints (out, s?s:"(null)", width, pad, buflimit);
@@ -284,39 +277,7 @@ int main(void)
 
 	return 0;
 }
-
-/*
- * if you compile this file with
- *   gcc -Wall $(YOUR_C_OPTIONS) -DTEST_PRINTF -c printf.c
- * you will get a normal warning:
- *   printf.c:214: warning: spurious trailing `%' in format
- * this line is testing an invalid % at the end of the format string.
- *
- * this should display (on 32bit int machine) :
- *
- * Hello world!
- * printf test
- * (null) is null pointer
- * 5 = 5
- * -2147483647 = - max int
- * char a = 'a'
- * hex ff = ff
- * hex 00 = 00
- * signed -3 = unsigned 4294967293 = hex fffffffd
- * 0 message(s)
- * 0 message(s) with %
- * justif: "left      "
- * justif: "     right"
- *  3: 0003 zero padded
- *  3: 3    left justif.
- *  3:    3 right justif.
- * -3: -003 zero padded
- * -3: -3   left justif.
- * -3:   -3 right justif.
- */
-
 #endif
-
 
 /* To keep linker happy. */
 int	write( int i, char* c, int n)
@@ -326,4 +287,3 @@ int	write( int i, char* c, int n)
 	(void)c;
 	return 0;
 }
-

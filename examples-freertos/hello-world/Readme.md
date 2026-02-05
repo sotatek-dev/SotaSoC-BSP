@@ -12,15 +12,13 @@
 
 ## How to build
 
-Add path of toolchain that is described above section, such as:
+Add the toolchain `bin` directory to your `PATH`. Default compiler prefix is `riscv32-unknown-elf-`; to use another (e.g. `riscv-none-elf-`):
 
-```
-$ export COMPILER_PATH="/YOUR_COMPILER_PATH/bin"
-```
+```bash
+export PATH="/path/to/toolchain/bin:$PATH"
+# Optional: different prefix
+export CROSS_COMPILE="riscv-none-elf-"
 
-For build:
-
-```
-$ make -C build/gcc/
+make -C build/gcc/
 ```
 
