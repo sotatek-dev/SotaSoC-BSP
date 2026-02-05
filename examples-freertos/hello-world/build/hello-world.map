@@ -1211,191 +1211,191 @@ LOAD /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a
  .text.printTask1
                 0x00000170      0x154 build/objs/app_main.o
  .text.printTask2
-                0x000002c4      0x15c build/objs/app_main.o
+                0x000002c4      0x150 build/objs/app_main.o
  .text.prvCreateStaticTask
-                0x00000420      0x108 build/objs/tasks.o
+                0x00000414      0x108 build/objs/tasks.o
  .text.xTaskCreateStatic
-                0x00000528       0x84 build/objs/tasks.o
-                0x00000528                xTaskCreateStatic
+                0x0000051c       0x84 build/objs/tasks.o
+                0x0000051c                xTaskCreateStatic
  .text.prvCreateTask
-                0x000005ac       0xd8 build/objs/tasks.o
+                0x000005a0       0xd8 build/objs/tasks.o
  .text.xTaskCreate
-                0x00000684       0x84 build/objs/tasks.o
-                0x00000684                xTaskCreate
+                0x00000678       0x84 build/objs/tasks.o
+                0x00000678                xTaskCreate
  .text.prvInitialiseNewTask
-                0x00000708      0x208 build/objs/tasks.o
+                0x000006fc      0x208 build/objs/tasks.o
  .text.prvAddNewTaskToReadyList
-                0x00000910      0x1f8 build/objs/tasks.o
+                0x00000904      0x1f8 build/objs/tasks.o
  .text.prvCreateIdleTasks
-                0x00000b08      0x178 build/objs/tasks.o
+                0x00000afc      0x178 build/objs/tasks.o
  .text.vTaskStartScheduler
-                0x00000c80       0x90 build/objs/tasks.o
-                0x00000c80                vTaskStartScheduler
+                0x00000c74       0x90 build/objs/tasks.o
+                0x00000c74                vTaskStartScheduler
  .text.vTaskSuspendAll
-                0x00000d10       0x30 build/objs/tasks.o
-                0x00000d10                vTaskSuspendAll
+                0x00000d04       0x30 build/objs/tasks.o
+                0x00000d04                vTaskSuspendAll
  .text.xTaskResumeAll
-                0x00000d40      0x364 build/objs/tasks.o
-                0x00000d40                xTaskResumeAll
+                0x00000d34      0x364 build/objs/tasks.o
+                0x00000d34                xTaskResumeAll
  .text.xTaskGetTickCount
-                0x000010a4       0x30 build/objs/tasks.o
-                0x000010a4                xTaskGetTickCount
+                0x00001098       0x30 build/objs/tasks.o
+                0x00001098                xTaskGetTickCount
  .text.uxTaskGetNumberOfTasks
-                0x000010d4       0x28 build/objs/tasks.o
-                0x000010d4                uxTaskGetNumberOfTasks
+                0x000010c8       0x28 build/objs/tasks.o
+                0x000010c8                uxTaskGetNumberOfTasks
  .text.xTaskIncrementTick
-                0x000010fc      0x374 build/objs/tasks.o
-                0x000010fc                xTaskIncrementTick
+                0x000010f0      0x374 build/objs/tasks.o
+                0x000010f0                xTaskIncrementTick
  .text.vTaskSwitchContext
-                0x00001470      0x108 build/objs/tasks.o
-                0x00001470                vTaskSwitchContext
+                0x00001464      0x108 build/objs/tasks.o
+                0x00001464                vTaskSwitchContext
  .text.vTaskPlaceOnEventList
-                0x00001578       0x68 build/objs/tasks.o
-                0x00001578                vTaskPlaceOnEventList
+                0x0000156c       0x68 build/objs/tasks.o
+                0x0000156c                vTaskPlaceOnEventList
  .text.vTaskPlaceOnEventListRestricted
-                0x000015e0       0xd4 build/objs/tasks.o
-                0x000015e0                vTaskPlaceOnEventListRestricted
+                0x000015d4       0xd4 build/objs/tasks.o
+                0x000015d4                vTaskPlaceOnEventListRestricted
  .text.xTaskRemoveFromEventList
-                0x000016b4      0x2ec build/objs/tasks.o
-                0x000016b4                xTaskRemoveFromEventList
+                0x000016a8      0x2ec build/objs/tasks.o
+                0x000016a8                xTaskRemoveFromEventList
  .text.vTaskInternalSetTimeOutState
-                0x000019a0       0x40 build/objs/tasks.o
-                0x000019a0                vTaskInternalSetTimeOutState
+                0x00001994       0x40 build/objs/tasks.o
+                0x00001994                vTaskInternalSetTimeOutState
  .text.xTaskCheckForTimeOut
-                0x000019e0      0x174 build/objs/tasks.o
-                0x000019e0                xTaskCheckForTimeOut
+                0x000019d4      0x174 build/objs/tasks.o
+                0x000019d4                xTaskCheckForTimeOut
  .text.vTaskMissedYield
-                0x00001b54       0x2c build/objs/tasks.o
-                0x00001b54                vTaskMissedYield
+                0x00001b48       0x2c build/objs/tasks.o
+                0x00001b48                vTaskMissedYield
  .text.prvIdleTask
-                0x00001b80       0x1c build/objs/tasks.o
+                0x00001b74       0x1c build/objs/tasks.o
  .text.prvInitialiseTaskLists
-                0x00001b9c       0xa4 build/objs/tasks.o
+                0x00001b90       0xa4 build/objs/tasks.o
  .text.prvCheckTasksWaitingTermination
-                0x00001c40       0xb0 build/objs/tasks.o
+                0x00001c34       0xb0 build/objs/tasks.o
  .text.prvDeleteTCB
-                0x00001cf0       0x90 build/objs/tasks.o
+                0x00001ce4       0x90 build/objs/tasks.o
  .text.prvResetNextTaskUnblockTime
-                0x00001d80       0x4c build/objs/tasks.o
+                0x00001d74       0x4c build/objs/tasks.o
  .text.xTaskGetSchedulerState
-                0x00001dcc       0x54 build/objs/tasks.o
-                0x00001dcc                xTaskGetSchedulerState
+                0x00001dc0       0x54 build/objs/tasks.o
+                0x00001dc0                xTaskGetSchedulerState
  .text.xTaskPriorityDisinherit
-                0x00001e20      0x224 build/objs/tasks.o
-                0x00001e20                xTaskPriorityDisinherit
+                0x00001e14      0x224 build/objs/tasks.o
+                0x00001e14                xTaskPriorityDisinherit
  .text.prvAddCurrentTaskToDelayedList
-                0x00002044      0x174 build/objs/tasks.o
+                0x00002038      0x174 build/objs/tasks.o
  .text.vListInitialise
-                0x000021b8       0x6c build/objs/list.o
-                0x000021b8                vListInitialise
+                0x000021ac       0x6c build/objs/list.o
+                0x000021ac                vListInitialise
  .text.vListInitialiseItem
-                0x00002224       0x30 build/objs/list.o
-                0x00002224                vListInitialiseItem
+                0x00002218       0x30 build/objs/list.o
+                0x00002218                vListInitialiseItem
  .text.vListInsert
-                0x00002254       0xdc build/objs/list.o
-                0x00002254                vListInsert
+                0x00002248       0xdc build/objs/list.o
+                0x00002248                vListInsert
  .text.uxListRemove
-                0x00002330       0xa0 build/objs/list.o
-                0x00002330                uxListRemove
+                0x00002324       0xa0 build/objs/list.o
+                0x00002324                uxListRemove
  .text.xQueueGenericReset
-                0x000023d0      0x2b8 build/objs/queue.o
-                0x000023d0                xQueueGenericReset
+                0x000023c4      0x2b8 build/objs/queue.o
+                0x000023c4                xQueueGenericReset
  .text.xQueueGenericCreateStatic
-                0x00002688      0x100 build/objs/queue.o
-                0x00002688                xQueueGenericCreateStatic
+                0x0000267c      0x100 build/objs/queue.o
+                0x0000267c                xQueueGenericCreateStatic
  .text.prvInitialiseNewQueue
-                0x00002788       0x98 build/objs/queue.o
+                0x0000277c       0x98 build/objs/queue.o
  .text.xQueueReceive
-                0x00002820      0x2dc build/objs/queue.o
-                0x00002820                xQueueReceive
+                0x00002814      0x2dc build/objs/queue.o
+                0x00002814                xQueueReceive
  .text.prvCopyDataToQueue
-                0x00002afc      0x18c build/objs/queue.o
+                0x00002af0      0x18c build/objs/queue.o
  .text.prvCopyDataFromQueue
-                0x00002c88       0x98 build/objs/queue.o
+                0x00002c7c       0x98 build/objs/queue.o
  .text.prvUnlockQueue
-                0x00002d20      0x18c build/objs/queue.o
+                0x00002d14      0x18c build/objs/queue.o
  .text.prvIsQueueEmpty
-                0x00002eac       0x84 build/objs/queue.o
+                0x00002ea0       0x84 build/objs/queue.o
  .text.vQueueAddToRegistry
-                0x00002f30       0xfc build/objs/queue.o
-                0x00002f30                vQueueAddToRegistry
+                0x00002f24       0xfc build/objs/queue.o
+                0x00002f24                vQueueAddToRegistry
  .text.vQueueWaitForMessageRestricted
-                0x0000302c       0xe0 build/objs/queue.o
-                0x0000302c                vQueueWaitForMessageRestricted
+                0x00003020       0xe0 build/objs/queue.o
+                0x00003020                vQueueWaitForMessageRestricted
  .text.prvNotifyQueueSetContainer
-                0x0000310c      0x144 build/objs/queue.o
+                0x00003100      0x144 build/objs/queue.o
  .text.xTimerCreateTimerTask
-                0x00003250       0xbc build/objs/timers.o
-                0x00003250                xTimerCreateTimerTask
+                0x00003244       0xbc build/objs/timers.o
+                0x00003244                xTimerCreateTimerTask
  .text.prvReloadTimer
-                0x0000330c       0x88 build/objs/timers.o
+                0x00003300       0x88 build/objs/timers.o
  .text.prvProcessExpiredTimer
-                0x00003394       0x98 build/objs/timers.o
+                0x00003388       0x98 build/objs/timers.o
  .text.prvTimerTask
-                0x0000342c       0x3c build/objs/timers.o
+                0x00003420       0x3c build/objs/timers.o
  .text.prvProcessTimerOrBlockTask
-                0x00003468       0xcc build/objs/timers.o
+                0x0000345c       0xcc build/objs/timers.o
  .text.prvGetNextExpireTime
-                0x00003534       0x70 build/objs/timers.o
+                0x00003528       0x70 build/objs/timers.o
  .text.prvSampleTimeNow
-                0x000035a4       0x64 build/objs/timers.o
+                0x00003598       0x64 build/objs/timers.o
  .text.prvInsertTimerInActiveList
-                0x00003608       0xdc build/objs/timers.o
+                0x000035fc       0xdc build/objs/timers.o
  .text.prvProcessReceivedCommands
-                0x000036e4      0x2d0 build/objs/timers.o
+                0x000036d8      0x2d0 build/objs/timers.o
  .text.prvSwitchTimerLists
-                0x000039b4       0x68 build/objs/timers.o
+                0x000039a8       0x68 build/objs/timers.o
  .text.prvCheckForValidListAndQueue
-                0x00003a1c       0xc4 build/objs/timers.o
+                0x00003a10       0xc4 build/objs/timers.o
  .text.pvPortMalloc
-                0x00003ae0      0x344 build/objs/heap_4.o
-                0x00003ae0                pvPortMalloc
+                0x00003ad4      0x344 build/objs/heap_4.o
+                0x00003ad4                pvPortMalloc
  .text.vPortFree
-                0x00003e24      0x130 build/objs/heap_4.o
-                0x00003e24                vPortFree
+                0x00003e18      0x130 build/objs/heap_4.o
+                0x00003e18                vPortFree
  .text.prvHeapInit
-                0x00003f54      0x110 build/objs/heap_4.o
+                0x00003f48      0x110 build/objs/heap_4.o
  .text.prvInsertBlockIntoFreeList
-                0x00004064      0x184 build/objs/heap_4.o
+                0x00004058      0x184 build/objs/heap_4.o
  .text.vPortSetupTimerInterrupt
-                0x000041e8      0x18c build/objs/port.o
-                0x000041e8                vPortSetupTimerInterrupt
+                0x000041dc      0x18c build/objs/port.o
+                0x000041dc                vPortSetupTimerInterrupt
  .text.xPortStartScheduler
-                0x00004374       0x6c build/objs/port.o
-                0x00004374                xPortStartScheduler
- .text.putchar  0x000043e0       0x78 build/objs/printf-stdarg.o
-                0x000043e0                putchar
+                0x00004368       0x6c build/objs/port.o
+                0x00004368                xPortStartScheduler
+ .text.putchar  0x000043d4       0x78 build/objs/printf-stdarg.o
+                0x000043d4                putchar
  .text.printchar
-                0x00004458       0xb4 build/objs/printf-stdarg.o
- .text.prints   0x0000450c      0x158 build/objs/printf-stdarg.o
- .text.printi   0x00004664      0x1a8 build/objs/printf-stdarg.o
+                0x0000444c       0xb4 build/objs/printf-stdarg.o
+ .text.prints   0x00004500      0x158 build/objs/printf-stdarg.o
+ .text.printi   0x00004658      0x1a8 build/objs/printf-stdarg.o
  .text.tiny_print
-                0x0000480c      0x3c0 build/objs/printf-stdarg.o
- .text.printf   0x00004bcc       0x6c build/objs/printf-stdarg.o
-                0x00004bcc                printf
- .text.main     0x00004c38       0x34 build/objs/freertos_main.o
-                0x00004c38                main
+                0x00004800      0x3c0 build/objs/printf-stdarg.o
+ .text.printf   0x00004bc0       0x6c build/objs/printf-stdarg.o
+                0x00004bc0                printf
+ .text.main     0x00004c2c       0x34 build/objs/freertos_main.o
+                0x00004c2c                main
  .text.vApplicationMallocFailedHook
-                0x00004c6c       0x24 build/objs/freertos_main.o
-                0x00004c6c                vApplicationMallocFailedHook
+                0x00004c60       0x24 build/objs/freertos_main.o
+                0x00004c60                vApplicationMallocFailedHook
  .text.vApplicationTickHook
-                0x00004c90       0x24 build/objs/freertos_main.o
-                0x00004c90                vApplicationTickHook
+                0x00004c84       0x24 build/objs/freertos_main.o
+                0x00004c84                vApplicationTickHook
  .text.vAssertCalled
-                0x00004cb4       0x98 build/objs/freertos_main.o
-                0x00004cb4                vAssertCalled
+                0x00004ca8       0x98 build/objs/freertos_main.o
+                0x00004ca8                vAssertCalled
  .text.vApplicationGetIdleTaskMemory
-                0x00004d4c       0x5c build/objs/freertos_main.o
-                0x00004d4c                vApplicationGetIdleTaskMemory
+                0x00004d40       0x5c build/objs/freertos_main.o
+                0x00004d40                vApplicationGetIdleTaskMemory
  .text.vApplicationGetTimerTaskMemory
-                0x00004da8       0x5c build/objs/freertos_main.o
-                0x00004da8                vApplicationGetTimerTaskMemory
- .text          0x00004e04       0xd4 build/objs/portASM.o
-                0x00004e04                pxPortInitialiseStack
-                0x00004e60                xPortStartFirstTask
-                0x00004eb8                freertos_risc_v_application_exception_handler
-                0x00004ec8                freertos_risc_v_application_interrupt_handler
- *fill*         0x00004ed8       0x28 
+                0x00004d9c       0x5c build/objs/freertos_main.o
+                0x00004d9c                vApplicationGetTimerTaskMemory
+ .text          0x00004df8       0xd4 build/objs/portASM.o
+                0x00004df8                pxPortInitialiseStack
+                0x00004e54                xPortStartFirstTask
+                0x00004eac                freertos_risc_v_application_exception_handler
+                0x00004ebc                freertos_risc_v_application_interrupt_handler
+ *fill*         0x00004ecc       0x34 
  .text.freertos_risc_v_trap_handler
                 0x00004f00      0x1d4 build/objs/portASM.o
                 0x00004f00                freertos_risc_v_trap_handler
@@ -1426,36 +1426,36 @@ LOAD /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a
 .rodata.start   0x00005330        0x0
                 0x00005330                        _rodata_lma = LOADADDR (.rodata.start)
 
-.rodata         0x00005330      0x300
+.rodata         0x00005330      0x2fc
  *(.rdata)
  *(.rodata .rodata.*)
- .rodata        0x00005330       0xd0 build/objs/app_main.o
- .rodata        0x00005400       0x25 build/objs/tasks.o
- *fill*         0x00005425        0x3 
- .rodata        0x00005428       0x1e build/objs/queue.o
- *fill*         0x00005446        0x2 
- .rodata        0x00005448       0x2d build/objs/timers.o
- *fill*         0x00005475        0x3 
- .rodata        0x00005478       0x30 build/objs/heap_4.o
- .rodata        0x000054a8       0x31 build/objs/port.o
- *fill*         0x000054d9        0x3 
- .rodata        0x000054dc        0x7 build/objs/printf-stdarg.o
- *fill*         0x000054e3        0x1 
- .rodata        0x000054e4       0x4b build/objs/freertos_main.o
- *fill*         0x0000552f        0x1 
- .rodata        0x00005530      0x100 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_clz.o)
-                0x00005530                __clz_tab
+ .rodata        0x00005330       0xcc build/objs/app_main.o
+ .rodata        0x000053fc       0x25 build/objs/tasks.o
+ *fill*         0x00005421        0x3 
+ .rodata        0x00005424       0x1e build/objs/queue.o
+ *fill*         0x00005442        0x2 
+ .rodata        0x00005444       0x2d build/objs/timers.o
+ *fill*         0x00005471        0x3 
+ .rodata        0x00005474       0x30 build/objs/heap_4.o
+ .rodata        0x000054a4       0x31 build/objs/port.o
+ *fill*         0x000054d5        0x3 
+ .rodata        0x000054d8        0x7 build/objs/printf-stdarg.o
+ *fill*         0x000054df        0x1 
+ .rodata        0x000054e0       0x4b build/objs/freertos_main.o
+ *fill*         0x0000552b        0x1 
+ .rodata        0x0000552c      0x100 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_clz.o)
+                0x0000552c                __clz_tab
  *(.gnu.linkonce.r.*)
-                0x00005630                        . = ALIGN (0x4)
-                0x00005630                        _erodata = .
+                0x0000562c                        . = ALIGN (0x4)
+                0x0000562c                        _erodata = .
 
-.rela.dyn       0x00005630        0x0
- .rela.init     0x00005630        0x0 build/objs/app_main.o
+.rela.dyn       0x0000562c        0x0
+ .rela.init     0x0000562c        0x0 build/objs/app_main.o
 
-.tdata          0x00005630        0x0
+.tdata          0x0000562c        0x0
  *(.tdata .tdata.*)
 
-.tbss           0x00005630        0x0
+.tbss           0x0000562c        0x0
  *(.tbss .tbss.* .gnu.linkonce.tb.*)
  *(.tcommon)
                 [!provide]                        PROVIDE (__tbss_end = .)
@@ -1469,14 +1469,14 @@ LOAD /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a
                 [!provide]                        PROVIDE (__tls_size = (__tls_end - ADDR (.tdata)))
                 [!provide]                        PROVIDE (__tls_align = MAX (ALIGNOF (.tdata), ALIGNOF (.tbss)))
 
-.data.align     0x01000000        0x0 load address 0x00005630
+.data.align     0x01000000        0x0 load address 0x0000562c
                 0x01000000                        . = ALIGN (0x4)
                 0x01000000                        _data = .
 
-.data.start     0x01000000        0x0 load address 0x00005630
-                0x00005630                        _data_lma = LOADADDR (.data.start)
+.data.start     0x01000000        0x0 load address 0x0000562c
+                0x0000562c                        _data_lma = LOADADDR (.data.start)
 
-.data           0x01000000       0x1c load address 0x00005630
+.data           0x01000000       0x1c load address 0x0000562c
  *(.data .data.*)
  *(.gnu.linkonce.d.*)
                 0x01000000                        . = ALIGN (0x8)
@@ -1511,14 +1511,14 @@ LOAD /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a
                 0x0100001c                        . = ALIGN (0x4)
                 0x0100001c                        _edata = .
 
-.bss.align      0x0100001c        0x0 load address 0x0000564c
+.bss.align      0x0100001c        0x0 load address 0x00005648
                 0x0100001c                        . = ALIGN (0x4)
                 0x0100001c                        _bss = .
 
-.bss.start      0x0100001c        0x0 load address 0x0000564c
-                0x0000564c                        _bss_lma = LOADADDR (.bss.start)
+.bss.start      0x0100001c        0x0 load address 0x00005648
+                0x00005648                        _bss_lma = LOADADDR (.bss.start)
 
-.bss            0x01000020    0x14ec8 load address 0x0000564c
+.bss            0x01000020    0x14ec8 load address 0x00005648
  *(.sbss*)
  .sbss.pxCurrentTCB
                 0x01000020        0x4 build/objs/tasks.o
