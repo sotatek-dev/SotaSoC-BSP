@@ -14,14 +14,14 @@ Board Support Package (BSP) for **[SotaSoC](https://github.com/sotatek-dev/SotaS
 
 | Pin | Input | Output | Bidirectional |
 |-----|-------|--------|----------------|
-| 0 | UART0_RX | ERROR_FLAG | FLASH_CS_N |
-| 1 | SPI_MISO | UART0_TX | BUS_IO[0] |
-| 2 | GPIO_IN[0] | GPIO_OUT[0] / I2C_SCL | BUS_IO[1] |
-| 3 | GPIO_IN[1] | GPIO_OUT[1] / SPI_CS_N | BUS_SPI_SCLK |
-| 4 | GPIO_IN[2] | GPIO_OUT[2] / SPI_SCLK | BUS_IO[2] |
-| 5 | GPIO_IN[3] | GPIO_OUT[3] / SPI_MOSI | BUS_IO[3] |
-| 6 | GPIO_IN[4] | GPIO_OUT[4] / PWM[0] | RAM_CS_N |
-| 7 | GPIO_IN[5] | GPIO_OUT[5] / PWM[1] | GPIO_IO[0] / I2C_SDA |
+| 0 | SPI_MISO | UART0_TX | FLASH_CS_N |
+| 1 | GPIO_IN[0] | ERROR_FLAG | BUS_IO[0] |
+| 2 | GPIO_IN[1] | GPIO_OUT[0] / I2C_SCL | BUS_IO[1] |
+| 3 | GPIO_IN[2] | GPIO_OUT[1] / SPI_CS_N | BUS_SPI_SCLK |
+| 4 | GPIO_IN[3] | GPIO_OUT[2] / SPI_SCLK | BUS_IO[2] |
+| 5 | GPIO_IN[4] | GPIO_OUT[3] / SPI_MOSI | BUS_IO[3] |
+| 6 | GPIO_IN[5] | GPIO_OUT[4] / PWM[0] | RAM_CS_N |
+| 7 | UART0_RX | GPIO_OUT[5] / PWM[1] | GPIO_IO[0] / I2C_SDA |
 
 **Note:** In code, **GPIO_IO[0]** is `GPIO[0]`; **GPIO_IN[*x*]** and **GPIO_OUT[*x*]** correspond to `GPIO[x+1]`.
 
