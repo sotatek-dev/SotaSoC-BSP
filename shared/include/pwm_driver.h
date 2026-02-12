@@ -5,7 +5,8 @@
 
 // PWM channel indices
 #define PWM_CHANNEL_0  0
-#define PWM_CHANNEL_1  1
+// The latest hardware only has one PWM channel.
+// #define PWM_CHANNEL_1  1
 
 // PWM driver return codes
 #define PWM_OK    0

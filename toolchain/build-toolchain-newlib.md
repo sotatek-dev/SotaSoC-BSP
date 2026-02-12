@@ -1,6 +1,6 @@
 # Build GCC RISC-V with Newlib
 
-The Ubuntu toolchain (`apt install gcc-riscv64-unknown-elf`) is built **without newlib**. To use `stdio.h`, `printf`, and libc with **ilp32e** (rv32ec), you need to build the toolchain from source.
+The Ubuntu toolchain (`apt install gcc-riscv64-unknown-elf`) is built **without newlib**. To use `stdio.h`, `printf`, and libc with **ilp32** (rv32ic), you need to build the toolchain from source.
 
 ## 1. Install dependencies (Ubuntu/Debian)
 
@@ -19,15 +19,15 @@ cd riscv-gnu-toolchain
 git submodule update --init --recursive
 ```
 
-## 3. Build with Newlib, target rv32ec/ilp32e
+## 3. Build with Newlib, target rv32ic/ilp32
 
 Install to a dedicated directory (e.g. `/opt/riscv-newlib`):
 
 ```bash
 mkdir build && cd build
 ../configure --prefix=/opt/riscv-newlib \
-  --with-arch=rv32ec \
-  --with-abi=ilp32e
+  --with-arch=rv32ic \
+  --with-abi=ilp32
 make -j$(nproc)
 ```
 

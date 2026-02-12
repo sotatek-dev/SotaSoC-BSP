@@ -1,11 +1,11 @@
 # SotaSoC-BSP
 
-Board Support Package (BSP) for **[SotaSoC](https://github.com/sotatek-dev/SotaSoC)** — a compact RISC-V RV32E SoC for Tiny Tapeout and Artix 7 FPGA. This BSP provides drivers, startup code, linker scripts, and bare-metal / FreeRTOS examples that target SotaSoC’s memory map and peripherals.
+Board Support Package (BSP) for **[SotaSoC](https://github.com/sotatek-dev/SotaSoC)** — a compact RISC-V RV32I SoC for Tiny Tapeout and Artix 7 FPGA. This BSP provides drivers, startup code, linker scripts, and bare-metal / FreeRTOS examples that target SotaSoC’s memory map and peripherals.
 
 ## Features
 
-- **Target:** SotaSoC (RV32E + C + Zicsr). QSPI Flash at `0x00000000`, PSRAM at `0x01000000`.
-- **Toolchain:** `rv32ec` (or `rv32ec_zicsr`), ABI `ilp32e`, with `zicsr` support.
+- **Target:** SotaSoC (RV32I + C + Zicsr). QSPI Flash at `0x00000000`, PSRAM at `0x01000000`.
+- **Toolchain:** `rv32ic_zicsr`, ABI `ilp32`, with `zicsr` support.
 - **Memory (linker):** ROM `0x00000000` (16 MB), RAM `0x01000000` (16 MB).
 - **Peripherals** (see `shared/include/hw_registers.h`): UART, GPIO, Timer, PWM, I2C, SPI — aligned with SotaSoC’s memory map.
 - **Example sets:** Bare-metal and FreeRTOS.

@@ -9,7 +9,7 @@
 _start_boot:
 	la   sp, __stack_top
 
-	/* Copy .data from load address (ROM) to run address (RAM). RV32E: only x0-x15. */
+	/* Copy .data from load address (ROM) to run address (RAM). */
 	la   t0, __data_load_start
 	la   t1, __data_start
 	la   t2, __data_end

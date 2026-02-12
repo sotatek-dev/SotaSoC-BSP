@@ -34,25 +34,25 @@ Disassembly of section .text:
   5c:	a001                	j	5c <_start+0x5c>
 
 0000005e <test_read_write_byte>:
-  5e:	1151                	addi	sp,sp,-12 # 17ffff4 <__heap_limit+0xff4>
-  60:	00310593          	addi	a1,sp,3
-  64:	c222                	sw	s0,4(sp)
-  66:	c406                	sw	ra,8(sp)
+  5e:	1101                	addi	sp,sp,-32 # 17fffe0 <__heap_limit+0xfe0>
+  60:	00f10593          	addi	a1,sp,15
+  64:	cc22                	sw	s0,24(sp)
+  66:	ce06                	sw	ra,28(sp)
   68:	842a                	mv	s0,a0
   6a:	22a9                	jal	1b4 <i2c_read_byte>
   6c:	e509                	bnez	a0,76 <test_read_write_byte+0x18>
-  6e:	00314583          	lbu	a1,3(sp)
+  6e:	00f14583          	lbu	a1,15(sp)
   72:	8522                	mv	a0,s0
   74:	203d                	jal	a2 <i2c_write_byte>
-  76:	40a2                	lw	ra,8(sp)
-  78:	4412                	lw	s0,4(sp)
-  7a:	0131                	addi	sp,sp,12
+  76:	40f2                	lw	ra,28(sp)
+  78:	4462                	lw	s0,24(sp)
+  7a:	6105                	addi	sp,sp,32
   7c:	8082                	ret
 
 0000007e <main>:
-  7e:	1171                	addi	sp,sp,-4
+  7e:	1141                	addi	sp,sp,-16
   80:	09f00513          	li	a0,159
-  84:	c006                	sw	ra,0(sp)
+  84:	c606                	sw	ra,12(sp)
   86:	2039                	jal	94 <i2c_init>
   88:	02100513          	li	a0,33
   8c:	3fc9                	jal	5e <test_read_write_byte>
@@ -312,12 +312,12 @@ Disassembly of section .riscv.attributes:
    8:	01007663          	bgeu	zero,a6,14 <_start+0x14>
    c:	002a                	c.slli	zero,0xa
    e:	0000                	unimp
-  10:	0404                	addi	s1,sp,512
+  10:	1004                	addi	s1,sp,32
   12:	7205                	lui	tp,0xfffe1
   14:	3376                	.insn	2, 0x3376
-  16:	6532                	.insn	2, 0x6532
+  16:	6932                	.insn	2, 0x6932
   18:	7032                	.insn	2, 0x7032
-  1a:	5f30                	lw	a2,120(a4)
+  1a:	5f31                	li	t5,-20
   1c:	30703263          	.insn	4, 0x30703263
   20:	7a5f 6369 7273      	.insn	6, 0x727363697a5f
   26:	7032                	.insn	2, 0x7032

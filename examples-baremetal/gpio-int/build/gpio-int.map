@@ -62,7 +62,7 @@ Discarded input sections
  .bss           0x00000000        0x0 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_udivdi3.o)
  .note.GNU-stack
                 0x00000000        0x0 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_udivdi3.o)
- .eh_frame      0x00000000       0x40 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_udivdi3.o)
+ .eh_frame      0x00000000       0x5c /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_udivdi3.o)
  .data          0x00000000        0x0 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(muldi3.o)
  .bss           0x00000000        0x0 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(muldi3.o)
  .data          0x00000000        0x0 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(div.o)
@@ -90,76 +90,76 @@ LOAD build/objs/a/b/c/irq.o
 LOAD build/objs/a/b/c/trap_handler.o
 LOAD /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a
 
-.text           0x00000000      0x770
+.text           0x00000000      0x768
  *(.text.start)
  .text.start    0x00000000       0x60 build/objs/a/b/c/startup.o
                 0x00000000                _start
  *(.text)
- .text          0x00000060       0x48 build/objs/a/b/c/trap_handler.o
+ .text          0x00000060       0x88 build/objs/a/b/c/trap_handler.o
                 0x00000060                trap_entry
- .text          0x000000a8      0x41e /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_udivdi3.o)
-                0x000000a8                __udivdi3
- *fill*         0x000004c6        0x2 
- .text          0x000004c8       0x14 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(muldi3.o)
-                0x000004c8                __mulsi3
- .text          0x000004dc       0x7e /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(div.o)
-                0x000004dc                __divsi3
-                0x000004e4                __hidden___udivsi3
-                0x000004e4                __udivsi3
-                0x00000510                __umodsi3
-                0x00000534                __modsi3
+ .text          0x000000e8      0x3d6 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_udivdi3.o)
+                0x000000e8                __udivdi3
+ *fill*         0x000004be        0x2 
+ .text          0x000004c0       0x14 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(muldi3.o)
+                0x000004c0                __mulsi3
+ .text          0x000004d4       0x7e /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(div.o)
+                0x000004d4                __divsi3
+                0x000004dc                __hidden___udivsi3
+                0x000004dc                __udivsi3
+                0x00000508                __umodsi3
+                0x0000052c                __modsi3
  *(.text.*)
  .text.gpio_irq_handler
-                0x0000055a       0x32 build/objs/a/b/c/main.o
+                0x00000552       0x32 build/objs/a/b/c/main.o
  .text.startup.main
-                0x0000058c       0x3a build/objs/a/b/c/main.o
-                0x0000058c                main
+                0x00000584       0x3a build/objs/a/b/c/main.o
+                0x00000584                main
  .text.gpio_set_direction
-                0x000005c6       0x34 build/objs/a/b/c/gpio_driver.o
-                0x000005c6                gpio_set_direction
+                0x000005be       0x34 build/objs/a/b/c/gpio_driver.o
+                0x000005be                gpio_set_direction
  .text.gpio_clear_pin
-                0x000005fa       0x22 build/objs/a/b/c/gpio_driver.o
-                0x000005fa                gpio_clear_pin
+                0x000005f2       0x22 build/objs/a/b/c/gpio_driver.o
+                0x000005f2                gpio_clear_pin
  .text.gpio_toggle_pin
-                0x0000061c       0x1e build/objs/a/b/c/gpio_driver.o
-                0x0000061c                gpio_toggle_pin
+                0x00000614       0x1e build/objs/a/b/c/gpio_driver.o
+                0x00000614                gpio_toggle_pin
  .text.gpio_int_enable
-                0x0000063a       0x1e build/objs/a/b/c/gpio_driver.o
-                0x0000063a                gpio_int_enable
+                0x00000632       0x1e build/objs/a/b/c/gpio_driver.o
+                0x00000632                gpio_int_enable
  .text.gpio_int_get_pending
-                0x00000658        0x8 build/objs/a/b/c/gpio_driver.o
-                0x00000658                gpio_int_get_pending
+                0x00000650        0x8 build/objs/a/b/c/gpio_driver.o
+                0x00000650                gpio_int_get_pending
  .text.gpio_int_clear
-                0x00000660       0x1a build/objs/a/b/c/gpio_driver.o
-                0x00000660                gpio_int_clear
+                0x00000658       0x1a build/objs/a/b/c/gpio_driver.o
+                0x00000658                gpio_int_clear
  .text.get_tick_ms
-                0x0000067a       0x28 build/objs/a/b/c/util.o
-                0x0000067a                get_tick_ms
+                0x00000672       0x28 build/objs/a/b/c/util.o
+                0x00000672                get_tick_ms
  .text.irq_init
-                0x000006a2       0x52 build/objs/a/b/c/irq.o
-                0x000006a2                irq_init
+                0x0000069a       0x52 build/objs/a/b/c/irq.o
+                0x0000069a                irq_init
  .text.irq_register
-                0x000006f4       0x1c build/objs/a/b/c/irq.o
-                0x000006f4                irq_register
+                0x000006ec       0x1c build/objs/a/b/c/irq.o
+                0x000006ec                irq_register
  .text.irq_enable_meie
-                0x00000710       0x22 build/objs/a/b/c/irq.o
-                0x00000710                irq_enable_meie
+                0x00000708       0x22 build/objs/a/b/c/irq.o
+                0x00000708                irq_enable_meie
  .text.irq_global_enable
-                0x00000732       0x14 build/objs/a/b/c/irq.o
-                0x00000732                irq_global_enable
+                0x0000072a       0x14 build/objs/a/b/c/irq.o
+                0x0000072a                irq_global_enable
  .text.irq_trap_dispatch
-                0x00000746       0x2a build/objs/a/b/c/irq.o
-                0x00000746                irq_trap_dispatch
+                0x0000073e       0x2a build/objs/a/b/c/irq.o
+                0x0000073e                irq_trap_dispatch
 
-.rodata         0x00000770      0x100
+.rodata         0x00000768      0x100
  *(.rodata)
- .rodata        0x00000770      0x100 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_clz.o)
-                0x00000770                __clz_tab
+ .rodata        0x00000768      0x100 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_clz.o)
+                0x00000768                __clz_tab
  *(.rodata.*)
 
-.rela.dyn       0x00000870        0x0
+.rela.dyn       0x00000868        0x0
  .rela.text.start
-                0x00000870        0x0 build/objs/a/b/c/main.o
+                0x00000868        0x0 build/objs/a/b/c/main.o
 
 .preinit_array
  *(.preinit_array)
@@ -173,16 +173,16 @@ LOAD /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a
  *(.fini_array.*)
                 0x01000800                        __global_pointer$ = (ORIGIN (RAM) + 0x800)
 
-.data           0x01000000        0x0 load address 0x00000870
+.data           0x01000000        0x0 load address 0x00000868
                 0x01000000                        __data_start = .
  *(.data)
  *(.data.*)
  *(.sdata)
  *(.sdata.*)
                 0x01000000                        __data_end = .
-                0x00000870                        __data_load_start = LOADADDR (.data)
+                0x00000868                        __data_load_start = LOADADDR (.data)
 
-.bss            0x01000000       0x44 load address 0x00000870
+.bss            0x01000000       0x44 load address 0x00000868
                 0x01000000                        __bss_start = .
  *(.bss)
  *(.bss.*)
@@ -243,11 +243,11 @@ OUTPUT(build/gpio-int.elf elf32-littleriscv)
  .riscv.attributes
                 0x000001a4       0x28 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_clz.o)
 
-.debug_info     0x00000000      0xbb0
- .debug_info    0x00000000      0xa2f /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_udivdi3.o)
- .debug_info    0x00000a2f       0x31 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(muldi3.o)
- .debug_info    0x00000a60       0x5e /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(div.o)
- .debug_info    0x00000abe       0xf2 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_clz.o)
+.debug_info     0x00000000      0xbaa
+ .debug_info    0x00000000      0xa29 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_udivdi3.o)
+ .debug_info    0x00000a29       0x31 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(muldi3.o)
+ .debug_info    0x00000a5a       0x5e /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(div.o)
+ .debug_info    0x00000ab8       0xf2 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_clz.o)
 
 .debug_abbrev   0x00000000      0x2a1
  .debug_abbrev  0x00000000      0x1db /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_udivdi3.o)
@@ -256,9 +256,9 @@ OUTPUT(build/gpio-int.elf elf32-littleriscv)
  .debug_abbrev  0x0000022b       0x76 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_clz.o)
 
 .debug_loclists
-                0x00000000     0x10cc
+                0x00000000      0xde3
  .debug_loclists
-                0x00000000     0x10cc /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_udivdi3.o)
+                0x00000000      0xde3 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_udivdi3.o)
 
 .debug_aranges  0x00000000       0x78
  .debug_aranges
@@ -271,25 +271,25 @@ OUTPUT(build/gpio-int.elf elf32-littleriscv)
                 0x00000060       0x18 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_clz.o)
 
 .debug_rnglists
-                0x00000000       0xce
+                0x00000000       0xd0
  .debug_rnglists
-                0x00000000       0xce /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_udivdi3.o)
+                0x00000000       0xd0 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_udivdi3.o)
 
-.debug_line     0x00000000      0xf63
- .debug_line    0x00000000      0xd4d /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_udivdi3.o)
- .debug_line    0x00000d4d       0x7a /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(muldi3.o)
- .debug_line    0x00000dc7      0x153 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(div.o)
- .debug_line    0x00000f1a       0x49 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_clz.o)
+.debug_line     0x00000000      0xed9
+ .debug_line    0x00000000      0xcc3 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_udivdi3.o)
+ .debug_line    0x00000cc3       0x7a /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(muldi3.o)
+ .debug_line    0x00000d3d      0x153 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(div.o)
+ .debug_line    0x00000e90       0x49 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_clz.o)
 
-.debug_str      0x00000000      0x3b0
- .debug_str     0x00000000      0x3b0 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_udivdi3.o)
-                                0x28d (size before relaxing)
- .debug_str     0x000003b0        0x0 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(muldi3.o)
+.debug_str      0x00000000      0x3ae
+ .debug_str     0x00000000      0x3ae /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_udivdi3.o)
+                                0x28c (size before relaxing)
+ .debug_str     0x000003ae        0x0 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(muldi3.o)
                                  0xa4 (size before relaxing)
- .debug_str     0x000003b0        0x0 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(div.o)
+ .debug_str     0x000003ae        0x0 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(div.o)
                                  0xd1 (size before relaxing)
- .debug_str     0x000003b0        0x0 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_clz.o)
-                                0x1b1 (size before relaxing)
+ .debug_str     0x000003ae        0x0 /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a(_clz.o)
+                                0x1b0 (size before relaxing)
 
 .debug_line_str
                 0x00000000       0xd7

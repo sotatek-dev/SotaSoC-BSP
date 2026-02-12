@@ -33,7 +33,7 @@ Discarded input sections
                 0x00000000        0x0 build/objs/a/b/c/irq.o
  .riscv.attributes
                 0x00000000       0x35 build/objs/a/b/c/irq.o
- .text          0x00000000       0x50 build/objs/a/b/c/trap_handler.o
+ .text          0x00000000       0x90 build/objs/a/b/c/trap_handler.o
  .data          0x00000000        0x0 build/objs/a/b/c/trap_handler.o
  .bss           0x00000000        0x0 build/objs/a/b/c/trap_handler.o
  .riscv.attributes

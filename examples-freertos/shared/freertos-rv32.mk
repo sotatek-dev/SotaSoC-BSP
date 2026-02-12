@@ -1,4 +1,4 @@
-# Common Makefile fragment for FreeRTOS RV32E projects
+# Common Makefile fragment for FreeRTOS RV32I projects
 # Before including: set KERNEL_DIR, FREERTOS_SHARED_DIR, PROJECT
 # then VPATH, INCLUDE_DIRS, SOURCE_FILES for the app (must implement vApplicationStart()).
 
@@ -24,8 +24,8 @@ OUTPUT_DIR := build
 OBJ_DIR = $(OUTPUT_DIR)/objs
 
 # Architecture
-MARCH ?= rv32e_zicsr_zifencei
-MABI ?= ilp32e
+MARCH ?= rv32ic_zicsr_zifencei
+MABI ?= ilp32
 MCMODEL ?= medlow
 $(info  Using RV32 build with zicsr)
 
@@ -38,7 +38,7 @@ INCLUDE_DIRS += -I$(KERNEL_DIR)/include -I$(KERNEL_PORT_DIR) -I$(FREERTOS_SHARED
 # Compiler flags
 CFLAGS += $(INCLUDE_DIRS) -fmessage-length=0 \
           -march=$(MARCH) -mabi=$(MABI) -mcmodel=$(MCMODEL) -ffunction-sections -fdata-sections \
-          -Wno-unused-parameter -nostartfiles -g3 -O0
+          -Wno-unused-parameter -nostartfiles -g3 -O3
 
 ifeq ($(PICOLIBC),1)
   CFLAGS += --specs=picolibc.specs -DPICOLIBC_INTEGER_PRINTF_SCANF

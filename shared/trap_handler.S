@@ -1,6 +1,6 @@
-/* Trap handler for RV32E.
+/* Trap handler for RV32I.
  * Saves caller/callee regs, calls irq_trap_dispatch(mcause), restores and mret.
- * Frame: 64 bytes (16-byte aligned). */
+ * Frame: 128 bytes (16-byte aligned). */
 
 .section .text
 .align 2
@@ -8,7 +8,7 @@
 .type trap_entry, @function
 
 trap_entry:
-    addi  sp, sp, -64
+    addi  sp, sp, -128
     sw    ra,  0(sp)
     sw    gp,  4(sp)
     sw    tp,  8(sp)
@@ -23,6 +23,22 @@ trap_entry:
     sw    a3,  44(sp)
     sw    a4,  48(sp)
     sw    a5,  52(sp)
+    sw    a6,  56(sp)
+    sw    a7,  60(sp)
+    sw    t3,  64(sp)
+    sw    t4,  68(sp)
+    sw    t5,  72(sp)
+    sw    t6,  76(sp)
+    sw    s2,  80(sp)
+    sw    s3,  84(sp)
+    sw    s4,  88(sp)
+    sw    s5,  92(sp)
+    sw    s6,  96(sp)
+    sw    s7,  100(sp)
+    sw    s8,  104(sp)
+    sw    s9,  108(sp)
+    sw    s10, 112(sp)
+    sw    s11, 116(sp)
 
     csrr  a0, mcause
     call  irq_trap_dispatch
@@ -41,7 +57,23 @@ trap_entry:
     lw    a3,  44(sp)
     lw    a4,  48(sp)
     lw    a5,  52(sp)
-    addi  sp, sp, 64
+    lw    a6,  56(sp)
+    lw    a7,  60(sp)
+    lw    t3,  64(sp)
+    lw    t4,  68(sp)
+    lw    t5,  72(sp)
+    lw    t6,  76(sp)
+    lw    s2,  80(sp)
+    lw    s3,  84(sp)
+    lw    s4,  88(sp)
+    lw    s5,  92(sp)
+    lw    s6,  96(sp)
+    lw    s7,  100(sp)
+    lw    s8,  104(sp)
+    lw    s9,  108(sp)
+    lw    s10, 112(sp)
+    lw    s11, 116(sp)
+    addi  sp, sp, 128
     mret
 
 .size trap_entry, . - trap_entry

@@ -21,7 +21,7 @@ OBJ_DIR = $(BUILD_DIR)/objs/a/b/c
 # Compiler flags
 CFLAGS += -Wall -Werror -std=c11 -O3 -ffreestanding \
           -ffunction-sections -fdata-sections \
-          -march=rv32ec_zicsr -mabi=ilp32e
+          -march=rv32ic_zicsr -mabi=ilp32
 
 # Source files must be defined before including this file
 ifndef SRCS
@@ -49,8 +49,8 @@ LDFLAGS += \
 	-Wl,--print-memory-usage \
 	-Wl,-Map=$(BUILD_DIR)/$(PROJECT).map \
 	-Wl,-T,$(LINKER_SCRIPT) \
-	-march=rv32ec_zicsr \
-	-mabi=ilp32e
+	-march=rv32ic_zicsr \
+	-mabi=ilp32
 
 # Include paths (can be overridden in individual Makefiles)
 INCLUDES ?= ../../shared/include

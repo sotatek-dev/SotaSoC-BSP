@@ -14,11 +14,11 @@ Discarded input sections
  .text.spi_set_clock_divider
                 0x00000000       0x16 build/objs/a/b/c/spi_driver.o
  .text.spi_transfer
-                0x00000000       0x66 build/objs/a/b/c/spi_driver.o
+                0x00000000       0x5a build/objs/a/b/c/spi_driver.o
  .text.spi_transfer_hwords
-                0x00000000       0x6a build/objs/a/b/c/spi_driver.o
+                0x00000000       0x5e build/objs/a/b/c/spi_driver.o
  .text.spi_transfer_words
-                0x00000000       0x64 build/objs/a/b/c/spi_driver.o
+                0x00000000       0x58 build/objs/a/b/c/spi_driver.o
  .note.GNU-stack
                 0x00000000        0x0 build/objs/a/b/c/spi_driver.o
  .text          0x00000000        0x0 build/objs/a/b/c/gpio_driver.o
@@ -73,7 +73,7 @@ Discarded input sections
                 0x00000000        0x0 build/objs/a/b/c/irq.o
  .riscv.attributes
                 0x00000000       0x35 build/objs/a/b/c/irq.o
- .text          0x00000000       0x50 build/objs/a/b/c/trap_handler.o
+ .text          0x00000000       0x90 build/objs/a/b/c/trap_handler.o
  .data          0x00000000        0x0 build/objs/a/b/c/trap_handler.o
  .bss           0x00000000        0x0 build/objs/a/b/c/trap_handler.o
  .riscv.attributes
@@ -96,59 +96,59 @@ LOAD build/objs/a/b/c/irq.o
 LOAD build/objs/a/b/c/trap_handler.o
 LOAD /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a
 
-.text           0x00000000      0x55c
+.text           0x00000000      0x562
  *(.text.start)
  .text.start    0x00000000       0x5e build/objs/a/b/c/startup.o
                 0x00000000                _start
  *(.text)
  *(.text.*)
  .text.spi_transfer_single_byte
-                0x0000005e       0x64 build/objs/a/b/c/main.o
+                0x0000005e       0x6c build/objs/a/b/c/main.o
  .text.spi_transfer_multiple_bytes
-                0x000000c2       0x6e build/objs/a/b/c/main.o
+                0x000000ca       0x7c build/objs/a/b/c/main.o
  .text.spi_transfer_single_hword
-                0x00000130       0x86 build/objs/a/b/c/main.o
+                0x00000146       0x80 build/objs/a/b/c/main.o
  .text.spi_transfer_single_word
-                0x000001b6       0x80 build/objs/a/b/c/main.o
+                0x000001c6       0x7c build/objs/a/b/c/main.o
  .text.startup.main
-                0x00000236      0x1b6 build/objs/a/b/c/main.o
-                0x00000236                main
+                0x00000242      0x1b0 build/objs/a/b/c/main.o
+                0x00000242                main
  .text.spi_init
-                0x000003ec       0x12 build/objs/a/b/c/spi_driver.o
-                0x000003ec                spi_init
+                0x000003f2       0x12 build/objs/a/b/c/spi_driver.o
+                0x000003f2                spi_init
  .text.spi_set_mode
-                0x000003fe       0x16 build/objs/a/b/c/spi_driver.o
-                0x000003fe                spi_set_mode
+                0x00000404       0x16 build/objs/a/b/c/spi_driver.o
+                0x00000404                spi_set_mode
  .text.spi_transfer_byte
-                0x00000414       0x22 build/objs/a/b/c/spi_driver.o
-                0x00000414                spi_transfer_byte
+                0x0000041a       0x22 build/objs/a/b/c/spi_driver.o
+                0x0000041a                spi_transfer_byte
  .text.spi_transfer_hword
-                0x00000436       0x22 build/objs/a/b/c/spi_driver.o
-                0x00000436                spi_transfer_hword
+                0x0000043c       0x22 build/objs/a/b/c/spi_driver.o
+                0x0000043c                spi_transfer_hword
  .text.spi_transfer_word
-                0x00000458       0x1e build/objs/a/b/c/spi_driver.o
-                0x00000458                spi_transfer_word
+                0x0000045e       0x1e build/objs/a/b/c/spi_driver.o
+                0x0000045e                spi_transfer_word
  .text.spi_transmit_fast
-                0x00000476       0x72 build/objs/a/b/c/spi_driver.o
-                0x00000476                spi_transmit_fast
+                0x0000047c       0x72 build/objs/a/b/c/spi_driver.o
+                0x0000047c                spi_transmit_fast
  .text.gpio_set_direction
-                0x000004e8       0x34 build/objs/a/b/c/gpio_driver.o
-                0x000004e8                gpio_set_direction
+                0x000004ee       0x34 build/objs/a/b/c/gpio_driver.o
+                0x000004ee                gpio_set_direction
  .text.gpio_set_pin
-                0x0000051c       0x1e build/objs/a/b/c/gpio_driver.o
-                0x0000051c                gpio_set_pin
+                0x00000522       0x1e build/objs/a/b/c/gpio_driver.o
+                0x00000522                gpio_set_pin
  .text.gpio_clear_pin
-                0x0000053a       0x22 build/objs/a/b/c/gpio_driver.o
-                0x0000053a                gpio_clear_pin
+                0x00000540       0x22 build/objs/a/b/c/gpio_driver.o
+                0x00000540                gpio_clear_pin
 
-.rodata         0x0000055c       0x48
+.rodata         0x00000564       0x48
  *(.rodata)
  *(.rodata.*)
- .rodata.main   0x0000055c       0x48 build/objs/a/b/c/main.o
+ .rodata.main   0x00000564       0x48 build/objs/a/b/c/main.o
 
-.rela.dyn       0x000005a4        0x0
+.rela.dyn       0x000005ac        0x0
  .rela.text.start
-                0x000005a4        0x0 build/objs/a/b/c/main.o
+                0x000005ac        0x0 build/objs/a/b/c/main.o
 
 .preinit_array
  *(.preinit_array)
@@ -162,16 +162,16 @@ LOAD /opt/riscv-newlib/lib/gcc/riscv32-unknown-elf/15.2.0/libgcc.a
  *(.fini_array.*)
                 0x01000800                        __global_pointer$ = (ORIGIN (RAM) + 0x800)
 
-.data           0x01000000        0x0 load address 0x000005a4
+.data           0x01000000        0x0 load address 0x000005ac
                 0x01000000                        __data_start = .
  *(.data)
  *(.data.*)
  *(.sdata)
  *(.sdata.*)
                 0x01000000                        __data_end = .
-                0x000005a4                        __data_load_start = LOADADDR (.data)
+                0x000005ac                        __data_load_start = LOADADDR (.data)
 
-.bss            0x01000000        0x0 load address 0x000005a4
+.bss            0x01000000        0x0 load address 0x000005ac
                 0x01000000                        __bss_start = .
  *(.bss)
  *(.bss.*)

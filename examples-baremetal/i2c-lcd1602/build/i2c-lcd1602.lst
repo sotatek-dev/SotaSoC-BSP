@@ -8,7 +8,7 @@ Disassembly of section .text:
    0:	01800117          	auipc	sp,0x1800
    4:	00010113          	mv	sp,sp
    8:	00001297          	auipc	t0,0x1
-   c:	d4c28293          	addi	t0,t0,-692 # d54 <__data_load_start>
+   c:	d6028293          	addi	t0,t0,-672 # d68 <__data_load_start>
   10:	01000317          	auipc	t1,0x1000
   14:	ff030313          	addi	t1,t1,-16 # 1000000 <completed.1>
   18:	01000397          	auipc	t2,0x1000
@@ -35,38 +35,38 @@ Disassembly of section .text:
   58:	4581                	li	a1,0
   5a:	28bd                	jal	d8 <memset>
   5c:	00001517          	auipc	a0,0x1
-  60:	c2850513          	addi	a0,a0,-984 # c84 <atexit>
+  60:	c3c50513          	addi	a0,a0,-964 # c98 <atexit>
   64:	c519                	beqz	a0,72 <_start+0x3e>
   66:	00001517          	auipc	a0,0x1
-  6a:	c2850513          	addi	a0,a0,-984 # c8e <__libc_fini_array>
-  6e:	417000ef          	jal	c84 <atexit>
-  72:	2c3000ef          	jal	b34 <__libc_init_array>
+  6a:	c3c50513          	addi	a0,a0,-964 # ca2 <__libc_fini_array>
+  6e:	42b000ef          	jal	c98 <atexit>
+  72:	2d9000ef          	jal	b4a <__libc_init_array>
   76:	4502                	lw	a0,0(sp)
   78:	004c                	addi	a1,sp,4
   7a:	00251613          	slli	a2,a0,0x2
   7e:	0611                	addi	a2,a2,4
   80:	962e                	add	a2,a2,a1
   82:	28fd                	jal	180 <main>
-  84:	2990006f          	j	b1c <exit>
+  84:	2af0006f          	j	b32 <exit>
 
 00000088 <__do_global_dtors_aux>:
-  88:	1161                	addi	sp,sp,-8 # 17ffff8 <__heap_limit+0xff8>
-  8a:	c022                	sw	s0,0(sp)
+  88:	1141                	addi	sp,sp,-16 # 17ffff0 <__heap_limit+0xff0>
+  8a:	c422                	sw	s0,8(sp)
   8c:	01000437          	lui	s0,0x1000
   90:	00044783          	lbu	a5,0(s0) # 1000000 <completed.1>
-  94:	c206                	sw	ra,4(sp)
+  94:	c606                	sw	ra,12(sp)
   96:	ef91                	bnez	a5,b2 <__do_global_dtors_aux+0x2a>
   98:	00000793          	li	a5,0
   9c:	cb81                	beqz	a5,ac <__do_global_dtors_aux+0x24>
   9e:	6505                	lui	a0,0x1
-  a0:	d4850513          	addi	a0,a0,-696 # d48 <__frame_dummy_init_array_entry>
+  a0:	d5c50513          	addi	a0,a0,-676 # d5c <__frame_dummy_init_array_entry>
   a4:	00000097          	auipc	ra,0x0
   a8:	000000e7          	jalr	zero # 0 <_start_boot>
   ac:	4785                	li	a5,1
   ae:	00f40023          	sb	a5,0(s0)
-  b2:	4092                	lw	ra,4(sp)
-  b4:	4402                	lw	s0,0(sp)
-  b6:	0121                	addi	sp,sp,8
+  b2:	40b2                	lw	ra,12(sp)
+  b4:	4422                	lw	s0,8(sp)
+  b6:	0141                	addi	sp,sp,16
   b8:	8082                	ret
 
 000000ba <frame_dummy>:
@@ -75,7 +75,7 @@ Disassembly of section .text:
   c0:	010005b7          	lui	a1,0x1000
   c4:	6505                	lui	a0,0x1
   c6:	00458593          	addi	a1,a1,4 # 1000004 <object.0>
-  ca:	d4850513          	addi	a0,a0,-696 # d48 <__frame_dummy_init_array_entry>
+  ca:	d5c50513          	addi	a0,a0,-676 # d5c <__frame_dummy_init_array_entry>
   ce:	00000317          	auipc	t1,0x0
   d2:	00000067          	jr	zero # 0 <_start_boot>
   d6:	8082                	ret
@@ -138,10 +138,10 @@ Disassembly of section .text:
  17e:	b7a5                	j	e6 <memset+0xe>
 
 00000180 <main>:
- 180:	1171                	addi	sp,sp,-4
+ 180:	1141                	addi	sp,sp,-16
  182:	09f00513          	li	a0,159
- 186:	c006                	sw	ra,0(sp)
- 188:	073000ef          	jal	9fa <i2c_init>
+ 186:	c606                	sw	ra,12(sp)
+ 188:	089000ef          	jal	a10 <i2c_init>
  18c:	02700513          	li	a0,39
  190:	2815                	jal	1c4 <lcd1602_init>
  192:	e50d                	bnez	a0,1bc <main+0x3c>
@@ -150,14 +150,14 @@ Disassembly of section .text:
  198:	4501                	li	a0,0
  19a:	2b25                	jal	6d2 <lcd1602_set_position>
  19c:	6505                	lui	a0,0x1
- 19e:	d2c50513          	addi	a0,a0,-724 # d2c <__register_exitproc+0x6e>
- 1a2:	6a6000ef          	jal	848 <lcd1602_print>
+ 19e:	d4050513          	addi	a0,a0,-704 # d40 <__register_exitproc+0x6e>
+ 1a2:	6be000ef          	jal	860 <lcd1602_print>
  1a6:	4501                	li	a0,0
  1a8:	4585                	li	a1,1
  1aa:	2325                	jal	6d2 <lcd1602_set_position>
  1ac:	6505                	lui	a0,0x1
- 1ae:	d4050513          	addi	a0,a0,-704 # d40 <__register_exitproc+0x82>
- 1b2:	696000ef          	jal	848 <lcd1602_print>
+ 1ae:	d5450513          	addi	a0,a0,-684 # d54 <__register_exitproc+0x82>
+ 1b2:	6ae000ef          	jal	860 <lcd1602_print>
  1b6:	0001                	nop
  1b8:	0001                	nop
  1ba:	bff5                	j	1b6 <main+0x36>
@@ -166,1052 +166,1052 @@ Disassembly of section .text:
  1c2:	bfc9                	j	194 <main+0x14>
 
 000001c4 <lcd1602_init>:
- 1c4:	1151                	addi	sp,sp,-12
- 1c6:	c222                	sw	s0,4(sp)
- 1c8:	c026                	sw	s1,0(sp)
+ 1c4:	1141                	addi	sp,sp,-16
+ 1c6:	c422                	sw	s0,8(sp)
+ 1c8:	c226                	sw	s1,4(sp)
  1ca:	4581                	li	a1,0
- 1cc:	c406                	sw	ra,8(sp)
+ 1cc:	c606                	sw	ra,12(sp)
  1ce:	9aa186a3          	sb	a0,-1619(gp) # 10001ad <lcd_addr>
  1d2:	9a018623          	sb	zero,-1620(gp) # 10001ac <p_write>
- 1d6:	033000ef          	jal	a08 <i2c_write_byte>
+ 1d6:	049000ef          	jal	a1e <i2c_write_byte>
  1da:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  1de:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  1e2:	89ad                	andi	a1,a1,11
  1e4:	0305e593          	ori	a1,a1,48
  1e8:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 1ec:	01d000ef          	jal	a08 <i2c_write_byte>
+ 1ec:	033000ef          	jal	a1e <i2c_write_byte>
  1f0:	4505                	li	a0,1
- 1f2:	72c000ef          	jal	91e <delay_ms>
+ 1f2:	742000ef          	jal	934 <delay_ms>
  1f6:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  1fa:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  1fe:	0045e593          	ori	a1,a1,4
  202:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 206:	003000ef          	jal	a08 <i2c_write_byte>
+ 206:	019000ef          	jal	a1e <i2c_write_byte>
  20a:	4505                	li	a0,1
- 20c:	712000ef          	jal	91e <delay_ms>
+ 20c:	728000ef          	jal	934 <delay_ms>
  210:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  214:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  218:	0fb5f593          	andi	a1,a1,251
  21c:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 220:	7e8000ef          	jal	a08 <i2c_write_byte>
+ 220:	7fe000ef          	jal	a1e <i2c_write_byte>
  224:	06400513          	li	a0,100
- 228:	77c000ef          	jal	9a4 <delay_us>
+ 228:	792000ef          	jal	9ba <delay_us>
  22c:	6505                	lui	a0,0x1
- 22e:	19450513          	addi	a0,a0,404 # 1194 <__data_load_start+0x440>
- 232:	772000ef          	jal	9a4 <delay_us>
+ 22e:	19450513          	addi	a0,a0,404 # 1194 <__data_load_start+0x42c>
+ 232:	788000ef          	jal	9ba <delay_us>
  236:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  23a:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  23e:	89ad                	andi	a1,a1,11
  240:	0305e593          	ori	a1,a1,48
  244:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 248:	7c0000ef          	jal	a08 <i2c_write_byte>
+ 248:	7d6000ef          	jal	a1e <i2c_write_byte>
  24c:	4505                	li	a0,1
- 24e:	6d0000ef          	jal	91e <delay_ms>
+ 24e:	6e6000ef          	jal	934 <delay_ms>
  252:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  256:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  25a:	0045e593          	ori	a1,a1,4
  25e:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 262:	7a6000ef          	jal	a08 <i2c_write_byte>
+ 262:	7bc000ef          	jal	a1e <i2c_write_byte>
  266:	4505                	li	a0,1
- 268:	6b6000ef          	jal	91e <delay_ms>
+ 268:	6cc000ef          	jal	934 <delay_ms>
  26c:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  270:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  274:	0fb5f593          	andi	a1,a1,251
  278:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 27c:	78c000ef          	jal	a08 <i2c_write_byte>
+ 27c:	7a2000ef          	jal	a1e <i2c_write_byte>
  280:	06400513          	li	a0,100
- 284:	720000ef          	jal	9a4 <delay_us>
+ 284:	736000ef          	jal	9ba <delay_us>
  288:	6505                	lui	a0,0x1
- 28a:	19450513          	addi	a0,a0,404 # 1194 <__data_load_start+0x440>
- 28e:	716000ef          	jal	9a4 <delay_us>
+ 28a:	19450513          	addi	a0,a0,404 # 1194 <__data_load_start+0x42c>
+ 28e:	72c000ef          	jal	9ba <delay_us>
  292:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  296:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  29a:	89ad                	andi	a1,a1,11
  29c:	0305e593          	ori	a1,a1,48
  2a0:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 2a4:	764000ef          	jal	a08 <i2c_write_byte>
+ 2a4:	77a000ef          	jal	a1e <i2c_write_byte>
  2a8:	4505                	li	a0,1
- 2aa:	674000ef          	jal	91e <delay_ms>
+ 2aa:	68a000ef          	jal	934 <delay_ms>
  2ae:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  2b2:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  2b6:	0045e593          	ori	a1,a1,4
  2ba:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 2be:	74a000ef          	jal	a08 <i2c_write_byte>
+ 2be:	760000ef          	jal	a1e <i2c_write_byte>
  2c2:	4505                	li	a0,1
- 2c4:	65a000ef          	jal	91e <delay_ms>
+ 2c4:	670000ef          	jal	934 <delay_ms>
  2c8:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  2cc:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  2d0:	0fb5f593          	andi	a1,a1,251
  2d4:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 2d8:	730000ef          	jal	a08 <i2c_write_byte>
+ 2d8:	746000ef          	jal	a1e <i2c_write_byte>
  2dc:	06400513          	li	a0,100
- 2e0:	6c4000ef          	jal	9a4 <delay_us>
+ 2e0:	6da000ef          	jal	9ba <delay_us>
  2e4:	09600513          	li	a0,150
- 2e8:	6bc000ef          	jal	9a4 <delay_us>
+ 2e8:	6d2000ef          	jal	9ba <delay_us>
  2ec:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  2f0:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  2f4:	89ad                	andi	a1,a1,11
  2f6:	0205e593          	ori	a1,a1,32
  2fa:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 2fe:	70a000ef          	jal	a08 <i2c_write_byte>
+ 2fe:	720000ef          	jal	a1e <i2c_write_byte>
  302:	4505                	li	a0,1
- 304:	61a000ef          	jal	91e <delay_ms>
+ 304:	630000ef          	jal	934 <delay_ms>
  308:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  30c:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  310:	0045e593          	ori	a1,a1,4
  314:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 318:	6f0000ef          	jal	a08 <i2c_write_byte>
+ 318:	706000ef          	jal	a1e <i2c_write_byte>
  31c:	4505                	li	a0,1
- 31e:	600000ef          	jal	91e <delay_ms>
+ 31e:	616000ef          	jal	934 <delay_ms>
  322:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  326:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  32a:	0fb5f593          	andi	a1,a1,251
  32e:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 332:	6d6000ef          	jal	a08 <i2c_write_byte>
+ 332:	6ec000ef          	jal	a1e <i2c_write_byte>
  336:	06400513          	li	a0,100
- 33a:	66a000ef          	jal	9a4 <delay_us>
+ 33a:	680000ef          	jal	9ba <delay_us>
  33e:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  342:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  346:	89ad                	andi	a1,a1,11
  348:	0205e593          	ori	a1,a1,32
  34c:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 350:	6b8000ef          	jal	a08 <i2c_write_byte>
+ 350:	6ce000ef          	jal	a1e <i2c_write_byte>
  354:	4505                	li	a0,1
- 356:	5c8000ef          	jal	91e <delay_ms>
+ 356:	5de000ef          	jal	934 <delay_ms>
  35a:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  35e:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  362:	0045e593          	ori	a1,a1,4
  366:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 36a:	69e000ef          	jal	a08 <i2c_write_byte>
+ 36a:	6b4000ef          	jal	a1e <i2c_write_byte>
  36e:	4505                	li	a0,1
- 370:	5ae000ef          	jal	91e <delay_ms>
+ 370:	5c4000ef          	jal	934 <delay_ms>
  374:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  378:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  37c:	0fb5f593          	andi	a1,a1,251
  380:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 384:	684000ef          	jal	a08 <i2c_write_byte>
+ 384:	69a000ef          	jal	a1e <i2c_write_byte>
  388:	06400513          	li	a0,100
- 38c:	618000ef          	jal	9a4 <delay_us>
+ 38c:	62e000ef          	jal	9ba <delay_us>
  390:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  394:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  398:	89ad                	andi	a1,a1,11
  39a:	0c05e593          	ori	a1,a1,192
  39e:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 3a2:	666000ef          	jal	a08 <i2c_write_byte>
+ 3a2:	67c000ef          	jal	a1e <i2c_write_byte>
  3a6:	4505                	li	a0,1
- 3a8:	576000ef          	jal	91e <delay_ms>
+ 3a8:	58c000ef          	jal	934 <delay_ms>
  3ac:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  3b0:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  3b4:	0045e593          	ori	a1,a1,4
  3b8:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 3bc:	64c000ef          	jal	a08 <i2c_write_byte>
+ 3bc:	662000ef          	jal	a1e <i2c_write_byte>
  3c0:	4505                	li	a0,1
- 3c2:	2bb1                	jal	91e <delay_ms>
+ 3c2:	2b8d                	jal	934 <delay_ms>
  3c4:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  3c8:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  3cc:	0fb5f593          	andi	a1,a1,251
  3d0:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 3d4:	634000ef          	jal	a08 <i2c_write_byte>
+ 3d4:	64a000ef          	jal	a1e <i2c_write_byte>
  3d8:	06400513          	li	a0,100
- 3dc:	5c8000ef          	jal	9a4 <delay_us>
+ 3dc:	5de000ef          	jal	9ba <delay_us>
  3e0:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  3e4:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  3e8:	89ad                	andi	a1,a1,11
  3ea:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 3ee:	61a000ef          	jal	a08 <i2c_write_byte>
+ 3ee:	630000ef          	jal	a1e <i2c_write_byte>
  3f2:	4505                	li	a0,1
- 3f4:	232d                	jal	91e <delay_ms>
+ 3f4:	2381                	jal	934 <delay_ms>
  3f6:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  3fa:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  3fe:	0045e593          	ori	a1,a1,4
  402:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 406:	602000ef          	jal	a08 <i2c_write_byte>
+ 406:	618000ef          	jal	a1e <i2c_write_byte>
  40a:	4505                	li	a0,1
- 40c:	2b09                	jal	91e <delay_ms>
+ 40c:	2325                	jal	934 <delay_ms>
  40e:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  412:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  416:	0fb5f593          	andi	a1,a1,251
  41a:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 41e:	5ea000ef          	jal	a08 <i2c_write_byte>
+ 41e:	600000ef          	jal	a1e <i2c_write_byte>
  422:	06400513          	li	a0,100
- 426:	2bbd                	jal	9a4 <delay_us>
+ 426:	2b51                	jal	9ba <delay_us>
  428:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  42c:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  430:	89ad                	andi	a1,a1,11
  432:	0805e593          	ori	a1,a1,128
  436:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 43a:	5ce000ef          	jal	a08 <i2c_write_byte>
+ 43a:	5e4000ef          	jal	a1e <i2c_write_byte>
  43e:	4505                	li	a0,1
- 440:	29f9                	jal	91e <delay_ms>
+ 440:	29d5                	jal	934 <delay_ms>
  442:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  446:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  44a:	0045e593          	ori	a1,a1,4
  44e:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 452:	5b6000ef          	jal	a08 <i2c_write_byte>
+ 452:	5cc000ef          	jal	a1e <i2c_write_byte>
  456:	4505                	li	a0,1
- 458:	21d9                	jal	91e <delay_ms>
+ 458:	29f1                	jal	934 <delay_ms>
  45a:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  45e:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  462:	0fb5f593          	andi	a1,a1,251
  466:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 46a:	2b79                	jal	a08 <i2c_write_byte>
+ 46a:	2b55                	jal	a1e <i2c_write_byte>
  46c:	06400513          	li	a0,100
- 470:	2b15                	jal	9a4 <delay_us>
+ 470:	23a9                	jal	9ba <delay_us>
  472:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  476:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  47a:	89ad                	andi	a1,a1,11
  47c:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 480:	2361                	jal	a08 <i2c_write_byte>
+ 480:	2b79                	jal	a1e <i2c_write_byte>
  482:	4505                	li	a0,1
- 484:	2969                	jal	91e <delay_ms>
+ 484:	2945                	jal	934 <delay_ms>
  486:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  48a:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  48e:	0045e593          	ori	a1,a1,4
  492:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 496:	2b8d                	jal	a08 <i2c_write_byte>
+ 496:	2361                	jal	a1e <i2c_write_byte>
  498:	4505                	li	a0,1
- 49a:	2151                	jal	91e <delay_ms>
+ 49a:	2969                	jal	934 <delay_ms>
  49c:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  4a0:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  4a4:	0fb5f593          	andi	a1,a1,251
  4a8:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 4ac:	2bb1                	jal	a08 <i2c_write_byte>
+ 4ac:	2b8d                	jal	a1e <i2c_write_byte>
  4ae:	06400513          	li	a0,100
- 4b2:	29cd                	jal	9a4 <delay_us>
+ 4b2:	2321                	jal	9ba <delay_us>
  4b4:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  4b8:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  4bc:	89ad                	andi	a1,a1,11
  4be:	0105e593          	ori	a1,a1,16
  4c2:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 4c6:	2389                	jal	a08 <i2c_write_byte>
+ 4c6:	2ba1                	jal	a1e <i2c_write_byte>
  4c8:	4505                	li	a0,1
- 4ca:	2991                	jal	91e <delay_ms>
+ 4ca:	21ad                	jal	934 <delay_ms>
  4cc:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  4d0:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  4d4:	0045e593          	ori	a1,a1,4
  4d8:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 4dc:	2335                	jal	a08 <i2c_write_byte>
+ 4dc:	2389                	jal	a1e <i2c_write_byte>
  4de:	4505                	li	a0,1
- 4e0:	293d                	jal	91e <delay_ms>
+ 4e0:	2991                	jal	934 <delay_ms>
  4e2:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  4e6:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  4ea:	0fb5f593          	andi	a1,a1,251
  4ee:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 4f2:	2b19                	jal	a08 <i2c_write_byte>
+ 4f2:	2335                	jal	a1e <i2c_write_byte>
  4f4:	06400513          	li	a0,100
- 4f8:	2175                	jal	9a4 <delay_us>
+ 4f8:	21c9                	jal	9ba <delay_us>
  4fa:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  4fe:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  502:	89ad                	andi	a1,a1,11
  504:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 508:	2301                	jal	a08 <i2c_write_byte>
+ 508:	2b19                	jal	a1e <i2c_write_byte>
  50a:	4505                	li	a0,1
- 50c:	2909                	jal	91e <delay_ms>
+ 50c:	2125                	jal	934 <delay_ms>
  50e:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  512:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  516:	0045e593          	ori	a1,a1,4
  51a:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 51e:	21ed                	jal	a08 <i2c_write_byte>
+ 51e:	2301                	jal	a1e <i2c_write_byte>
  520:	4505                	li	a0,1
- 522:	2ef5                	jal	91e <delay_ms>
+ 522:	2909                	jal	934 <delay_ms>
  524:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  528:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  52c:	0fb5f593          	andi	a1,a1,251
  530:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 534:	29d1                	jal	a08 <i2c_write_byte>
+ 534:	21ed                	jal	a1e <i2c_write_byte>
  536:	06400513          	li	a0,100
- 53a:	21ad                	jal	9a4 <delay_us>
+ 53a:	2141                	jal	9ba <delay_us>
  53c:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  540:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  544:	89ad                	andi	a1,a1,11
  546:	0605e593          	ori	a1,a1,96
  54a:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 54e:	296d                	jal	a08 <i2c_write_byte>
+ 54e:	29c1                	jal	a1e <i2c_write_byte>
  550:	4505                	li	a0,1
- 552:	26f1                	jal	91e <delay_ms>
+ 552:	26cd                	jal	934 <delay_ms>
  554:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  558:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  55c:	0045e593          	ori	a1,a1,4
  560:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 564:	2155                	jal	a08 <i2c_write_byte>
+ 564:	296d                	jal	a1e <i2c_write_byte>
  566:	4505                	li	a0,1
- 568:	2e5d                	jal	91e <delay_ms>
+ 568:	26f1                	jal	934 <delay_ms>
  56a:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  56e:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  572:	0fb5f593          	andi	a1,a1,251
  576:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 57a:	2179                	jal	a08 <i2c_write_byte>
+ 57a:	2155                	jal	a1e <i2c_write_byte>
  57c:	06400513          	li	a0,100
- 580:	2115                	jal	9a4 <delay_us>
+ 580:	292d                	jal	9ba <delay_us>
  582:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  586:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  58a:	89ad                	andi	a1,a1,11
  58c:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 590:	29a5                	jal	a08 <i2c_write_byte>
+ 590:	2179                	jal	a1e <i2c_write_byte>
  592:	4505                	li	a0,1
- 594:	2669                	jal	91e <delay_ms>
+ 594:	2645                	jal	934 <delay_ms>
  596:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  59a:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  59e:	0045e593          	ori	a1,a1,4
  5a2:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 5a6:	218d                	jal	a08 <i2c_write_byte>
+ 5a6:	29a5                	jal	a1e <i2c_write_byte>
  5a8:	4505                	li	a0,1
- 5aa:	2e95                	jal	91e <delay_ms>
+ 5aa:	2669                	jal	934 <delay_ms>
  5ac:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  5b0:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  5b4:	0fb5f593          	andi	a1,a1,251
  5b8:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 5bc:	21b1                	jal	a08 <i2c_write_byte>
+ 5bc:	218d                	jal	a1e <i2c_write_byte>
  5be:	06400513          	li	a0,100
- 5c2:	26cd                	jal	9a4 <delay_us>
+ 5c2:	2ee5                	jal	9ba <delay_us>
  5c4:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  5c8:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  5cc:	99ed                	andi	a1,a1,-5
  5ce:	0f05e593          	ori	a1,a1,240
  5d2:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 5d6:	290d                	jal	a08 <i2c_write_byte>
+ 5d6:	21a1                	jal	a1e <i2c_write_byte>
  5d8:	4505                	li	a0,1
- 5da:	2691                	jal	91e <delay_ms>
+ 5da:	2ea9                	jal	934 <delay_ms>
  5dc:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  5e0:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  5e4:	0045e593          	ori	a1,a1,4
  5e8:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 5ec:	2931                	jal	a08 <i2c_write_byte>
+ 5ec:	290d                	jal	a1e <i2c_write_byte>
  5ee:	4505                	li	a0,1
- 5f0:	263d                	jal	91e <delay_ms>
+ 5f0:	2691                	jal	934 <delay_ms>
  5f2:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  5f6:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  5fa:	0fb5f593          	andi	a1,a1,251
  5fe:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 602:	2119                	jal	a08 <i2c_write_byte>
+ 602:	2931                	jal	a1e <i2c_write_byte>
  604:	06400513          	li	a0,100
- 608:	2e71                	jal	9a4 <delay_us>
+ 608:	2e4d                	jal	9ba <delay_us>
  60a:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  60e:	45a1                	li	a1,8
  610:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 614:	2ed5                	jal	a08 <i2c_write_byte>
+ 614:	2129                	jal	a1e <i2c_write_byte>
  616:	03200513          	li	a0,50
- 61a:	2611                	jal	91e <delay_ms>
- 61c:	40a2                	lw	ra,8(sp)
- 61e:	4412                	lw	s0,4(sp)
- 620:	4482                	lw	s1,0(sp)
+ 61a:	2e29                	jal	934 <delay_ms>
+ 61c:	40b2                	lw	ra,12(sp)
+ 61e:	4422                	lw	s0,8(sp)
+ 620:	4492                	lw	s1,4(sp)
  622:	4501                	li	a0,0
- 624:	0131                	addi	sp,sp,12
+ 624:	0141                	addi	sp,sp,16
  626:	8082                	ret
 
 00000628 <lcd1602_clear>:
- 628:	1151                	addi	sp,sp,-12
- 62a:	c222                	sw	s0,4(sp)
- 62c:	c026                	sw	s1,0(sp)
+ 628:	1141                	addi	sp,sp,-16
+ 62a:	c422                	sw	s0,8(sp)
+ 62c:	c226                	sw	s1,4(sp)
  62e:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  632:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  636:	0fe5f593          	andi	a1,a1,254
- 63a:	c406                	sw	ra,8(sp)
+ 63a:	c606                	sw	ra,12(sp)
  63c:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 640:	26e1                	jal	a08 <i2c_write_byte>
+ 640:	2ef9                	jal	a1e <i2c_write_byte>
  642:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  646:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  64a:	89ad                	andi	a1,a1,11
  64c:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 650:	2e65                	jal	a08 <i2c_write_byte>
+ 650:	26f9                	jal	a1e <i2c_write_byte>
  652:	4505                	li	a0,1
- 654:	24e9                	jal	91e <delay_ms>
+ 654:	24c5                	jal	934 <delay_ms>
  656:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  65a:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  65e:	0045e593          	ori	a1,a1,4
  662:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 666:	264d                	jal	a08 <i2c_write_byte>
+ 666:	2e65                	jal	a1e <i2c_write_byte>
  668:	4505                	li	a0,1
- 66a:	2c55                	jal	91e <delay_ms>
+ 66a:	24e9                	jal	934 <delay_ms>
  66c:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  670:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  674:	0fb5f593          	andi	a1,a1,251
  678:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 67c:	2671                	jal	a08 <i2c_write_byte>
+ 67c:	264d                	jal	a1e <i2c_write_byte>
  67e:	06400513          	li	a0,100
- 682:	260d                	jal	9a4 <delay_us>
+ 682:	2e25                	jal	9ba <delay_us>
  684:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  688:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  68c:	89ad                	andi	a1,a1,11
  68e:	0105e593          	ori	a1,a1,16
  692:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 696:	2e8d                	jal	a08 <i2c_write_byte>
+ 696:	2661                	jal	a1e <i2c_write_byte>
  698:	4505                	li	a0,1
- 69a:	2451                	jal	91e <delay_ms>
+ 69a:	2c69                	jal	934 <delay_ms>
  69c:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  6a0:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  6a4:	0045e593          	ori	a1,a1,4
  6a8:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 6ac:	2eb1                	jal	a08 <i2c_write_byte>
+ 6ac:	2e8d                	jal	a1e <i2c_write_byte>
  6ae:	4505                	li	a0,1
- 6b0:	24bd                	jal	91e <delay_ms>
+ 6b0:	2451                	jal	934 <delay_ms>
  6b2:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  6b6:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
  6ba:	0fb5f593          	andi	a1,a1,251
  6be:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 6c2:	2699                	jal	a08 <i2c_write_byte>
- 6c4:	4412                	lw	s0,4(sp)
- 6c6:	40a2                	lw	ra,8(sp)
- 6c8:	4482                	lw	s1,0(sp)
+ 6c2:	2eb1                	jal	a1e <i2c_write_byte>
+ 6c4:	4422                	lw	s0,8(sp)
+ 6c6:	40b2                	lw	ra,12(sp)
+ 6c8:	4492                	lw	s1,4(sp)
  6ca:	06400513          	li	a0,100
- 6ce:	0131                	addi	sp,sp,12
- 6d0:	acd1                	j	9a4 <delay_us>
+ 6ce:	0141                	addi	sp,sp,16
+ 6d0:	a4ed                	j	9ba <delay_us>
 
 000006d2 <lcd1602_set_position>:
- 6d2:	1141                	addi	sp,sp,-16
- 6d4:	c606                	sw	ra,12(sp)
- 6d6:	c226                	sw	s1,4(sp)
- 6d8:	c02a                	sw	a0,0(sp)
- 6da:	c989                	beqz	a1,6ec <lcd1602_set_position+0x1a>
- 6dc:	4785                	li	a5,1
- 6de:	84ae                	mv	s1,a1
- 6e0:	0cf58063          	beq	a1,a5,7a0 <lcd1602_set_position+0xce>
- 6e4:	40b2                	lw	ra,12(sp)
- 6e6:	4492                	lw	s1,4(sp)
- 6e8:	0141                	addi	sp,sp,16
- 6ea:	8082                	ret
- 6ec:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
- 6f0:	c422                	sw	s0,8(sp)
- 6f2:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
- 6f6:	0fe5f593          	andi	a1,a1,254
- 6fa:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 6fe:	2629                	jal	a08 <i2c_write_byte>
- 700:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
- 704:	4782                	lw	a5,0(sp)
- 706:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
- 70a:	89ad                	andi	a1,a1,11
- 70c:	9bc1                	andi	a5,a5,-16
- 70e:	8ddd                	or	a1,a1,a5
- 710:	0805e593          	ori	a1,a1,128
- 714:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 718:	2cc5                	jal	a08 <i2c_write_byte>
- 71a:	4505                	li	a0,1
- 71c:	2409                	jal	91e <delay_ms>
- 71e:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
- 722:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
- 726:	0045e593          	ori	a1,a1,4
- 72a:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 72e:	2ce9                	jal	a08 <i2c_write_byte>
- 730:	4505                	li	a0,1
- 732:	22f5                	jal	91e <delay_ms>
- 734:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
- 738:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
- 73c:	0fb5f593          	andi	a1,a1,251
- 740:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 744:	24d1                	jal	a08 <i2c_write_byte>
- 746:	06400513          	li	a0,100
- 74a:	2ca9                	jal	9a4 <delay_us>
- 74c:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
- 750:	4782                	lw	a5,0(sp)
- 752:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
- 756:	89ad                	andi	a1,a1,11
- 758:	0792                	slli	a5,a5,0x4
- 75a:	8ddd                	or	a1,a1,a5
- 75c:	0ff5f593          	zext.b	a1,a1
- 760:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 764:	2455                	jal	a08 <i2c_write_byte>
- 766:	4505                	li	a0,1
- 768:	2a5d                	jal	91e <delay_ms>
- 76a:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
- 76e:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
- 772:	0045e593          	ori	a1,a1,4
- 776:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 77a:	2479                	jal	a08 <i2c_write_byte>
- 77c:	4505                	li	a0,1
- 77e:	2245                	jal	91e <delay_ms>
- 780:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
- 784:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
- 788:	0fb5f593          	andi	a1,a1,251
- 78c:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 790:	2ca5                	jal	a08 <i2c_write_byte>
- 792:	4422                	lw	s0,8(sp)
- 794:	40b2                	lw	ra,12(sp)
- 796:	4492                	lw	s1,4(sp)
- 798:	06400513          	li	a0,100
- 79c:	0141                	addi	sp,sp,16
- 79e:	a419                	j	9a4 <delay_us>
- 7a0:	c422                	sw	s0,8(sp)
- 7a2:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
- 7a6:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
- 7aa:	0fe5f593          	andi	a1,a1,254
- 7ae:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 7b2:	2c99                	jal	a08 <i2c_write_byte>
- 7b4:	4682                	lw	a3,0(sp)
- 7b6:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
- 7ba:	ff06f793          	andi	a5,a3,-16
- 7be:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
- 7c2:	89ad                	andi	a1,a1,11
- 7c4:	8ddd                	or	a1,a1,a5
- 7c6:	0c05e593          	ori	a1,a1,192
- 7ca:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 7ce:	2c2d                	jal	a08 <i2c_write_byte>
- 7d0:	8526                	mv	a0,s1
- 7d2:	22b1                	jal	91e <delay_ms>
- 7d4:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
- 7d8:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
- 7dc:	0045e593          	ori	a1,a1,4
- 7e0:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 7e4:	2415                	jal	a08 <i2c_write_byte>
- 7e6:	8526                	mv	a0,s1
- 7e8:	2a1d                	jal	91e <delay_ms>
- 7ea:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
- 7ee:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
- 7f2:	0fb5f593          	andi	a1,a1,251
- 7f6:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 7fa:	2439                	jal	a08 <i2c_write_byte>
- 7fc:	06400513          	li	a0,100
- 800:	2255                	jal	9a4 <delay_us>
- 802:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
- 806:	4782                	lw	a5,0(sp)
- 808:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
- 80c:	0792                	slli	a5,a5,0x4
- 80e:	89ad                	andi	a1,a1,11
- 810:	8ddd                	or	a1,a1,a5
- 812:	0ff5f593          	zext.b	a1,a1
- 816:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 81a:	22fd                	jal	a08 <i2c_write_byte>
- 81c:	8526                	mv	a0,s1
- 81e:	2201                	jal	91e <delay_ms>
- 820:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
- 824:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
- 828:	0045e593          	ori	a1,a1,4
- 82c:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 830:	2ae1                	jal	a08 <i2c_write_byte>
- 832:	8526                	mv	a0,s1
- 834:	20ed                	jal	91e <delay_ms>
- 836:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
- 83a:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
- 83e:	0fb5f593          	andi	a1,a1,251
- 842:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 846:	b7a9                	j	790 <lcd1602_set_position+0xbe>
+ 6d2:	1101                	addi	sp,sp,-32
+ 6d4:	c64e                	sw	s3,12(sp)
+ 6d6:	ce06                	sw	ra,28(sp)
+ 6d8:	cc22                	sw	s0,24(sp)
+ 6da:	89aa                	mv	s3,a0
+ 6dc:	c991                	beqz	a1,6f0 <lcd1602_set_position+0x1e>
+ 6de:	4785                	li	a5,1
+ 6e0:	842e                	mv	s0,a1
+ 6e2:	0cf58263          	beq	a1,a5,7a6 <lcd1602_set_position+0xd4>
+ 6e6:	40f2                	lw	ra,28(sp)
+ 6e8:	4462                	lw	s0,24(sp)
+ 6ea:	49b2                	lw	s3,12(sp)
+ 6ec:	6105                	addi	sp,sp,32
+ 6ee:	8082                	ret
+ 6f0:	ca26                	sw	s1,20(sp)
+ 6f2:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
+ 6f6:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
+ 6fa:	0fe5f593          	andi	a1,a1,254
+ 6fe:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
+ 702:	2e31                	jal	a1e <i2c_write_byte>
+ 704:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
+ 708:	ff09f793          	andi	a5,s3,-16
+ 70c:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
+ 710:	89ad                	andi	a1,a1,11
+ 712:	8ddd                	or	a1,a1,a5
+ 714:	0805e593          	ori	a1,a1,128
+ 718:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
+ 71c:	2609                	jal	a1e <i2c_write_byte>
+ 71e:	4505                	li	a0,1
+ 720:	2c11                	jal	934 <delay_ms>
+ 722:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
+ 726:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
+ 72a:	0045e593          	ori	a1,a1,4
+ 72e:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
+ 732:	24f5                	jal	a1e <i2c_write_byte>
+ 734:	4505                	li	a0,1
+ 736:	2afd                	jal	934 <delay_ms>
+ 738:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
+ 73c:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
+ 740:	0fb5f593          	andi	a1,a1,251
+ 744:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
+ 748:	2cd9                	jal	a1e <i2c_write_byte>
+ 74a:	06400513          	li	a0,100
+ 74e:	24b5                	jal	9ba <delay_us>
+ 750:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
+ 754:	00499793          	slli	a5,s3,0x4
+ 758:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
+ 75c:	89ad                	andi	a1,a1,11
+ 75e:	8ddd                	or	a1,a1,a5
+ 760:	0ff5f593          	zext.b	a1,a1
+ 764:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
+ 768:	2c5d                	jal	a1e <i2c_write_byte>
+ 76a:	4505                	li	a0,1
+ 76c:	22e1                	jal	934 <delay_ms>
+ 76e:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
+ 772:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
+ 776:	0045e593          	ori	a1,a1,4
+ 77a:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
+ 77e:	2445                	jal	a1e <i2c_write_byte>
+ 780:	4505                	li	a0,1
+ 782:	2a4d                	jal	934 <delay_ms>
+ 784:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
+ 788:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
+ 78c:	0fb5f593          	andi	a1,a1,251
+ 790:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
+ 794:	2469                	jal	a1e <i2c_write_byte>
+ 796:	4462                	lw	s0,24(sp)
+ 798:	44d2                	lw	s1,20(sp)
+ 79a:	40f2                	lw	ra,28(sp)
+ 79c:	49b2                	lw	s3,12(sp)
+ 79e:	06400513          	li	a0,100
+ 7a2:	6105                	addi	sp,sp,32
+ 7a4:	ac19                	j	9ba <delay_us>
+ 7a6:	ca26                	sw	s1,20(sp)
+ 7a8:	c84a                	sw	s2,16(sp)
+ 7aa:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
+ 7ae:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
+ 7b2:	0fe5f593          	andi	a1,a1,254
+ 7b6:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
+ 7ba:	2495                	jal	a1e <i2c_write_byte>
+ 7bc:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
+ 7c0:	ff09f793          	andi	a5,s3,-16
+ 7c4:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
+ 7c8:	89ad                	andi	a1,a1,11
+ 7ca:	8ddd                	or	a1,a1,a5
+ 7cc:	0c05e593          	ori	a1,a1,192
+ 7d0:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
+ 7d4:	24a9                	jal	a1e <i2c_write_byte>
+ 7d6:	8522                	mv	a0,s0
+ 7d8:	2ab1                	jal	934 <delay_ms>
+ 7da:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
+ 7de:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
+ 7e2:	0045e593          	ori	a1,a1,4
+ 7e6:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
+ 7ea:	2c15                	jal	a1e <i2c_write_byte>
+ 7ec:	8522                	mv	a0,s0
+ 7ee:	2299                	jal	934 <delay_ms>
+ 7f0:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
+ 7f4:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
+ 7f8:	0fb5f593          	andi	a1,a1,251
+ 7fc:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
+ 800:	2c39                	jal	a1e <i2c_write_byte>
+ 802:	06400513          	li	a0,100
+ 806:	2a55                	jal	9ba <delay_us>
+ 808:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
+ 80c:	00499793          	slli	a5,s3,0x4
+ 810:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
+ 814:	89ad                	andi	a1,a1,11
+ 816:	8ddd                	or	a1,a1,a5
+ 818:	0ff5f593          	zext.b	a1,a1
+ 81c:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
+ 820:	2afd                	jal	a1e <i2c_write_byte>
+ 822:	8522                	mv	a0,s0
+ 824:	2a01                	jal	934 <delay_ms>
+ 826:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
+ 82a:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
+ 82e:	0045e593          	ori	a1,a1,4
+ 832:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
+ 836:	22e5                	jal	a1e <i2c_write_byte>
+ 838:	8522                	mv	a0,s0
+ 83a:	28ed                	jal	934 <delay_ms>
+ 83c:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
+ 840:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
+ 844:	0fb5f593          	andi	a1,a1,251
+ 848:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
+ 84c:	2ac9                	jal	a1e <i2c_write_byte>
+ 84e:	4462                	lw	s0,24(sp)
+ 850:	44d2                	lw	s1,20(sp)
+ 852:	4942                	lw	s2,16(sp)
+ 854:	40f2                	lw	ra,28(sp)
+ 856:	49b2                	lw	s3,12(sp)
+ 858:	06400513          	li	a0,100
+ 85c:	6105                	addi	sp,sp,32
+ 85e:	aab1                	j	9ba <delay_us>
 
-00000848 <lcd1602_print>:
- 848:	00054703          	lbu	a4,0(a0)
- 84c:	0c070863          	beqz	a4,91c <lcd1602_print+0xd4>
- 850:	1131                	addi	sp,sp,-20
- 852:	c622                	sw	s0,12(sp)
- 854:	c426                	sw	s1,8(sp)
- 856:	c806                	sw	ra,16(sp)
- 858:	87aa                	mv	a5,a0
- 85a:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
- 85e:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
- 862:	c23e                	sw	a5,4(sp)
- 864:	0015e593          	ori	a1,a1,1
- 868:	c03a                	sw	a4,0(sp)
- 86a:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 86e:	2a69                	jal	a08 <i2c_write_byte>
- 870:	4702                	lw	a4,0(sp)
- 872:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
- 876:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
- 87a:	ff077693          	andi	a3,a4,-16
- 87e:	89ad                	andi	a1,a1,11
- 880:	8dd5                	or	a1,a1,a3
- 882:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 886:	2249                	jal	a08 <i2c_write_byte>
- 888:	4505                	li	a0,1
- 88a:	2851                	jal	91e <delay_ms>
- 88c:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
- 890:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
- 894:	0045e593          	ori	a1,a1,4
- 898:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 89c:	22b5                	jal	a08 <i2c_write_byte>
- 89e:	4505                	li	a0,1
- 8a0:	28bd                	jal	91e <delay_ms>
- 8a2:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
- 8a6:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
- 8aa:	0fb5f593          	andi	a1,a1,251
- 8ae:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 8b2:	2a99                	jal	a08 <i2c_write_byte>
- 8b4:	06400513          	li	a0,100
- 8b8:	20f5                	jal	9a4 <delay_us>
- 8ba:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
- 8be:	4702                	lw	a4,0(sp)
+00000860 <lcd1602_print>:
+ 860:	1101                	addi	sp,sp,-32
+ 862:	ce06                	sw	ra,28(sp)
+ 864:	c84a                	sw	s2,16(sp)
+ 866:	00054903          	lbu	s2,0(a0)
+ 86a:	0c090163          	beqz	s2,92c <lcd1602_print+0xcc>
+ 86e:	cc22                	sw	s0,24(sp)
+ 870:	ca26                	sw	s1,20(sp)
+ 872:	c64e                	sw	s3,12(sp)
+ 874:	89aa                	mv	s3,a0
+ 876:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
+ 87a:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
+ 87e:	0985                	addi	s3,s3,1
+ 880:	0015e593          	ori	a1,a1,1
+ 884:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
+ 888:	2a59                	jal	a1e <i2c_write_byte>
+ 88a:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
+ 88e:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
+ 892:	ff097793          	andi	a5,s2,-16
+ 896:	89ad                	andi	a1,a1,11
+ 898:	8ddd                	or	a1,a1,a5
+ 89a:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
+ 89e:	2241                	jal	a1e <i2c_write_byte>
+ 8a0:	4505                	li	a0,1
+ 8a2:	2849                	jal	934 <delay_ms>
+ 8a4:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
+ 8a8:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
+ 8ac:	0912                	slli	s2,s2,0x4
+ 8ae:	0045e593          	ori	a1,a1,4
+ 8b2:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
+ 8b6:	22a5                	jal	a1e <i2c_write_byte>
+ 8b8:	4505                	li	a0,1
+ 8ba:	28ad                	jal	934 <delay_ms>
+ 8bc:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
  8c0:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
- 8c4:	89ad                	andi	a1,a1,11
- 8c6:	0712                	slli	a4,a4,0x4
- 8c8:	8dd9                	or	a1,a1,a4
- 8ca:	0ff5f593          	zext.b	a1,a1
- 8ce:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 8d2:	2a1d                	jal	a08 <i2c_write_byte>
- 8d4:	4505                	li	a0,1
- 8d6:	20a1                	jal	91e <delay_ms>
- 8d8:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
- 8dc:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
- 8e0:	0045e593          	ori	a1,a1,4
- 8e4:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 8e8:	2205                	jal	a08 <i2c_write_byte>
- 8ea:	4505                	li	a0,1
- 8ec:	280d                	jal	91e <delay_ms>
- 8ee:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
- 8f2:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
- 8f6:	0fb5f593          	andi	a1,a1,251
- 8fa:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
- 8fe:	2229                	jal	a08 <i2c_write_byte>
- 900:	06400513          	li	a0,100
- 904:	2045                	jal	9a4 <delay_us>
- 906:	4792                	lw	a5,4(sp)
- 908:	0017c703          	lbu	a4,1(a5)
- 90c:	0785                	addi	a5,a5,1
- 90e:	f40716e3          	bnez	a4,85a <lcd1602_print+0x12>
- 912:	40c2                	lw	ra,16(sp)
- 914:	4432                	lw	s0,12(sp)
- 916:	44a2                	lw	s1,8(sp)
- 918:	0151                	addi	sp,sp,20
- 91a:	8082                	ret
- 91c:	8082                	ret
+ 8c4:	0fb5f593          	andi	a1,a1,251
+ 8c8:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
+ 8cc:	2a89                	jal	a1e <i2c_write_byte>
+ 8ce:	06400513          	li	a0,100
+ 8d2:	20e5                	jal	9ba <delay_us>
+ 8d4:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
+ 8d8:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
+ 8dc:	89ad                	andi	a1,a1,11
+ 8de:	0125e5b3          	or	a1,a1,s2
+ 8e2:	0ff5f593          	zext.b	a1,a1
+ 8e6:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
+ 8ea:	2a15                	jal	a1e <i2c_write_byte>
+ 8ec:	4505                	li	a0,1
+ 8ee:	2099                	jal	934 <delay_ms>
+ 8f0:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
+ 8f4:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
+ 8f8:	0045e593          	ori	a1,a1,4
+ 8fc:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
+ 900:	2a39                	jal	a1e <i2c_write_byte>
+ 902:	4505                	li	a0,1
+ 904:	2805                	jal	934 <delay_ms>
+ 906:	9ac1c583          	lbu	a1,-1620(gp) # 10001ac <p_write>
+ 90a:	9ad1c503          	lbu	a0,-1619(gp) # 10001ad <lcd_addr>
+ 90e:	0fb5f593          	andi	a1,a1,251
+ 912:	9ab18623          	sb	a1,-1620(gp) # 10001ac <p_write>
+ 916:	2221                	jal	a1e <i2c_write_byte>
+ 918:	06400513          	li	a0,100
+ 91c:	2879                	jal	9ba <delay_us>
+ 91e:	0009c903          	lbu	s2,0(s3)
+ 922:	f4091ae3          	bnez	s2,876 <lcd1602_print+0x16>
+ 926:	4462                	lw	s0,24(sp)
+ 928:	44d2                	lw	s1,20(sp)
+ 92a:	49b2                	lw	s3,12(sp)
+ 92c:	40f2                	lw	ra,28(sp)
+ 92e:	4942                	lw	s2,16(sp)
+ 930:	6105                	addi	sp,sp,32
+ 932:	8082                	ret
 
-0000091e <delay_ms>:
- 91e:	08a05263          	blez	a0,9a2 <delay_ms+0x84>
- 922:	400026b7          	lui	a3,0x40002
- 926:	0691                	addi	a3,a3,4 # 40002004 <__stack_top+0x3e802004>
- 928:	400025b7          	lui	a1,0x40002
- 92c:	4298                	lw	a4,0(a3)
- 92e:	419c                	lw	a5,0(a1)
- 930:	4290                	lw	a2,0(a3)
- 932:	fec71de3          	bne	a4,a2,92c <delay_ms+0xe>
- 936:	41f55593          	srai	a1,a0,0x1f
- 93a:	01b55693          	srli	a3,a0,0x1b
- 93e:	00551313          	slli	t1,a0,0x5
- 942:	00559613          	slli	a2,a1,0x5
- 946:	9636                	add	a2,a2,a3
- 948:	40a306b3          	sub	a3,t1,a0
- 94c:	00d33333          	sltu	t1,t1,a3
- 950:	8e0d                	sub	a2,a2,a1
- 952:	40660633          	sub	a2,a2,t1
- 956:	060a                	slli	a2,a2,0x2
- 958:	01e6d313          	srli	t1,a3,0x1e
- 95c:	068a                	slli	a3,a3,0x2
- 95e:	9536                	add	a0,a0,a3
- 960:	961a                	add	a2,a2,t1
- 962:	962e                	add	a2,a2,a1
- 964:	00d536b3          	sltu	a3,a0,a3
- 968:	96b2                	add	a3,a3,a2
- 96a:	06a6                	slli	a3,a3,0x9
- 96c:	01755613          	srli	a2,a0,0x17
- 970:	0526                	slli	a0,a0,0x9
- 972:	96b2                	add	a3,a3,a2
- 974:	00a78333          	add	t1,a5,a0
- 978:	9736                	add	a4,a4,a3
- 97a:	00f337b3          	sltu	a5,t1,a5
- 97e:	00e78533          	add	a0,a5,a4
- 982:	40002737          	lui	a4,0x40002
- 986:	0711                	addi	a4,a4,4 # 40002004 <__stack_top+0x3e802004>
- 988:	40002637          	lui	a2,0x40002
- 98c:	431c                	lw	a5,0(a4)
- 98e:	420c                	lw	a1,0(a2)
- 990:	4314                	lw	a3,0(a4)
- 992:	fed79de3          	bne	a5,a3,98c <delay_ms+0x6e>
- 996:	fea7ebe3          	bltu	a5,a0,98c <delay_ms+0x6e>
- 99a:	00f51463          	bne	a0,a5,9a2 <delay_ms+0x84>
- 99e:	fe65e7e3          	bltu	a1,t1,98c <delay_ms+0x6e>
- 9a2:	8082                	ret
+00000934 <delay_ms>:
+ 934:	08a05263          	blez	a0,9b8 <delay_ms+0x84>
+ 938:	400026b7          	lui	a3,0x40002
+ 93c:	0691                	addi	a3,a3,4 # 40002004 <__stack_top+0x3e802004>
+ 93e:	400025b7          	lui	a1,0x40002
+ 942:	4298                	lw	a4,0(a3)
+ 944:	419c                	lw	a5,0(a1)
+ 946:	4290                	lw	a2,0(a3)
+ 948:	fec71de3          	bne	a4,a2,942 <delay_ms+0xe>
+ 94c:	41f55813          	srai	a6,a0,0x1f
+ 950:	01b55693          	srli	a3,a0,0x1b
+ 954:	00551593          	slli	a1,a0,0x5
+ 958:	00581613          	slli	a2,a6,0x5
+ 95c:	9636                	add	a2,a2,a3
+ 95e:	40a586b3          	sub	a3,a1,a0
+ 962:	00d5b5b3          	sltu	a1,a1,a3
+ 966:	41060633          	sub	a2,a2,a6
+ 96a:	8e0d                	sub	a2,a2,a1
+ 96c:	060a                	slli	a2,a2,0x2
+ 96e:	01e6d593          	srli	a1,a3,0x1e
+ 972:	068a                	slli	a3,a3,0x2
+ 974:	9536                	add	a0,a0,a3
+ 976:	962e                	add	a2,a2,a1
+ 978:	9642                	add	a2,a2,a6
+ 97a:	00d536b3          	sltu	a3,a0,a3
+ 97e:	96b2                	add	a3,a3,a2
+ 980:	06a6                	slli	a3,a3,0x9
+ 982:	01755613          	srli	a2,a0,0x17
+ 986:	0526                	slli	a0,a0,0x9
+ 988:	96b2                	add	a3,a3,a2
+ 98a:	00a78833          	add	a6,a5,a0
+ 98e:	9736                	add	a4,a4,a3
+ 990:	00f837b3          	sltu	a5,a6,a5
+ 994:	00e78533          	add	a0,a5,a4
+ 998:	40002737          	lui	a4,0x40002
+ 99c:	0711                	addi	a4,a4,4 # 40002004 <__stack_top+0x3e802004>
+ 99e:	40002637          	lui	a2,0x40002
+ 9a2:	431c                	lw	a5,0(a4)
+ 9a4:	420c                	lw	a1,0(a2)
+ 9a6:	4314                	lw	a3,0(a4)
+ 9a8:	fed79de3          	bne	a5,a3,9a2 <delay_ms+0x6e>
+ 9ac:	fea7ebe3          	bltu	a5,a0,9a2 <delay_ms+0x6e>
+ 9b0:	00f51463          	bne	a0,a5,9b8 <delay_ms+0x84>
+ 9b4:	ff05e7e3          	bltu	a1,a6,9a2 <delay_ms+0x6e>
+ 9b8:	8082                	ret
 
-000009a4 <delay_us>:
- 9a4:	04a05a63          	blez	a0,9f8 <delay_us+0x54>
- 9a8:	400026b7          	lui	a3,0x40002
- 9ac:	0691                	addi	a3,a3,4 # 40002004 <__stack_top+0x3e802004>
- 9ae:	400025b7          	lui	a1,0x40002
- 9b2:	4298                	lw	a4,0(a3)
- 9b4:	419c                	lw	a5,0(a1)
- 9b6:	4290                	lw	a2,0(a3)
- 9b8:	fec71de3          	bne	a4,a2,9b2 <delay_us+0xe>
- 9bc:	41f55693          	srai	a3,a0,0x1f
- 9c0:	01a55613          	srli	a2,a0,0x1a
- 9c4:	069a                	slli	a3,a3,0x6
- 9c6:	051a                	slli	a0,a0,0x6
- 9c8:	96b2                	add	a3,a3,a2
- 9ca:	00a78333          	add	t1,a5,a0
- 9ce:	9736                	add	a4,a4,a3
- 9d0:	00f337b3          	sltu	a5,t1,a5
- 9d4:	00e78533          	add	a0,a5,a4
- 9d8:	40002737          	lui	a4,0x40002
- 9dc:	0711                	addi	a4,a4,4 # 40002004 <__stack_top+0x3e802004>
- 9de:	40002637          	lui	a2,0x40002
- 9e2:	431c                	lw	a5,0(a4)
- 9e4:	420c                	lw	a1,0(a2)
- 9e6:	4314                	lw	a3,0(a4)
- 9e8:	fed79de3          	bne	a5,a3,9e2 <delay_us+0x3e>
- 9ec:	fea7ebe3          	bltu	a5,a0,9e2 <delay_us+0x3e>
- 9f0:	00f51463          	bne	a0,a5,9f8 <delay_us+0x54>
- 9f4:	fe65e7e3          	bltu	a1,t1,9e2 <delay_us+0x3e>
- 9f8:	8082                	ret
+000009ba <delay_us>:
+ 9ba:	04a05a63          	blez	a0,a0e <delay_us+0x54>
+ 9be:	400026b7          	lui	a3,0x40002
+ 9c2:	0691                	addi	a3,a3,4 # 40002004 <__stack_top+0x3e802004>
+ 9c4:	400025b7          	lui	a1,0x40002
+ 9c8:	4298                	lw	a4,0(a3)
+ 9ca:	419c                	lw	a5,0(a1)
+ 9cc:	4290                	lw	a2,0(a3)
+ 9ce:	fec71de3          	bne	a4,a2,9c8 <delay_us+0xe>
+ 9d2:	41f55693          	srai	a3,a0,0x1f
+ 9d6:	01a55613          	srli	a2,a0,0x1a
+ 9da:	069a                	slli	a3,a3,0x6
+ 9dc:	051a                	slli	a0,a0,0x6
+ 9de:	96b2                	add	a3,a3,a2
+ 9e0:	00a78833          	add	a6,a5,a0
+ 9e4:	9736                	add	a4,a4,a3
+ 9e6:	00f837b3          	sltu	a5,a6,a5
+ 9ea:	00e78533          	add	a0,a5,a4
+ 9ee:	40002737          	lui	a4,0x40002
+ 9f2:	0711                	addi	a4,a4,4 # 40002004 <__stack_top+0x3e802004>
+ 9f4:	40002637          	lui	a2,0x40002
+ 9f8:	431c                	lw	a5,0(a4)
+ 9fa:	420c                	lw	a1,0(a2)
+ 9fc:	4314                	lw	a3,0(a4)
+ 9fe:	fed79de3          	bne	a5,a3,9f8 <delay_us+0x3e>
+ a02:	fea7ebe3          	bltu	a5,a0,9f8 <delay_us+0x3e>
+ a06:	00f51463          	bne	a0,a5,a0e <delay_us+0x54>
+ a0a:	ff05e7e3          	bltu	a1,a6,9f8 <delay_us+0x3e>
+ a0e:	8082                	ret
 
-000009fa <i2c_init>:
- 9fa:	400047b7          	lui	a5,0x40004
- 9fe:	c7c8                	sw	a0,12(a5)
- a00:	0001                	nop
- a02:	0001                	nop
- a04:	4501                	li	a0,0
- a06:	8082                	ret
+00000a10 <i2c_init>:
+ a10:	400047b7          	lui	a5,0x40004
+ a14:	c7c8                	sw	a0,12(a5)
+ a16:	0001                	nop
+ a18:	0001                	nop
+ a1a:	4501                	li	a0,0
+ a1c:	8082                	ret
 
-00000a08 <i2c_write_byte>:
- a08:	40004737          	lui	a4,0x40004
- a0c:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e804004>
- a0e:	400046b7          	lui	a3,0x40004
- a12:	431c                	lw	a5,0(a4)
- a14:	8b85                	andi	a5,a5,1
- a16:	fff5                	bnez	a5,a12 <i2c_write_byte+0xa>
- a18:	00151793          	slli	a5,a0,0x1
- a1c:	40004737          	lui	a4,0x40004
- a20:	0ff7f793          	zext.b	a5,a5
- a24:	c71c                	sw	a5,8(a4)
- a26:	4785                	li	a5,1
- a28:	40004737          	lui	a4,0x40004
- a2c:	c29c                	sw	a5,0(a3)
- a2e:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e804004>
- a30:	400046b7          	lui	a3,0x40004
- a34:	a039                	j	a42 <i2c_write_byte+0x3a>
- a36:	431c                	lw	a5,0(a4)
- a38:	8bc1                	andi	a5,a5,16
- a3a:	eba5                	bnez	a5,aaa <i2c_write_byte+0xa2>
- a3c:	431c                	lw	a5,0(a4)
- a3e:	8b91                	andi	a5,a5,4
- a40:	efc9                	bnez	a5,ada <i2c_write_byte+0xd2>
- a42:	431c                	lw	a5,0(a4)
- a44:	8ba1                	andi	a5,a5,8
- a46:	dbe5                	beqz	a5,a36 <i2c_write_byte+0x2e>
- a48:	431c                	lw	a5,0(a4)
- a4a:	8b89                	andi	a5,a5,2
- a4c:	c3f9                	beqz	a5,b12 <i2c_write_byte+0x10a>
- a4e:	400047b7          	lui	a5,0x40004
- a52:	c78c                	sw	a1,8(a5)
- a54:	40004737          	lui	a4,0x40004
- a58:	4785                	li	a5,1
- a5a:	c29c                	sw	a5,0(a3)
- a5c:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e804004>
- a5e:	400046b7          	lui	a3,0x40004
- a62:	a039                	j	a70 <i2c_write_byte+0x68>
- a64:	431c                	lw	a5,0(a4)
- a66:	8bc1                	andi	a5,a5,16
- a68:	ebbd                	bnez	a5,ade <i2c_write_byte+0xd6>
- a6a:	431c                	lw	a5,0(a4)
- a6c:	8b91                	andi	a5,a5,4
- a6e:	e3c5                	bnez	a5,b0e <i2c_write_byte+0x106>
- a70:	431c                	lw	a5,0(a4)
- a72:	8ba1                	andi	a5,a5,8
- a74:	dbe5                	beqz	a5,a64 <i2c_write_byte+0x5c>
- a76:	431c                	lw	a5,0(a4)
- a78:	8b89                	andi	a5,a5,2
- a7a:	cfd1                	beqz	a5,b16 <i2c_write_byte+0x10e>
- a7c:	4789                	li	a5,2
- a7e:	40004737          	lui	a4,0x40004
- a82:	c29c                	sw	a5,0(a3)
- a84:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e804004>
- a86:	a039                	j	a94 <i2c_write_byte+0x8c>
- a88:	431c                	lw	a5,0(a4)
- a8a:	8bc1                	andi	a5,a5,16
- a8c:	e799                	bnez	a5,a9a <i2c_write_byte+0x92>
- a8e:	431c                	lw	a5,0(a4)
- a90:	8b91                	andi	a5,a5,4
- a92:	e781                	bnez	a5,a9a <i2c_write_byte+0x92>
- a94:	431c                	lw	a5,0(a4)
- a96:	8ba1                	andi	a5,a5,8
- a98:	dbe5                	beqz	a5,a88 <i2c_write_byte+0x80>
- a9a:	40004737          	lui	a4,0x40004
- a9e:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e804004>
- aa0:	431c                	lw	a5,0(a4)
- aa2:	8b85                	andi	a5,a5,1
- aa4:	fff5                	bnez	a5,aa0 <i2c_write_byte+0x98>
- aa6:	4501                	li	a0,0
- aa8:	8082                	ret
- aaa:	557d                	li	a0,-1
- aac:	400047b7          	lui	a5,0x40004
- ab0:	4689                	li	a3,2
- ab2:	c394                	sw	a3,0(a5)
- ab4:	00478713          	addi	a4,a5,4 # 40004004 <__stack_top+0x3e804004>
- ab8:	a039                	j	ac6 <i2c_write_byte+0xbe>
- aba:	431c                	lw	a5,0(a4)
- abc:	8bc1                	andi	a5,a5,16
- abe:	e799                	bnez	a5,acc <i2c_write_byte+0xc4>
- ac0:	431c                	lw	a5,0(a4)
- ac2:	8b91                	andi	a5,a5,4
- ac4:	e781                	bnez	a5,acc <i2c_write_byte+0xc4>
- ac6:	431c                	lw	a5,0(a4)
- ac8:	8ba1                	andi	a5,a5,8
- aca:	dbe5                	beqz	a5,aba <i2c_write_byte+0xb2>
- acc:	40004737          	lui	a4,0x40004
- ad0:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e804004>
- ad2:	431c                	lw	a5,0(a4)
- ad4:	8b85                	andi	a5,a5,1
- ad6:	fff5                	bnez	a5,ad2 <i2c_write_byte+0xca>
- ad8:	8082                	ret
- ada:	5579                	li	a0,-2
- adc:	bfc1                	j	aac <i2c_write_byte+0xa4>
- ade:	557d                	li	a0,-1
- ae0:	400047b7          	lui	a5,0x40004
- ae4:	4689                	li	a3,2
- ae6:	c394                	sw	a3,0(a5)
- ae8:	00478713          	addi	a4,a5,4 # 40004004 <__stack_top+0x3e804004>
- aec:	a039                	j	afa <i2c_write_byte+0xf2>
- aee:	431c                	lw	a5,0(a4)
- af0:	8bc1                	andi	a5,a5,16
- af2:	e799                	bnez	a5,b00 <i2c_write_byte+0xf8>
- af4:	431c                	lw	a5,0(a4)
- af6:	8b91                	andi	a5,a5,4
- af8:	e781                	bnez	a5,b00 <i2c_write_byte+0xf8>
- afa:	431c                	lw	a5,0(a4)
- afc:	8ba1                	andi	a5,a5,8
- afe:	dbe5                	beqz	a5,aee <i2c_write_byte+0xe6>
- b00:	40004737          	lui	a4,0x40004
- b04:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e804004>
- b06:	431c                	lw	a5,0(a4)
- b08:	8b85                	andi	a5,a5,1
- b0a:	fff5                	bnez	a5,b06 <i2c_write_byte+0xfe>
- b0c:	8082                	ret
- b0e:	5579                	li	a0,-2
- b10:	bfc1                	j	ae0 <i2c_write_byte+0xd8>
- b12:	5575                	li	a0,-3
- b14:	bf61                	j	aac <i2c_write_byte+0xa4>
- b16:	5575                	li	a0,-3
- b18:	b7e1                	j	ae0 <i2c_write_byte+0xd8>
+00000a1e <i2c_write_byte>:
+ a1e:	40004737          	lui	a4,0x40004
+ a22:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e804004>
+ a24:	400046b7          	lui	a3,0x40004
+ a28:	431c                	lw	a5,0(a4)
+ a2a:	8b85                	andi	a5,a5,1
+ a2c:	fff5                	bnez	a5,a28 <i2c_write_byte+0xa>
+ a2e:	00151793          	slli	a5,a0,0x1
+ a32:	40004737          	lui	a4,0x40004
+ a36:	0ff7f793          	zext.b	a5,a5
+ a3a:	c71c                	sw	a5,8(a4)
+ a3c:	4785                	li	a5,1
+ a3e:	40004737          	lui	a4,0x40004
+ a42:	c29c                	sw	a5,0(a3)
+ a44:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e804004>
+ a46:	400046b7          	lui	a3,0x40004
+ a4a:	a039                	j	a58 <i2c_write_byte+0x3a>
+ a4c:	431c                	lw	a5,0(a4)
+ a4e:	8bc1                	andi	a5,a5,16
+ a50:	eba5                	bnez	a5,ac0 <i2c_write_byte+0xa2>
+ a52:	431c                	lw	a5,0(a4)
+ a54:	8b91                	andi	a5,a5,4
+ a56:	efc9                	bnez	a5,af0 <i2c_write_byte+0xd2>
+ a58:	431c                	lw	a5,0(a4)
+ a5a:	8ba1                	andi	a5,a5,8
+ a5c:	dbe5                	beqz	a5,a4c <i2c_write_byte+0x2e>
+ a5e:	431c                	lw	a5,0(a4)
+ a60:	8b89                	andi	a5,a5,2
+ a62:	c3f9                	beqz	a5,b28 <i2c_write_byte+0x10a>
+ a64:	400047b7          	lui	a5,0x40004
+ a68:	c78c                	sw	a1,8(a5)
+ a6a:	40004737          	lui	a4,0x40004
+ a6e:	4785                	li	a5,1
+ a70:	c29c                	sw	a5,0(a3)
+ a72:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e804004>
+ a74:	400046b7          	lui	a3,0x40004
+ a78:	a039                	j	a86 <i2c_write_byte+0x68>
+ a7a:	431c                	lw	a5,0(a4)
+ a7c:	8bc1                	andi	a5,a5,16
+ a7e:	ebbd                	bnez	a5,af4 <i2c_write_byte+0xd6>
+ a80:	431c                	lw	a5,0(a4)
+ a82:	8b91                	andi	a5,a5,4
+ a84:	e3c5                	bnez	a5,b24 <i2c_write_byte+0x106>
+ a86:	431c                	lw	a5,0(a4)
+ a88:	8ba1                	andi	a5,a5,8
+ a8a:	dbe5                	beqz	a5,a7a <i2c_write_byte+0x5c>
+ a8c:	431c                	lw	a5,0(a4)
+ a8e:	8b89                	andi	a5,a5,2
+ a90:	cfd1                	beqz	a5,b2c <i2c_write_byte+0x10e>
+ a92:	4789                	li	a5,2
+ a94:	40004737          	lui	a4,0x40004
+ a98:	c29c                	sw	a5,0(a3)
+ a9a:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e804004>
+ a9c:	a039                	j	aaa <i2c_write_byte+0x8c>
+ a9e:	431c                	lw	a5,0(a4)
+ aa0:	8bc1                	andi	a5,a5,16
+ aa2:	e799                	bnez	a5,ab0 <i2c_write_byte+0x92>
+ aa4:	431c                	lw	a5,0(a4)
+ aa6:	8b91                	andi	a5,a5,4
+ aa8:	e781                	bnez	a5,ab0 <i2c_write_byte+0x92>
+ aaa:	431c                	lw	a5,0(a4)
+ aac:	8ba1                	andi	a5,a5,8
+ aae:	dbe5                	beqz	a5,a9e <i2c_write_byte+0x80>
+ ab0:	40004737          	lui	a4,0x40004
+ ab4:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e804004>
+ ab6:	431c                	lw	a5,0(a4)
+ ab8:	8b85                	andi	a5,a5,1
+ aba:	fff5                	bnez	a5,ab6 <i2c_write_byte+0x98>
+ abc:	4501                	li	a0,0
+ abe:	8082                	ret
+ ac0:	557d                	li	a0,-1
+ ac2:	400047b7          	lui	a5,0x40004
+ ac6:	4689                	li	a3,2
+ ac8:	c394                	sw	a3,0(a5)
+ aca:	00478713          	addi	a4,a5,4 # 40004004 <__stack_top+0x3e804004>
+ ace:	a039                	j	adc <i2c_write_byte+0xbe>
+ ad0:	431c                	lw	a5,0(a4)
+ ad2:	8bc1                	andi	a5,a5,16
+ ad4:	e799                	bnez	a5,ae2 <i2c_write_byte+0xc4>
+ ad6:	431c                	lw	a5,0(a4)
+ ad8:	8b91                	andi	a5,a5,4
+ ada:	e781                	bnez	a5,ae2 <i2c_write_byte+0xc4>
+ adc:	431c                	lw	a5,0(a4)
+ ade:	8ba1                	andi	a5,a5,8
+ ae0:	dbe5                	beqz	a5,ad0 <i2c_write_byte+0xb2>
+ ae2:	40004737          	lui	a4,0x40004
+ ae6:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e804004>
+ ae8:	431c                	lw	a5,0(a4)
+ aea:	8b85                	andi	a5,a5,1
+ aec:	fff5                	bnez	a5,ae8 <i2c_write_byte+0xca>
+ aee:	8082                	ret
+ af0:	5579                	li	a0,-2
+ af2:	bfc1                	j	ac2 <i2c_write_byte+0xa4>
+ af4:	557d                	li	a0,-1
+ af6:	400047b7          	lui	a5,0x40004
+ afa:	4689                	li	a3,2
+ afc:	c394                	sw	a3,0(a5)
+ afe:	00478713          	addi	a4,a5,4 # 40004004 <__stack_top+0x3e804004>
+ b02:	a039                	j	b10 <i2c_write_byte+0xf2>
+ b04:	431c                	lw	a5,0(a4)
+ b06:	8bc1                	andi	a5,a5,16
+ b08:	e799                	bnez	a5,b16 <i2c_write_byte+0xf8>
+ b0a:	431c                	lw	a5,0(a4)
+ b0c:	8b91                	andi	a5,a5,4
+ b0e:	e781                	bnez	a5,b16 <i2c_write_byte+0xf8>
+ b10:	431c                	lw	a5,0(a4)
+ b12:	8ba1                	andi	a5,a5,8
+ b14:	dbe5                	beqz	a5,b04 <i2c_write_byte+0xe6>
+ b16:	40004737          	lui	a4,0x40004
+ b1a:	0711                	addi	a4,a4,4 # 40004004 <__stack_top+0x3e804004>
+ b1c:	431c                	lw	a5,0(a4)
+ b1e:	8b85                	andi	a5,a5,1
+ b20:	fff5                	bnez	a5,b1c <i2c_write_byte+0xfe>
+ b22:	8082                	ret
+ b24:	5579                	li	a0,-2
+ b26:	bfc1                	j	af6 <i2c_write_byte+0xd8>
+ b28:	5575                	li	a0,-3
+ b2a:	bf61                	j	ac2 <i2c_write_byte+0xa4>
+ b2c:	5575                	li	a0,-3
+ b2e:	b7e1                	j	af6 <i2c_write_byte+0xd8>
 
-00000b1a <_exit>:
- b1a:	a001                	j	b1a <_exit>
+00000b30 <_exit>:
+ b30:	a001                	j	b30 <_exit>
 
-00000b1c <exit>:
- b1c:	1161                	addi	sp,sp,-8
- b1e:	4581                	li	a1,0
- b20:	c022                	sw	s0,0(sp)
- b22:	c206                	sw	ra,4(sp)
- b24:	842a                	mv	s0,a0
- b26:	2041                	jal	ba6 <__call_exitprocs>
- b28:	9b01a783          	lw	a5,-1616(gp) # 10001b0 <__stdio_exit_handler>
- b2c:	c391                	beqz	a5,b30 <exit+0x14>
- b2e:	9782                	jalr	a5
- b30:	8522                	mv	a0,s0
- b32:	37e5                	jal	b1a <_exit>
-
-00000b34 <__libc_init_array>:
- b34:	1141                	addi	sp,sp,-16
+00000b32 <exit>:
+ b32:	1141                	addi	sp,sp,-16
+ b34:	4581                	li	a1,0
  b36:	c422                	sw	s0,8(sp)
- b38:	c226                	sw	s1,4(sp)
- b3a:	c606                	sw	ra,12(sp)
- b3c:	00000413          	li	s0,0
- b40:	00000493          	li	s1,0
- b44:	02940063          	beq	s0,s1,b64 <__libc_init_array+0x30>
- b48:	8c05                	sub	s0,s0,s1
- b4a:	40245793          	srai	a5,s0,0x2
- b4e:	c03e                	sw	a5,0(sp)
- b50:	4401                	li	s0,0
- b52:	00241713          	slli	a4,s0,0x2
- b56:	9726                	add	a4,a4,s1
- b58:	4318                	lw	a4,0(a4)
- b5a:	0405                	addi	s0,s0,1
- b5c:	9702                	jalr	a4
- b5e:	4782                	lw	a5,0(sp)
- b60:	fef469e3          	bltu	s0,a5,b52 <__libc_init_array+0x1e>
- b64:	00000413          	li	s0,0
- b68:	00000493          	li	s1,0
- b6c:	02940063          	beq	s0,s1,b8c <__libc_init_array+0x58>
- b70:	8c05                	sub	s0,s0,s1
- b72:	40245793          	srai	a5,s0,0x2
- b76:	c03e                	sw	a5,0(sp)
- b78:	4401                	li	s0,0
- b7a:	00241713          	slli	a4,s0,0x2
- b7e:	9726                	add	a4,a4,s1
- b80:	4318                	lw	a4,0(a4)
- b82:	0405                	addi	s0,s0,1
- b84:	9702                	jalr	a4
- b86:	4782                	lw	a5,0(sp)
- b88:	fef469e3          	bltu	s0,a5,b7a <__libc_init_array+0x46>
- b8c:	40b2                	lw	ra,12(sp)
- b8e:	4422                	lw	s0,8(sp)
- b90:	4492                	lw	s1,4(sp)
- b92:	0141                	addi	sp,sp,16
- b94:	8082                	ret
+ b38:	c606                	sw	ra,12(sp)
+ b3a:	842a                	mv	s0,a0
+ b3c:	28a5                	jal	bb4 <__call_exitprocs>
+ b3e:	9b01a783          	lw	a5,-1616(gp) # 10001b0 <__stdio_exit_handler>
+ b42:	c391                	beqz	a5,b46 <exit+0x14>
+ b44:	9782                	jalr	a5
+ b46:	8522                	mv	a0,s0
+ b48:	37e5                	jal	b30 <_exit>
 
-00000b96 <register_fini>:
- b96:	00000793          	li	a5,0
- b9a:	c789                	beqz	a5,ba4 <register_fini+0xe>
- b9c:	6505                	lui	a0,0x1
- b9e:	c8e50513          	addi	a0,a0,-882 # c8e <__libc_fini_array>
- ba2:	a0cd                	j	c84 <atexit>
- ba4:	8082                	ret
+00000b4a <__libc_init_array>:
+ b4a:	1141                	addi	sp,sp,-16
+ b4c:	c422                	sw	s0,8(sp)
+ b4e:	c04a                	sw	s2,0(sp)
+ b50:	c606                	sw	ra,12(sp)
+ b52:	c226                	sw	s1,4(sp)
+ b54:	00000913          	li	s2,0
+ b58:	00000413          	li	s0,0
+ b5c:	00890d63          	beq	s2,s0,b76 <__libc_init_array+0x2c>
+ b60:	40890933          	sub	s2,s2,s0
+ b64:	40295913          	srai	s2,s2,0x2
+ b68:	4481                	li	s1,0
+ b6a:	401c                	lw	a5,0(s0)
+ b6c:	0485                	addi	s1,s1,1
+ b6e:	0411                	addi	s0,s0,4
+ b70:	9782                	jalr	a5
+ b72:	ff24ece3          	bltu	s1,s2,b6a <__libc_init_array+0x20>
+ b76:	00000913          	li	s2,0
+ b7a:	00000413          	li	s0,0
+ b7e:	00890d63          	beq	s2,s0,b98 <__libc_init_array+0x4e>
+ b82:	40890933          	sub	s2,s2,s0
+ b86:	40295913          	srai	s2,s2,0x2
+ b8a:	4481                	li	s1,0
+ b8c:	401c                	lw	a5,0(s0)
+ b8e:	0485                	addi	s1,s1,1
+ b90:	0411                	addi	s0,s0,4
+ b92:	9782                	jalr	a5
+ b94:	ff24ece3          	bltu	s1,s2,b8c <__libc_init_array+0x42>
+ b98:	40b2                	lw	ra,12(sp)
+ b9a:	4422                	lw	s0,8(sp)
+ b9c:	4492                	lw	s1,4(sp)
+ b9e:	4902                	lw	s2,0(sp)
+ ba0:	0141                	addi	sp,sp,16
+ ba2:	8082                	ret
 
-00000ba6 <__call_exitprocs>:
- ba6:	1111                	addi	sp,sp,-28
- ba8:	c826                	sw	s1,16(sp)
- baa:	9b41a483          	lw	s1,-1612(gp) # 10001b4 <__atexit>
- bae:	cc06                	sw	ra,24(sp)
- bb0:	c62a                	sw	a0,12(sp)
- bb2:	c0b5                	beqz	s1,c16 <__call_exitprocs+0x70>
- bb4:	ca22                	sw	s0,20(sp)
- bb6:	842e                	mv	s0,a1
- bb8:	40d8                	lw	a4,4(s1)
- bba:	fff70793          	addi	a5,a4,-1
- bbe:	0407cb63          	bltz	a5,c14 <__call_exitprocs+0x6e>
- bc2:	070a                	slli	a4,a4,0x2
- bc4:	9726                	add	a4,a4,s1
- bc6:	e441                	bnez	s0,c4e <__call_exitprocs+0xa8>
- bc8:	40d0                	lw	a2,4(s1)
- bca:	00472303          	lw	t1,4(a4)
- bce:	167d                	addi	a2,a2,-1 # 40001fff <__stack_top+0x3e801fff>
- bd0:	06f60d63          	beq	a2,a5,c4a <__call_exitprocs+0xa4>
- bd4:	00072223          	sw	zero,4(a4)
- bd8:	02030963          	beqz	t1,c0a <__call_exitprocs+0x64>
- bdc:	1884a583          	lw	a1,392(s1)
- be0:	4605                	li	a2,1
- be2:	00f61633          	sll	a2,a2,a5
- be6:	8df1                	and	a1,a1,a2
- be8:	0044a383          	lw	t2,4(s1)
- bec:	e98d                	bnez	a1,c1e <__call_exitprocs+0x78>
- bee:	c43e                	sw	a5,8(sp)
- bf0:	c21e                	sw	t2,4(sp)
- bf2:	c03a                	sw	a4,0(sp)
- bf4:	9302                	jalr	t1
- bf6:	4702                	lw	a4,0(sp)
- bf8:	4392                	lw	t2,4(sp)
- bfa:	47a2                	lw	a5,8(sp)
- bfc:	40cc                	lw	a1,4(s1)
- bfe:	9b41a603          	lw	a2,-1612(gp) # 10001b4 <__atexit>
- c02:	04759163          	bne	a1,t2,c44 <__call_exitprocs+0x9e>
- c06:	02961f63          	bne	a2,s1,c44 <__call_exitprocs+0x9e>
- c0a:	17fd                	addi	a5,a5,-1
- c0c:	567d                	li	a2,-1
- c0e:	1771                	addi	a4,a4,-4
- c10:	fac79be3          	bne	a5,a2,bc6 <__call_exitprocs+0x20>
- c14:	4452                	lw	s0,20(sp)
- c16:	40e2                	lw	ra,24(sp)
- c18:	44c2                	lw	s1,16(sp)
- c1a:	0171                	addi	sp,sp,28
- c1c:	8082                	ret
- c1e:	18c4a503          	lw	a0,396(s1)
- c22:	c43e                	sw	a5,8(sp)
- c24:	c21e                	sw	t2,4(sp)
- c26:	8e69                	and	a2,a2,a0
- c28:	c03a                	sw	a4,0(sp)
- c2a:	08472583          	lw	a1,132(a4)
- c2e:	e629                	bnez	a2,c78 <__call_exitprocs+0xd2>
- c30:	4532                	lw	a0,12(sp)
- c32:	9302                	jalr	t1
- c34:	4392                	lw	t2,4(sp)
- c36:	40cc                	lw	a1,4(s1)
- c38:	4702                	lw	a4,0(sp)
- c3a:	47a2                	lw	a5,8(sp)
- c3c:	9b41a603          	lw	a2,-1612(gp) # 10001b4 <__atexit>
- c40:	fc7583e3          	beq	a1,t2,c06 <__call_exitprocs+0x60>
- c44:	da61                	beqz	a2,c14 <__call_exitprocs+0x6e>
- c46:	84b2                	mv	s1,a2
- c48:	bf85                	j	bb8 <__call_exitprocs+0x12>
- c4a:	c0dc                	sw	a5,4(s1)
- c4c:	b771                	j	bd8 <__call_exitprocs+0x32>
- c4e:	557d                	li	a0,-1
- c50:	10472603          	lw	a2,260(a4)
- c54:	fff78593          	addi	a1,a5,-1
- c58:	f6c408e3          	beq	s0,a2,bc8 <__call_exitprocs+0x22>
- c5c:	17f9                	addi	a5,a5,-2
- c5e:	faa58be3          	beq	a1,a0,c14 <__call_exitprocs+0x6e>
- c62:	10072603          	lw	a2,256(a4)
- c66:	00860663          	beq	a2,s0,c72 <__call_exitprocs+0xcc>
- c6a:	1761                	addi	a4,a4,-8
- c6c:	fea792e3          	bne	a5,a0,c50 <__call_exitprocs+0xaa>
- c70:	b755                	j	c14 <__call_exitprocs+0x6e>
- c72:	87ae                	mv	a5,a1
- c74:	1771                	addi	a4,a4,-4
- c76:	bf89                	j	bc8 <__call_exitprocs+0x22>
- c78:	852e                	mv	a0,a1
- c7a:	9302                	jalr	t1
- c7c:	47a2                	lw	a5,8(sp)
- c7e:	4392                	lw	t2,4(sp)
- c80:	4702                	lw	a4,0(sp)
- c82:	bfad                	j	bfc <__call_exitprocs+0x56>
+00000ba4 <register_fini>:
+ ba4:	00000793          	li	a5,0
+ ba8:	c789                	beqz	a5,bb2 <register_fini+0xe>
+ baa:	6505                	lui	a0,0x1
+ bac:	ca250513          	addi	a0,a0,-862 # ca2 <__libc_fini_array>
+ bb0:	a0e5                	j	c98 <atexit>
+ bb2:	8082                	ret
 
-00000c84 <atexit>:
- c84:	85aa                	mv	a1,a0
- c86:	4681                	li	a3,0
- c88:	4601                	li	a2,0
- c8a:	4501                	li	a0,0
- c8c:	a80d                	j	cbe <__register_exitproc>
+00000bb4 <__call_exitprocs>:
+ bb4:	7179                	addi	sp,sp,-48
+ bb6:	cc52                	sw	s4,24(sp)
+ bb8:	d04a                	sw	s2,32(sp)
+ bba:	9b41a903          	lw	s2,-1612(gp) # 10001b4 <__atexit>
+ bbe:	d606                	sw	ra,44(sp)
+ bc0:	06090c63          	beqz	s2,c38 <__call_exitprocs+0x84>
+ bc4:	ce4e                	sw	s3,28(sp)
+ bc6:	ca56                	sw	s5,20(sp)
+ bc8:	c85a                	sw	s6,16(sp)
+ bca:	c65e                	sw	s7,12(sp)
+ bcc:	d422                	sw	s0,40(sp)
+ bce:	d226                	sw	s1,36(sp)
+ bd0:	c462                	sw	s8,8(sp)
+ bd2:	8b2a                	mv	s6,a0
+ bd4:	8bae                	mv	s7,a1
+ bd6:	59fd                	li	s3,-1
+ bd8:	4a85                	li	s5,1
+ bda:	00492483          	lw	s1,4(s2)
+ bde:	fff48413          	addi	s0,s1,-1
+ be2:	04044463          	bltz	s0,c2a <__call_exitprocs+0x76>
+ be6:	048a                	slli	s1,s1,0x2
+ be8:	94ca                	add	s1,s1,s2
+ bea:	040b9c63          	bnez	s7,c42 <__call_exitprocs+0x8e>
+ bee:	00492783          	lw	a5,4(s2)
+ bf2:	40d4                	lw	a3,4(s1)
+ bf4:	17fd                	addi	a5,a5,-1
+ bf6:	08878863          	beq	a5,s0,c86 <__call_exitprocs+0xd2>
+ bfa:	0004a223          	sw	zero,4(s1)
+ bfe:	c295                	beqz	a3,c22 <__call_exitprocs+0x6e>
+ c00:	18892783          	lw	a5,392(s2)
+ c04:	008a9733          	sll	a4,s5,s0
+ c08:	00492c03          	lw	s8,4(s2)
+ c0c:	8ff9                	and	a5,a5,a4
+ c0e:	ebb9                	bnez	a5,c64 <__call_exitprocs+0xb0>
+ c10:	9682                	jalr	a3
+ c12:	00492703          	lw	a4,4(s2)
+ c16:	9b41a783          	lw	a5,-1612(gp) # 10001b4 <__atexit>
+ c1a:	07871363          	bne	a4,s8,c80 <__call_exitprocs+0xcc>
+ c1e:	07279163          	bne	a5,s2,c80 <__call_exitprocs+0xcc>
+ c22:	147d                	addi	s0,s0,-1
+ c24:	14f1                	addi	s1,s1,-4
+ c26:	fd3412e3          	bne	s0,s3,bea <__call_exitprocs+0x36>
+ c2a:	5422                	lw	s0,40(sp)
+ c2c:	5492                	lw	s1,36(sp)
+ c2e:	49f2                	lw	s3,28(sp)
+ c30:	4ad2                	lw	s5,20(sp)
+ c32:	4b42                	lw	s6,16(sp)
+ c34:	4bb2                	lw	s7,12(sp)
+ c36:	4c22                	lw	s8,8(sp)
+ c38:	50b2                	lw	ra,44(sp)
+ c3a:	5902                	lw	s2,32(sp)
+ c3c:	4a62                	lw	s4,24(sp)
+ c3e:	6145                	addi	sp,sp,48
+ c40:	8082                	ret
+ c42:	1044a783          	lw	a5,260(s1)
+ c46:	fff40713          	addi	a4,s0,-1
+ c4a:	fafb82e3          	beq	s7,a5,bee <__call_exitprocs+0x3a>
+ c4e:	1479                	addi	s0,s0,-2
+ c50:	fd370de3          	beq	a4,s3,c2a <__call_exitprocs+0x76>
+ c54:	1004a783          	lw	a5,256(s1)
+ c58:	03778a63          	beq	a5,s7,c8c <__call_exitprocs+0xd8>
+ c5c:	14e1                	addi	s1,s1,-8
+ c5e:	ff3412e3          	bne	s0,s3,c42 <__call_exitprocs+0x8e>
+ c62:	b7e1                	j	c2a <__call_exitprocs+0x76>
+ c64:	18c92783          	lw	a5,396(s2)
+ c68:	0844a583          	lw	a1,132(s1)
+ c6c:	8f7d                	and	a4,a4,a5
+ c6e:	e315                	bnez	a4,c92 <__call_exitprocs+0xde>
+ c70:	855a                	mv	a0,s6
+ c72:	9682                	jalr	a3
+ c74:	00492703          	lw	a4,4(s2)
+ c78:	9b41a783          	lw	a5,-1612(gp) # 10001b4 <__atexit>
+ c7c:	fb8701e3          	beq	a4,s8,c1e <__call_exitprocs+0x6a>
+ c80:	d7cd                	beqz	a5,c2a <__call_exitprocs+0x76>
+ c82:	893e                	mv	s2,a5
+ c84:	bf99                	j	bda <__call_exitprocs+0x26>
+ c86:	00892223          	sw	s0,4(s2)
+ c8a:	bf95                	j	bfe <__call_exitprocs+0x4a>
+ c8c:	843a                	mv	s0,a4
+ c8e:	14f1                	addi	s1,s1,-4
+ c90:	bfb9                	j	bee <__call_exitprocs+0x3a>
+ c92:	852e                	mv	a0,a1
+ c94:	9682                	jalr	a3
+ c96:	bfb5                	j	c12 <__call_exitprocs+0x5e>
 
-00000c8e <__libc_fini_array>:
- c8e:	1151                	addi	sp,sp,-12
- c90:	c222                	sw	s0,4(sp)
- c92:	00000793          	li	a5,0
- c96:	00000413          	li	s0,0
- c9a:	8f81                	sub	a5,a5,s0
- c9c:	c026                	sw	s1,0(sp)
- c9e:	c406                	sw	ra,8(sp)
- ca0:	4027d493          	srai	s1,a5,0x2
- ca4:	c881                	beqz	s1,cb4 <__libc_fini_array+0x26>
- ca6:	1471                	addi	s0,s0,-4
- ca8:	943e                	add	s0,s0,a5
- caa:	401c                	lw	a5,0(s0)
- cac:	14fd                	addi	s1,s1,-1
- cae:	1471                	addi	s0,s0,-4
- cb0:	9782                	jalr	a5
- cb2:	fce5                	bnez	s1,caa <__libc_fini_array+0x1c>
- cb4:	40a2                	lw	ra,8(sp)
- cb6:	4412                	lw	s0,4(sp)
- cb8:	4482                	lw	s1,0(sp)
- cba:	0131                	addi	sp,sp,12
- cbc:	8082                	ret
+00000c98 <atexit>:
+ c98:	85aa                	mv	a1,a0
+ c9a:	4681                	li	a3,0
+ c9c:	4601                	li	a2,0
+ c9e:	4501                	li	a0,0
+ ca0:	a80d                	j	cd2 <__register_exitproc>
 
-00000cbe <__register_exitproc>:
- cbe:	9b41a783          	lw	a5,-1612(gp) # 10001b4 <__atexit>
- cc2:	c3a1                	beqz	a5,d02 <__register_exitproc+0x44>
- cc4:	43d8                	lw	a4,4(a5)
- cc6:	437d                	li	t1,31
- cc8:	04e34f63          	blt	t1,a4,d26 <__register_exitproc+0x68>
- ccc:	00271313          	slli	t1,a4,0x2
- cd0:	c11d                	beqz	a0,cf6 <__register_exitproc+0x38>
- cd2:	006783b3          	add	t2,a5,t1
- cd6:	08c3a423          	sw	a2,136(t2)
- cda:	1887a283          	lw	t0,392(a5)
- cde:	4605                	li	a2,1
- ce0:	00e61633          	sll	a2,a2,a4
- ce4:	00c2e2b3          	or	t0,t0,a2
- ce8:	1857a423          	sw	t0,392(a5)
- cec:	10d3a423          	sw	a3,264(t2)
- cf0:	4689                	li	a3,2
- cf2:	00d50f63          	beq	a0,a3,d10 <__register_exitproc+0x52>
- cf6:	0705                	addi	a4,a4,1
- cf8:	c3d8                	sw	a4,4(a5)
- cfa:	979a                	add	a5,a5,t1
- cfc:	c78c                	sw	a1,8(a5)
- cfe:	4501                	li	a0,0
- d00:	8082                	ret
- d02:	010007b7          	lui	a5,0x1000
- d06:	01c78793          	addi	a5,a5,28 # 100001c <__atexit0>
- d0a:	9af1aa23          	sw	a5,-1612(gp) # 10001b4 <__atexit>
- d0e:	bf5d                	j	cc4 <__register_exitproc+0x6>
- d10:	18c7a683          	lw	a3,396(a5)
- d14:	0705                	addi	a4,a4,1
- d16:	c3d8                	sw	a4,4(a5)
- d18:	8ed1                	or	a3,a3,a2
- d1a:	18d7a623          	sw	a3,396(a5)
- d1e:	979a                	add	a5,a5,t1
- d20:	c78c                	sw	a1,8(a5)
- d22:	4501                	li	a0,0
- d24:	8082                	ret
- d26:	557d                	li	a0,-1
- d28:	8082                	ret
+00000ca2 <__libc_fini_array>:
+ ca2:	1141                	addi	sp,sp,-16
+ ca4:	c422                	sw	s0,8(sp)
+ ca6:	00000793          	li	a5,0
+ caa:	00000413          	li	s0,0
+ cae:	8f81                	sub	a5,a5,s0
+ cb0:	c226                	sw	s1,4(sp)
+ cb2:	c606                	sw	ra,12(sp)
+ cb4:	4027d493          	srai	s1,a5,0x2
+ cb8:	c881                	beqz	s1,cc8 <__libc_fini_array+0x26>
+ cba:	1471                	addi	s0,s0,-4
+ cbc:	943e                	add	s0,s0,a5
+ cbe:	401c                	lw	a5,0(s0)
+ cc0:	14fd                	addi	s1,s1,-1
+ cc2:	1471                	addi	s0,s0,-4
+ cc4:	9782                	jalr	a5
+ cc6:	fce5                	bnez	s1,cbe <__libc_fini_array+0x1c>
+ cc8:	40b2                	lw	ra,12(sp)
+ cca:	4422                	lw	s0,8(sp)
+ ccc:	4492                	lw	s1,4(sp)
+ cce:	0141                	addi	sp,sp,16
+ cd0:	8082                	ret
+
+00000cd2 <__register_exitproc>:
+ cd2:	9b41a783          	lw	a5,-1612(gp) # 10001b4 <__atexit>
+ cd6:	c3a1                	beqz	a5,d16 <__register_exitproc+0x44>
+ cd8:	43d8                	lw	a4,4(a5)
+ cda:	487d                	li	a6,31
+ cdc:	04e84f63          	blt	a6,a4,d3a <__register_exitproc+0x68>
+ ce0:	00271813          	slli	a6,a4,0x2
+ ce4:	c11d                	beqz	a0,d0a <__register_exitproc+0x38>
+ ce6:	01078333          	add	t1,a5,a6
+ cea:	08c32423          	sw	a2,136(t1) # 156 <memset+0x7e>
+ cee:	1887a883          	lw	a7,392(a5)
+ cf2:	4605                	li	a2,1
+ cf4:	00e61633          	sll	a2,a2,a4
+ cf8:	00c8e8b3          	or	a7,a7,a2
+ cfc:	1917a423          	sw	a7,392(a5)
+ d00:	10d32423          	sw	a3,264(t1)
+ d04:	4689                	li	a3,2
+ d06:	00d50f63          	beq	a0,a3,d24 <__register_exitproc+0x52>
+ d0a:	0705                	addi	a4,a4,1
+ d0c:	c3d8                	sw	a4,4(a5)
+ d0e:	97c2                	add	a5,a5,a6
+ d10:	c78c                	sw	a1,8(a5)
+ d12:	4501                	li	a0,0
+ d14:	8082                	ret
+ d16:	010007b7          	lui	a5,0x1000
+ d1a:	01c78793          	addi	a5,a5,28 # 100001c <__atexit0>
+ d1e:	9af1aa23          	sw	a5,-1612(gp) # 10001b4 <__atexit>
+ d22:	bf5d                	j	cd8 <__register_exitproc+0x6>
+ d24:	18c7a683          	lw	a3,396(a5)
+ d28:	0705                	addi	a4,a4,1
+ d2a:	c3d8                	sw	a4,4(a5)
+ d2c:	8ed1                	or	a3,a3,a2
+ d2e:	18d7a623          	sw	a3,396(a5)
+ d32:	97c2                	add	a5,a5,a6
+ d34:	c78c                	sw	a1,8(a5)
+ d36:	4501                	li	a0,0
+ d38:	8082                	ret
+ d3a:	557d                	li	a0,-1
+ d3c:	8082                	ret
 
 Disassembly of section .rodata:
 
-00000d2c <.rodata>:
- d2c:	6548                	.insn	2, 0x6548
- d2e:	6c6c                	.insn	2, 0x6c6c
- d30:	53202c6f          	jal	s8,3262 <__data_load_start+0x250e>
- d34:	2d61746f          	jal	s0,1800a <__data_load_start+0x172b6>
- d38:	21436f53          	.insn	4, 0x21436f53
- d3c:	0000                	unimp
- d3e:	0000                	unimp
- d40:	61746f53          	.insn	4, 0x61746f53
- d44:	6554                	.insn	2, 0x6554
- d46:	006b                	.short	0x006b
+00000d40 <.rodata>:
+ d40:	6548                	.insn	2, 0x6548
+ d42:	6c6c                	.insn	2, 0x6c6c
+ d44:	53202c6f          	jal	s8,3276 <__data_load_start+0x250e>
+ d48:	2d61746f          	jal	s0,1801e <__data_load_start+0x172b6>
+ d4c:	21436f53          	.insn	4, 0x21436f53
+ d50:	0000                	unimp
+ d52:	0000                	unimp
+ d54:	61746f53          	.insn	4, 0x61746f53
+ d58:	6554                	.insn	2, 0x6554
+ d5a:	006b                	.short	0x006b
 
 Disassembly of section .init_array:
 
-00000d48 <__frame_dummy_init_array_entry>:
- d48:	00ba                	slli	ra,ra,0xe
- d4a:	0000                	unimp
- d4c:	0b96                	slli	s7,s7,0x5
+00000d5c <__frame_dummy_init_array_entry>:
+ d5c:	00ba                	slli	ra,ra,0xe
+ d5e:	0000                	unimp
+ d60:	0ba4                	addi	s1,sp,472
 	...
 
 Disassembly of section .fini_array:
 
-00000d50 <__do_global_dtors_aux_fini_array_entry>:
- d50:	0088                	addi	a0,sp,64
+00000d64 <__do_global_dtors_aux_fini_array_entry>:
+ d64:	0088                	addi	a0,sp,64
 	...
 
 Disassembly of section .riscv.attributes:
@@ -1224,12 +1224,12 @@ Disassembly of section .riscv.attributes:
    8:	01007663          	bgeu	zero,a6,14 <_start_boot+0x14>
    c:	002a                	c.slli	zero,0xa
    e:	0000                	unimp
-  10:	0404                	addi	s1,sp,512
+  10:	1004                	addi	s1,sp,32
   12:	7205                	lui	tp,0xfffe1
   14:	3376                	.insn	2, 0x3376
-  16:	6532                	.insn	2, 0x6532
+  16:	6932                	.insn	2, 0x6932
   18:	7032                	.insn	2, 0x7032
-  1a:	5f30                	lw	a2,120(a4)
+  1a:	5f31                	li	t5,-20
   1c:	30703263          	.insn	4, 0x30703263
   20:	7a5f 6369 7273      	.insn	6, 0x727363697a5f
   26:	7032                	.insn	2, 0x7032

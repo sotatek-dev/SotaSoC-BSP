@@ -72,12 +72,12 @@ Disassembly of section .riscv.attributes:
    8:	01007663          	bgeu	zero,a6,14 <_start+0x14>
    c:	002a                	c.slli	zero,0xa
    e:	0000                	unimp
-  10:	0404                	addi	s1,sp,512
+  10:	1004                	addi	s1,sp,32
   12:	7205                	lui	tp,0xfffe1
   14:	3376                	.insn	2, 0x3376
-  16:	6532                	.insn	2, 0x6532
+  16:	6932                	.insn	2, 0x6932
   18:	7032                	.insn	2, 0x7032
-  1a:	5f30                	lw	a2,120(a4)
+  1a:	5f31                	li	t5,-20
   1c:	30703263          	.insn	4, 0x30703263
   20:	7a5f 6369 7273      	.insn	6, 0x727363697a5f
   26:	7032                	.insn	2, 0x7032
