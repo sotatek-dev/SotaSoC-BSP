@@ -21,7 +21,7 @@ Board Support Package (BSP) for **[SotaSoC](https://github.com/sotatek-dev/SotaS
 | 4 | GPIO_IN[3] | GPIO_OUT[2] / SPI_SCLK | BUS_IO[2] |
 | 5 | GPIO_IN[4] | GPIO_OUT[3] / SPI_MOSI | BUS_IO[3] |
 | 6 | GPIO_IN[5] | GPIO_OUT[4] / PWM[0] | RAM_CS_N |
-| 7 | UART0_RX | GPIO_OUT[5] / PWM[1] | GPIO_IO[0] / I2C_SDA |
+| 7 | UART0_RX | GPIO_OUT[5] | GPIO_IO[0] / I2C_SDA |
 
 **Note:** In code, **GPIO_IO[0]** is `GPIO[0]`; **GPIO_IN[*x*]** and **GPIO_OUT[*x*]** correspond to `GPIO[x+1]`.
 
